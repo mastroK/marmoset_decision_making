@@ -1,0 +1,258 @@
+{
+  "_stage": "Supp Fig 4 -- model-selection curves + cluster/HMM mean tables backing Fig 6 (real panels a-c), plus panel d (behavioral metrics on the canonical 7-state taxonomy)",
+  "n_trials": 36673,
+  "n_sessions": 100,
+  "n_animals": 5,
+  "kmeans_model_selection": {
+    "k_range": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "silhouette_by_k": [
+      0.3191674485901878,
+      0.4001994681697165,
+      0.39755787262112563,
+      0.33924582791456864,
+      0.3585247384448666,
+      0.3500498831881755,
+      0.3387875613144289
+    ],
+    "bic_by_k": [
+      268588.56003120414,
+      -188116.30516145963,
+      -249686.1639440449,
+      -335385.91517790075,
+      -368634.80209098017,
+      -350305.31845793704,
+      -380654.45485540957
+    ],
+    "aic_by_k": [
+      268348.802372553,
+      -188480.07540217176,
+      -250173.94676681797,
+      -335997.7105827348,
+      -369370.61007787514,
+      -351165.13902689295,
+      -381638.2880064265
+    ],
+    "best_k_silhouette": 3,
+    "best_k_bic": 8,
+    "k_used": 4
+  },
+  "kmeans_cluster_profiles": {
+    "Engaged": {
+      "Signed_Deviation": -0.0024,
+      "Choice_Deviation": 0.1721,
+      "Rolling_Accuracy": 0.785,
+      "Rolling_Switch_Rate": 0.0763
+    },
+    "Exploration": {
+      "Signed_Deviation": -0.0061,
+      "Choice_Deviation": 0.1863,
+      "Rolling_Accuracy": 0.4616,
+      "Rolling_Switch_Rate": 0.4207
+    },
+    "Left Bias": {
+      "Signed_Deviation": -0.6388,
+      "Choice_Deviation": 0.6388,
+      "Rolling_Accuracy": 0.3987,
+      "Rolling_Switch_Rate": 0.1649
+    },
+    "Right Bias": {
+      "Signed_Deviation": 0.6441,
+      "Choice_Deviation": 0.6441,
+      "Rolling_Accuracy": 0.4197,
+      "Rolling_Switch_Rate": 0.1671
+    }
+  },
+  "kmeans_pca_explained_variance": [
+    0.3767704495483104,
+    0.2829750573751601,
+    0.24960085838282545
+  ],
+  "hmm_emission_means": {
+    "Bias": {
+      "Signed_Deviation": 0.7117,
+      "Choice_Deviation": 0.7118,
+      "Rolling_Accuracy": 0.4183,
+      "Rolling_Switch_Rate": 0.1445
+    },
+    "Engaged": {
+      "Signed_Deviation": -0.0042,
+      "Choice_Deviation": 0.2,
+      "Rolling_Accuracy": 0.7962,
+      "Rolling_Switch_Rate": 0.0476
+    },
+    "Exploration": {
+      "Signed_Deviation": -0.1394,
+      "Choice_Deviation": 0.2943,
+      "Rolling_Accuracy": 0.4887,
+      "Rolling_Switch_Rate": 0.3083
+    }
+  },
+  "panel_d_state_distribution": {
+    "Exploit": 14167,
+    "Directed Exploration": 8527,
+    "Adapting (slow)": 4448,
+    "Adapting (fast)": 4410,
+    "Left Bias": 1728,
+    "Random Exploration": 1625,
+    "Right Bias": 1568,
+    "Unknown": 200
+  },
+  "panel_d_metrics": {
+    "p_high_prob": {
+      "Adapting (fast)": {
+        "mean": 0.7223839775351871,
+        "sem": 0.009231183349016056,
+        "n": 5
+      },
+      "Adapting (slow)": {
+        "mean": 0.2913859138001585,
+        "sem": 0.02813970326459294,
+        "n": 5
+      },
+      "Directed Exploration": {
+        "mean": 0.6481388932893856,
+        "sem": 0.012036572784000913,
+        "n": 5
+      },
+      "Exploit": {
+        "mean": 0.9375506460420795,
+        "sem": 0.011456958697676867,
+        "n": 5
+      },
+      "Left Bias": {
+        "mean": 0.2583114184559125,
+        "sem": 0.018360624039742725,
+        "n": 5
+      },
+      "Random Exploration": {
+        "mean": 0.45059668661915475,
+        "sem": 0.015279815983271798,
+        "n": 5
+      },
+      "Right Bias": {
+        "mean": 0.24969422469415586,
+        "sem": 0.01642114171570524,
+        "n": 5
+      }
+    },
+    "switch_rate": {
+      "Adapting (fast)": {
+        "mean": 0.20400310950036796,
+        "sem": 0.008925546894479131,
+        "n": 5
+      },
+      "Adapting (slow)": {
+        "mean": 0.22336851194554047,
+        "sem": 0.025251042402882527,
+        "n": 5
+      },
+      "Directed Exploration": {
+        "mean": 0.29708924146040055,
+        "sem": 0.02255785837819533,
+        "n": 5
+      },
+      "Exploit": {
+        "mean": 0.06283715517279417,
+        "sem": 0.012193690716684072,
+        "n": 5
+      },
+      "Left Bias": {
+        "mean": 0.2999643966190023,
+        "sem": 0.015021511128311054,
+        "n": 5
+      },
+      "Random Exploration": {
+        "mean": 0.3818631897645022,
+        "sem": 0.02461424256717005,
+        "n": 5
+      },
+      "Right Bias": {
+        "mean": 0.30559072929694364,
+        "sem": 0.01751549626659689,
+        "n": 5
+      }
+    },
+    "p_right": {
+      "Adapting (fast)": {
+        "mean": 0.4959520592092329,
+        "sem": 0.05787433446094219,
+        "n": 5
+      },
+      "Adapting (slow)": {
+        "mean": 0.5317005117299953,
+        "sem": 0.05796603842571246,
+        "n": 5
+      },
+      "Directed Exploration": {
+        "mean": 0.4985120234056278,
+        "sem": 0.001188651226369978,
+        "n": 5
+      },
+      "Exploit": {
+        "mean": 0.5154302536366504,
+        "sem": 0.07981956679319573,
+        "n": 5
+      },
+      "Left Bias": {
+        "mean": 0.2583114184559125,
+        "sem": 0.018360624039742725,
+        "n": 5
+      },
+      "Random Exploration": {
+        "mean": 0.49598379132117854,
+        "sem": 0.010979909506839466,
+        "n": 5
+      },
+      "Right Bias": {
+        "mean": 0.7503057753058442,
+        "sem": 0.016421141715705252,
+        "n": 5
+      }
+    },
+    "entropy_bits": {
+      "Adapting (fast)": {
+        "mean": 0.9134531606387458,
+        "sem": 0.023377106555064486,
+        "n": 5
+      },
+      "Adapting (slow)": {
+        "mean": 0.9058571434165265,
+        "sem": 0.027712950929770188,
+        "n": 5
+      },
+      "Directed Exploration": {
+        "mean": 0.9874440781629114,
+        "sem": 0.0025943973147088562,
+        "n": 5
+      },
+      "Exploit": {
+        "mean": 0.8771342204913214,
+        "sem": 0.03729131840609571,
+        "n": 5
+      },
+      "Left Bias": {
+        "mean": 0.7980356078682116,
+        "sem": 0.02659433885663629,
+        "n": 5
+      },
+      "Random Exploration": {
+        "mean": 0.9670231644789924,
+        "sem": 0.007806757348073724,
+        "n": 5
+      },
+      "Right Bias": {
+        "mean": 0.7514067269297791,
+        "sem": 0.02590580996467348,
+        "n": 5
+      }
+    }
+  }
+}

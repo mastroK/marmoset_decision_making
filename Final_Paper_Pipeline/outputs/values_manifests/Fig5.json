@@ -1,0 +1,107 @@
+{
+  "_stage": "Figure 5: Q-value adherence/violation panels a-d",
+  "_manuscript_quoted_values_for_comparison_only": {
+    "note": "Quoted here for side-by-side comparison ONLY -- not used as a target for any computation below (standing constraint: never tune to match).",
+    "overall_adherence_pct": 71.7,
+    "overall_violation_rate_pct_mean_sem": "29.6 +/- 1.7",
+    "panel_c_p_value_paired_ttest": "< 0.0001",
+    "panel_c_probability_of_repeating_previous_choice": {
+      "rewarded_mean_sd": "0.798 +/- 0.063",
+      "unrewarded_mean_sd": "0.573 +/- 0.079",
+      "note": "This is the manuscript's own in-text number attached to the Fig 5c citation, but it describes 'probability of repeating the previous choice' (win-stay/lose-shift), not literally the same quantity as the Fig 5c LEGEND's 'adherence rate' (Chose_Higher_Q split by reward outcome). Both are reported here for transparency; this notebook implements the legend's literal definition (adherence rate = Chose_Higher_Q), matching Supp Fig 3's existing q_following_by_outcome function exactly."
+    }
+  },
+  "n_trials": 36673,
+  "n_sessions": 100,
+  "n_animals": 5,
+  "n_ties_excluded": 120,
+  "sticky_qlearning_params": {
+    "Fiona": {
+      "alpha": 0.5887916440470615,
+      "beta": 1.4583941567186733,
+      "kappa": 1.4381419814838194
+    },
+    "Knuckles": {
+      "alpha": 0.7000456805911974,
+      "beta": 1.201414626495217,
+      "kappa": 1.1019630213351626
+    },
+    "Sonic": {
+      "alpha": 0.836053593858941,
+      "beta": 0.826765180139414,
+      "kappa": 1.4626484976366674
+    },
+    "Sunflower": {
+      "alpha": 0.8747374580559218,
+      "beta": 1.3470998700435606,
+      "kappa": 0.8304892691978306
+    },
+    "Zazu": {
+      "alpha": 0.7011987214184545,
+      "beta": 0.7643393102836361,
+      "kappa": 1.470407356326845
+    }
+  },
+  "overall_adherence_rate": 0.7085875304352584,
+  "overall_violation_rate": 0.2914124695647416,
+  "panel_a_representative_sessions": {
+    "animal": "Fiona",
+    "low_session": "2022-05-09_20220509_Fiona_Reversal3.1",
+    "low_violation_rate": 0.15637860082304528,
+    "high_session": "2022-05-05_20220505_Fiona_Reversal3.1",
+    "high_violation_rate": 0.381201044386423,
+    "n_sessions_available_for_animal": 14,
+    "judgment_call": "lowest/highest per-session violation rate for this animal; manuscript does not specify an exact selection rule."
+  },
+  "panel_b_violation_rate_by_animal": {
+    "animal_means": {
+      "Fiona": 0.2603727482951251,
+      "Knuckles": 0.2878535046292864,
+      "Sonic": 0.3309270465017506,
+      "Sunflower": 0.2769565048266138,
+      "Zazu": 0.3346156976767714
+    },
+    "n_animals": 5,
+    "overall_mean_pooled_sessions": 0.29276925170036133,
+    "mean_of_animal_means": 0.29814510038590947,
+    "sem_of_animal_means": 0.014809430382964542
+  },
+  "panel_c_adherence_by_outcome": {
+    "n_animals": 5,
+    "p_follow_win": 0.792614044582278,
+    "p_follow_loss": 0.5687286334878845,
+    "wilcoxon_stat": 0.0,
+    "wilcoxon_p": 0.0625,
+    "paired_ttest_stat_by_animal": 25.36137755592515,
+    "paired_ttest_p_by_animal": 1.4353964055131748e-05,
+    "paired_ttest_df_by_animal": 4,
+    "paired_ttest_stat_naive_session_level": 38.67458723197068,
+    "paired_ttest_p_naive_session_level": 1.4711979968252276e-61,
+    "n_sessions_naive": 100
+  },
+  "panel_d_violation_by_trial_in_block": {
+    "n_positions": 20,
+    "position_means": {
+      "0": 0.2709567521503085,
+      "1": 0.34698588672150055,
+      "2": 0.402306285178455,
+      "3": 0.3436352376639528,
+      "4": 0.31577080299861965,
+      "5": 0.3041731467321957,
+      "6": 0.2704322535752338,
+      "7": 0.28436623186742316,
+      "8": 0.27261106090070625,
+      "9": 0.2654671864423547,
+      "10": 0.26558888577023254,
+      "11": 0.2618906498899365,
+      "12": 0.27670074495956176,
+      "13": 0.28721551818432284,
+      "14": 0.2602087570115232,
+      "15": 0.2768143417441405,
+      "16": 0.27730154402763096,
+      "17": 0.280535644737822,
+      "18": 0.2872997599121438,
+      "19": 0.2905482567847691
+    }
+  }
+}

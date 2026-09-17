@@ -1,0 +1,772 @@
+# Final_Paper_Pipeline configuration
+# Every threshold, window, and path used anywhere in src/ or notebooks/ lives here.
+# No magic numbers in code -- if a stage needs a new constant, add it here first.
+
+paths:
+  # Read-only reference copies consolidated during Phase 0 (see _source_archive/INDEX.md).
+  # Pointing at the archive (not the live Google Drive) keeps this pipeline self-contained
+  # and reproducible without a Drive mount.
+  data_snapshots: "../_source_archive/data_snapshots"
+  figures_out: "outputs/figures"
+  values_manifests_out: "outputs/values_manifests"
+
+random_seed: 42
+
+# ---------------------------------------------------------------------------
+# Figure 2 -- Reversal learning: cued vs. uncued transitions
+# Source: _source_archive/by_figure/Fig2/05_Fig2_Reversal_v2.ipynb
+# ---------------------------------------------------------------------------
+fig2:
+  input_files:
+    reversal_100_0: "filtered_df_Reversal_100-0_mixed_100.csv"
+  criterion_accuracy: 0.8   # rolling accuracy threshold for "reached criterion" (05, line 949).
+                             # Matches panel c's own legend ("accuracy >= 0.8 across 5 trials"),
+                             # though the manuscript's body text quotes a different threshold for
+                             # this same statistic ("75% accuracy" / "criterion... >=0.75") --
+                             # a legend-vs-text inconsistency in the manuscript itself (see the
+                             # identical note on fig3's criterion_accuracy below), not resolved
+                             # here; kept matching the panel legend since that's what's being
+                             # checked against.
+  criterion_window: 5       # rolling window, in trials, for the criterion check (05, line 950)
+  late_window: 10           # trailing trials averaged for "late accuracy" (05, line 1450 --
+                             # NOTE: that line's own comment says "Final 5 trials", but the
+                             # constant is 10; comment is stale, constant is what's used)
+  history_n: 3              # trailing-trial window for reward-history / switch-probability encoding (05, line 1899)
+  wsls_scatter_min_trials: 10  # display-only: excludes low-trial-count sessions from the WSLS
+                             # scatter-dot overlay only (05, line 2344's MIN_TRIALS, from the
+                             # final WinStay_LoseShift cell, In[127]/line 2244). Does NOT filter
+                             # the bar heights/SEMs or the values manifest, which still use
+                             # summarize_pooled()/summarize_by_animal() over ALL sessions.
+  reversal_window_before: 4    # panel b: trials shown before the reversal (x-axis starts at -4,
+                                # matching the manuscript's own panel b figure)
+  reversal_window_after: 12    # panel b: trials shown after the reversal (x-axis ends at +12)
+  representative_session_rolling_window: 5  # panel a's "5-trial sliding window" (legend)
+
+# ---------------------------------------------------------------------------
+# Figure 3 -- 2-armed bandit (2-ABT) acquisition
+# Source: _source_archive/by_figure/Fig3/06_Fig3_2ABT_v2.ipynb, LINES 1-1487 ONLY.
+# Everything past line ~1487 in that notebook (RL model comparison, choice-kernel
+# model, classify_state variants) belongs to Fig 4 / Fig 6 / Fig 7 and is out of
+# scope for this stage.
+# ---------------------------------------------------------------------------
+fig3:
+  input_files:
+    reversal_80_20_2abt: "filtered_df_Reversal_80-20_2-ABT_100.csv"
+  criterion_accuracy: 0.8   # source (06, line 1180) used 0.7, matching neither its own code
+                             # comment ("80% accuracy") nor either of the manuscript's own two
+                             # stated values for this same statistic: panel c's legend says
+                             # "accuracy >= 0.8 across 5 trials" (matching Fig 1/2's identical
+                             # legend wording) but the manuscript's own body text says "criterion
+                             # (p(high-probability choice)>=0.75)" -- a genuine legend-vs-text
+                             # inconsistency in the manuscript itself, not resolved here. Set to
+                             # 0.8 to match the panel legend (what's being checked against),
+                             # since the source's own 0.7 matched neither value and was
+                             # confirmed to be simply wrong.
+  criterion_window: 5       # same window length as fig2, but a different accuracy threshold
+  late_window: 8            # DIFFERENT from fig2's 10 (06, line 1410 -- comment there says
+                             # "Final 5 trials", also stale; 8 is what's actually used)
+  history_n: 3              # same as fig2
+  reversal_window_before: 4    # panel b: trials shown before the reversal
+  reversal_window_after: 12    # panel b: trials shown after the reversal
+  representative_session_rolling_window: 5  # panel a's "5-trial sliding window" (legend)
+
+# ---------------------------------------------------------------------------
+# Figure 1 -- Visual discrimination task (VDT) acquisition, engagement/
+# disengagement, re-engagement. Source: _source_archive/by_figure/Fig1/
+# 04_LocationBasedShifting.ipynb (internally titled "04_Block_Learning_
+# Analysis.ipynb" -- yet another name variant for the same content).
+# This notebook is large (5,648 lines) and also covers Supp Fig 1's break-
+# analysis panels (see suppfig1 section below). Built in sub-stages;
+# stage 1 (panels b-d: block-position accuracy, trials-to-criterion,
+# learning-across-sessions) is implemented first.
+# ---------------------------------------------------------------------------
+fig1:
+  input_files:
+    where_task_100_0: "WhereTask_100-0_Filtered.csv"
+  min_block_length: 10     # trials; blocks shorter excluded from "long block" analyses (line 203)
+  max_block_length: 200    # trials; blocks longer excluded (line 204)
+  min_sessions_per_animal: 5  # animal must have >= this many qualifying-block sessions to be included (line 205)
+  # Panel c (trials to criterion / late accuracy): the source notebook's own
+  # CELL 5-7 (a "5 consecutive correct trials" rule, `Trials_to_Criterion_Summary.svg`)
+  # was initially ported here, but cross-checking against the manuscript's own
+  # printed legend for this panel ("accuracy >= 0.8 across 5 trials" for trials-
+  # to-criterion, "final 10 trials of a block" for late accuracy, bars=animals/
+  # dots=sessions) found no match anywhere in this notebook (no 0.8/rolling-
+  # window criterion, no 10-trial late-accuracy window, and CELL 7's own dots
+  # are block-level, not session-level). CELL 5-7 is therefore a different,
+  # unrelated exploratory analysis in this same notebook, not panel c's actual
+  # source. Panel c is now built with the same rolling-window criterion rule
+  # already used for Fig 2/3 (src/behavior_metrics/criterion.py), applied to
+  # each session's one qualifying long block (see min/max_block_length above).
+  criterion_accuracy: 0.8   # rolling accuracy threshold, matches the manuscript's Fig 1c legend
+  criterion_window: 5       # trailing-trial window, matches the manuscript's Fig 1c legend
+  late_accuracy_window: 10  # trailing trials averaged for panel c's "late accuracy" (manuscript legend)
+  trial_bin_size: 3           # trial-position bin width for the within-block learning curve (line 273)
+  asymptote_window: 20        # trailing trials averaged for a separate "asymptotic"/steady-state accuracy
+                               # stat (line 964) -- NOT panel c's late-accuracy window (that's
+                               # late_accuracy_window=10 above); kept as its own manifest-only stat,
+                               # not yet tied to a specific manuscript panel
+  session_bin_size: 5         # sessions grouped in bins of this size for the sessions-0-4 vs 5-9 comparison (line 892)
+  max_iti: 1000                # seconds; ITIs above this are excluded as implausible (line 1138)
+  iti_bins: [2, 4.8, 10, 15, 30, 60, 1000]   # ITI bin edges, seconds (line 1272; upper edge = max_iti)
+  iti_labels: ["2-5s", "5-10s", "10-15s", "15-30s", "30-60s", ">60s"]  # (line 1273)
+  long_break_threshold: 25    # seconds; ITI above this = "long break" for the break-performance panel (line 1316)
+  disengagement_iti_threshold: 60  # seconds; ITI above this = "disengaged" for panel F / STAT 2 (line 5321)
+  bout_iti_threshold: 15       # seconds; ITI >= this (or a block change) starts a new "bout" for the
+                                # within-block bout / re-engagement analyses (STATS EXTRACTION section,
+                                # line 5266 and 5416 -- NOTE this is a different constant than
+                                # long_break_threshold above; the source notebook uses two different
+                                # ITI thresholds for two different analyses)
+  bout_start_end_window: 3     # trials averaged for bout "start" and "end" accuracy, Fig 1H / STAT 5 (line 5430-5431)
+  bout_ranks_to_compare: [1, 2, 3]  # within-session bout position ranks compared in Fig 1H / STAT 5-6
+  reengagement_criterion_accuracy: 0.75  # rolling accuracy threshold for "re-engaged" after a block
+                                          # transition, Fig 1I / STAT 7 (line 5513) -- a THIRD distinct
+                                          # criterion rule in this figure (see block_learning.py's
+                                          # consecutive-correct rule and criterion.py's rolling-window
+                                          # rule for the other two)
+  reengagement_criterion_window: 4       # trial window for the re-engagement rolling accuracy (line 5512-5513)
+  reengagement_line_max_trials: 15       # panels h/i's line sub-panel: "performance across the first 15
+                                          # trials" (manuscript legend)
+  representative_session_rolling_window: 5  # panel g's "5-trial sliding window" (manuscript legend) --
+                                             # a separate constant from bout_start_end_window/criterion_window
+                                             # above even though it's also "5", since it plays a different role
+
+# ---------------------------------------------------------------------------
+# Supplementary Figure 1 -- break-analysis panels d-e (pre-block-change
+# accuracy, P(break) after win/loss, P(break) at block transitions).
+# Same source notebook as Fig 1 (04_LocationBasedShifting.ipynb), same
+# "STATS EXTRACTION" section (STAT 1, 3, 4), but a genuinely different
+# figure in the manuscript -- kept as its own config section.
+# ---------------------------------------------------------------------------
+suppfig1:
+  pre_block_change_window: 5   # trials immediately before a block change used for "pre-block-change
+                                # accuracy" (line 5281 uses range(-5, 16), but only the negative side
+                                # is ever used by this stat -- see supp_fig1_breaks.py docstring)
+  # bout_iti_threshold (15s) is reused from the fig1 section above for the
+  # break/no-break classification in STAT 3-4 (same constant in source, line 5351).
+
+  # Panel c (p(high-prob choice) aligned to a block transition, per-animal +
+  # average): no source-notebook cell for this panel was identified (built
+  # directly from the manuscript legend, reusing reversal_alignment.py's
+  # Fig 2/3 alignment logic on Fig 1's own WhereTask data/transitions).
+  # Before-side window reuses pre_block_change_window above (5 trials,
+  # matching this panel's own -5 x-axis start in the printed figure);
+  # after-side is a new constant, matching the printed figure's x-axis
+  # (ends at +10).
+  block_transition_window_after: 10
+
+# ---------------------------------------------------------------------------
+# Supplementary Figure 3 -- Q-following validation (panels a-c: P(follows
+# Q-values) by animal, by trial-in-block, by previous outcome).
+# Source: _source_archive/by_figure/SuppFig3/SuppFig3_candidate_07_GLM_HMM_v1_cleaned.ipynb
+# (internally a "2-ABT Data Preprocessing" notebook), STEP 1-9 (preprocessing
+# + per-animal Q-learning+sticky-choice-kernel model fit, lines 1-538) feeding
+# the Q-following panels (In[17]/In[18], lines 999-1269). STEP 8's later
+# "OLD STEP 8...forgetting model" (line 544 on) is explicitly marked
+# "DO NOT USE" in the source and is not ported.
+# ---------------------------------------------------------------------------
+suppfig3:
+  input_files:
+    reversal_80_20_2abt: "filtered_df_Reversal_80-20_2-ABT_100.csv"  # same snapshot as fig3
+  task_type: "Reversal"     # line 43
+  prob_condition: "80-20"   # line 44
+  sticky_model_x0: [0.3, 2.0, 0.0]        # alpha, beta, kappa starting values (line 439)
+  sticky_model_bounds:                    # (line 427)
+    alpha: [0.0001, 0.9999]
+    beta: [0.001, 50.0]
+    kappa: [-10.0, 10.0]
+
+  # Panels b-g: no source-notebook cells identified for any of these (built
+  # directly from the manuscript's Results text/Methods discussion of
+  # "policy-predicted adherence rate" and Supp Fig 3's own legend -- see
+  # q_following_model.py's adherence_diff_by_qdiff_and_outcome docstring).
+  qdiff_n_bins: 10   # panel c: number of equal-width |Q_right - Q_left| bins spanning its
+                     # observed [0, ~1] range, matching the manuscript's own panel c x-axis (0-1).
+
+# ---------------------------------------------------------------------------
+# Figure 4 -- "Q-learning model with choice kernel captures trial-by-trial
+# dynamics of the 2-armed bandit performance and captures differences across
+# individuals". Same 80-20 2-ABT data as Fig 3/Supp Fig 3, and (per the
+# manuscript's own reported parameter values being suspiciously close to
+# Supp Fig 3's already-fitted model: alpha=0.740+/-0.052/beta=1.120+/-0.139/
+# kappa=1.261+/-0.128 here vs. the manuscript's 0.746+/-0.073/1.115+/-0.155/
+# 1.298+/-0.147) the SAME sticky Q-learning + choice-kernel model, reused via
+# q_following_model.fit_sticky_qlearning/compute_qvalues_sticky -- NOT
+# refit with new code. task_type/prob_condition/sticky_model_x0/
+# sticky_model_bounds are therefore deliberately NOT duplicated here; the
+# Fig4 notebook calls those functions with suppfig3's own config values
+# directly (same call, same data -- see notebook markdown).
+#
+# Source for panel-specific numbers below:
+# _source_archive/by_figure/Fig4/06_Fig3_2ABT_v2_candidate.ipynb (an
+# exploratory candidate notebook, not itself the confirmed Fig 4 source, but
+# the only place in the archive that builds this figure's specific panels --
+# action-outcome-history log-odds bars, psychometric/switch sigmoid fits --
+# and is cited per-constant below).
+# ---------------------------------------------------------------------------
+fig4:
+  input_files:
+    reversal_80_20_2abt: "filtered_df_Reversal_80-20_2-ABT_100.csv"  # same snapshot as suppfig3/fig3
+  history_n: 3   # trailing-trial window for panel d's action-outcome history code, e.g. 'RlR'
+                 # (matches fig2/fig3/suppfig2's history_n=3; manuscript Results text: "the
+                 # three trials preceding each choice")
+  history_min_trials: 100   # minimum trials per action-outcome-history code for panel d's bar
+                 # to be shown -- JUDGMENT CALL, not stated in the manuscript legend; matches
+                 # the n>=100 threshold used by the archived candidate notebook's structurally
+                 # equivalent panel (06_Fig3_2ABT_v2_candidate.ipynb, ~line 4653: "Filter out
+                 # rare sequences (need at least 100 trials)")
+  logodds_bin_n: 30       # number of bins spanning [-logodds_clip, +logodds_clip] for panels e/f
+                          # (candidate nb ~line 4267: `bins = np.linspace(-5, 5, 30)`)
+  logodds_clip: 5.0       # log-odds clipped to +/- this before binning (candidate nb ~line 4264:
+                          # `np.clip(log_odds, -5, 5)`)
+  logodds_min_trials_per_bin: 5   # bins with fewer trials than this are dropped before fitting/
+                          # plotting (candidate nb ~line 4290: `binned[binned['n'] >= 5]`)
+  # Panels e/f sigmoid/peaked-curve fits: NEW code for this figure (per task scope -- not a
+  # port). Panel e (p(choose LEFT) vs. log-odds prediction) is fit with a standard logistic
+  # (scipy.optimize.curve_fit); p0 matches the candidate notebook's own psychometric fit
+  # starting point (~line 4296: p0=[0, 1]) even though that fit was for p(choose RIGHT) --
+  # bounds are intentionally left open to EITHER sign of slope (unlike the candidate's
+  # k in [0.1, 10], which can only fit an increasing curve), since Log_Odds_Left runs in the
+  # opposite direction from that candidate's log-odds-of-right convention (see
+  # fig4_choice_kernel.py's sign-convention finding) and this is honest new code, not tuned
+  # to force a particular direction.
+  sigmoid_p0: [0.0, 1.0]           # [bias (x0), sensitivity (k)]
+  sigmoid_bounds_x0: [-10.0, 10.0]
+  sigmoid_bounds_k: [-20.0, 20.0]
+  # Panel f (p(switch) vs. log-odds prediction) is an inverted-U (Results text: "switch rates
+  # show a characteristic inverted U-shaped relationship with log-odds of left/right choice"),
+  # which a monotonic logistic cannot fit by construction -- a symmetric Gaussian bump is used
+  # instead (still via curve_fit; see fig4_choice_kernel.gaussian_bump's docstring for why this
+  # departs from a literal "logistic fit" for this one panel).
+  gaussian_bump_p0: [0.0, 2.0, 0.3, 0.1]   # [peak_center, width(sigma), amplitude, baseline]
+  gaussian_bump_bounds_x0: [-5.0, 5.0]
+  gaussian_bump_bounds_sigma: [0.1, 20.0]
+  gaussian_bump_bounds_amplitude: [0.0, 1.0]
+  gaussian_bump_bounds_baseline: [0.0, 1.0]
+  # Panel a (example session): the manuscript legend specifies "Choice: Top/Bottom" for this
+  # particular example, i.e. one of the 3/100 "vertical" sessions in this dataset (see
+  # q_following_model.prepare_2abt_dataframe's vertical-session detection). The manuscript does
+  # not name the specific session -- JUDGMENT CALL: picks the qualifying vertical session with
+  # the most trials (fig4_choice_kernel.select_example_session).
+  example_session_min_trials: 100
+  example_session_n_trials_shown: 160   # leading trials of the chosen session actually plotted
+                 # (8 x 20-trial blocks for the session this pipeline selects) -- cosmetic/
+                 # illustrative only, does not affect any computed statistic or the values
+                 # manifest.
+
+# ---------------------------------------------------------------------------
+# Supplementary Figure 2 -- Q-learning model comparison (pure QL / +sticky
+# choice kernel / +forgetting / +adaptive forgetting) on the SAME 80-20
+# 2-ABT reversal data as Fig 3 / Supp Fig 3 (manuscript text: "Reversal_80-
+# 20"; confirmed by cross-checking _source_archive/by_figure/SuppFig2/
+# 01_Reversal_80_20_model.ipynb's own `df_filtered['High_Prob'] =
+# df['ProbReward'].map({0.8: 1, 0.2: 0})` step (STEP 7) against this
+# snapshot's ProbReward column -- same 0.8/0.2 coding).
+#
+# Source: _source_archive/by_figure/SuppFig2/01_Reversal_80_20_model.ipynb
+# (primary candidate per INDEX.md; 04_ReversalTask_80-20_v4_candidate.ipynb
+# was checked as the secondary candidate but has no `fit_qlearning_*`
+# family and no matching 4-model comparison -- 01 is the one actually
+# producing this figure's content). Specific cells used:
+#   - fit_qlearning_pure (line 2363): pure Q-learning, alpha/beta only,
+#     Q initialized to 0.0 (NOT 0.5 -- see note below).
+#   - fit_qlearning_original (line ~2160, the source's name for the
+#     "+sticky/choice kernel" model): NOT ported directly -- per-task
+#     instructions this panel instead REUSES
+#     src/behavior_metrics/q_following_model.py's fit_sticky_qlearning /
+#     compute_qvalues_sticky (identical model form, already built/verified
+#     for Fig 4 / Supp Fig 3, same alpha/beta/kappa softmax-with-choice-
+#     kernel form, Q initialized to 0.5). Confirmed the underlying data
+#     matches (same Reversal/80-20 2-ABT snapshot/task/animal set as
+#     Supp Fig 3), so the fitting CODE is reused directly, not just the
+#     concept.
+#   - fit_qlearning_forgetting (line 2270): adds tau, unchosen Q decays
+#     toward 0.5: Q[1-c] = Q[1-c]*(1-tau) + tau*0.5. Q initialized to 0.5.
+#   - fit_qlearning_adaptive_forgetting (line 2310): same forgetting decay
+#     but tau = tau_max * exp(-trial_in_block / decay) (recomputed each
+#     trial from a within-block trial counter). Q initialized to 0.5.
+#
+# NOTE on Q-value initialization: the source's own fit_qlearning_pure inits
+# Q=[0,0] (not 0.5 as the manuscript's Methods text states for "all
+# models") -- this is a genuine inconsistency in the source code, reported
+# as-is (not silently fixed to 0.5) since parameters/fits are not to be
+# tuned to match any expected/printed value.
+#
+# NOTE on fitting protocol: the manuscript's Methods paragraph states 50
+# random L-BFGS-B initializations per SESSION and an 80/20 train-test
+# split. The source notebook's actual `SYSTEMATIC MODEL COMPARISON` cell
+# (line ~2668) instead does a single x0 per ANIMAL (all of that animal's
+# training-session trials pooled into one fit) with a 70/30 session-level
+# split (train_prop=0.7, line 2687) -- consistent with this pipeline's
+# existing single-x0 convention (see suppfig3/fig4 notes above). This
+# stage uses a single x0 (matching pipeline precedent, not the 50-restart
+# claim) but the manuscript's explicitly-stated 80/20 split (test_size
+# below), since that split ratio is unambiguous in the Methods text.
+# ---------------------------------------------------------------------------
+suppfig2:
+  input_files:
+    reversal_80_20_2abt: "filtered_df_Reversal_80-20_2-ABT_100.csv"  # same snapshot as fig3/suppfig3
+  task_type: "Reversal"
+  prob_condition: "80-20"
+  train_test_split:
+    test_size: 0.2   # manuscript Methods: "80/20 train-test splits stratified by block"
+    seed: 42          # config's global random_seed, reused explicitly here for clarity
+  block_position_pre: 10    # trials before reversal shown (panels a-d x-axis: -10..)
+  block_position_post: 20   # trials after reversal shown (panels a-d x-axis: ..20)
+  # Starting values / bounds for each model's L-BFGS-B fit. Bounds for
+  # alpha/beta/kappa match suppfig3.sticky_model_bounds (and the source's
+  # own bounds, line ~2680: alpha in (1e-4,1-1e-4), beta in (1e-3,50),
+  # kappa in (-10,10)); tau/tau_max/decay bounds match the source's own
+  # fit_qlearning_forgetting/fit_qlearning_adaptive_forgetting bounds.
+  pure_x0: [0.3, 2.0]
+  pure_bounds:
+    alpha: [0.0001, 0.9999]
+    beta: [0.001, 50.0]
+  forgetting_x0: [0.3, 2.0, 0.0, 0.5]
+  forgetting_bounds:
+    alpha: [0.0001, 0.9999]
+    beta: [0.001, 50.0]
+    kappa: [-10.0, 10.0]
+    tau: [0.0, 0.99]
+  adaptive_forgetting_x0: [0.3, 2.0, 0.0, 0.5, 5.0]
+  adaptive_forgetting_bounds:
+    alpha: [0.0001, 0.9999]
+    beta: [0.001, 50.0]
+    kappa: [-10.0, 10.0]
+    tau_max: [0.0, 0.99]
+    decay: [0.1, 20.0]
+  # The source resets its within-block trial counter (used by adaptive
+  # forgetting's tau = tau_max*exp(-trial_in_block/decay)) every 20 trials
+  # as an approximation of block length, since true block info wasn't
+  # threaded into that fit loop (source comment, line ~2350: "This is
+  # approximate - you may need actual block info"). This pipeline has the
+  # real BlockCount/Trial_in_Block columns, so trial-in-block is reset at
+  # the TRUE block boundary instead of every 20 trials -- a more faithful
+  # instantiation of the model's own intent, not a deviation.
+
+# ---------------------------------------------------------------------------
+# Figure 5 -- Q-guided choice: marmosets adhere to learned Q-values on the
+# majority of trials, with violations occurring preferentially under
+# conditions of uncertainty.
+# Source: manuscript BioRxiv PDF (~/Downloads/2026.06.30.734629v1.full (4).pdf),
+# Figure 5 legend (Main Figures section, ~page 24) and Results text
+# "Marmosets Q-value adherence is consistent with a stochastic policy..."
+# (~page 8-9). This figure reuses the SAME per-trial Chose_Higher_Q quantity
+# already fit and computed for Supp Fig 3 (src/behavior_metrics/
+# q_following_model.py) -- "violation" here is just 1 - Chose_Higher_Q, the
+# complementary framing of "follows Q-values". No new model fit is done;
+# the sticky Q-learning fit inputs are the same ones already in
+# `suppfig3.sticky_model_x0` / `suppfig3.sticky_model_bounds` above, applied
+# to the same `filtered_df_Reversal_80-20_2-ABT_100.csv` input (see
+# `suppfig3.input_files` above, reused directly rather than duplicated here).
+# ---------------------------------------------------------------------------
+fig5:
+  representative_animal: "Fiona"  # Figure 5a legend: "Representative sessions
+                                    # from a single animal (Fiona) illustrating
+                                    # low (left) and high (right) violation
+                                    # rate sessions." Session selection itself
+                                    # (lowest/highest violation-rate session for
+                                    # this animal) is a judgment call -- see
+                                    # q_following_model.select_representative_sessions's
+                                    # docstring; the manuscript does not give an
+                                    # exact selection rule beyond "low"/"high".
+  trial_in_block_xlim: 20   # panel d x-axis limit -- reuses the same value
+                             # already hardcoded for the identical
+                             # trial-in-block quantity in Supp Fig 3's own
+                             # panel b (src/plotting/q_following.py,
+                             # `ax.set_xlim(-0.5, 20)`), just reframed here as
+                             # violation rather than following.
+  colors:
+    follow: "#2ecc71"          # green ("follow Q"), matches Figure 5a legend's
+                                # "adhered (green)"; same hex already used for
+                                # the Raven animal color (plotting.animal_colors)
+    violation: "#e74c3c"       # red ("violation"), matches Figure 5a legend's
+                                # "violated (red)"; same hex already used for
+                                # plotting.state_colors["Right Bias"]
+    high_prob_right: "#e74c3c" # Figure 5a legend: "red: right high-prob" --
+                                # same hex as plotting.state_colors["Right Bias"]
+    high_prob_left: "#3498db"  # Figure 5a legend: "blue: left high-prob" --
+                                # same hex as plotting.state_colors["Left Bias"]
+
+# ---------------------------------------------------------------------------
+# Figure 8 -- 80-20 vs. 100-0 condition comparison (state-transition
+# probabilities and direct Left<->Right Bias switching).
+# Source: _source_archive/by_figure/Fig8/09b_CrossProb_StickyModel_v1.ipynb.
+# Confirmed scope: the cells feeding the two explicit output filenames
+# `Figure_8f_transition_heatmap` (In[185], lines ~3450-3552, standalone) and
+# `Figure_8fg` (In[197], lines ~3585-3759, the combined f+g panel actually
+# used for the manuscript figure -- panel f there recomputes the identical
+# 2-state difference heatmap as the standalone cell). Everything upstream of
+# `trans_df` (In[182], lines 3367-3413) that those two cells depend on.
+#
+# 80-20 side: reuses the ALREADY-RECONSTRUCTED `state_features.build_state_features_df`
+# output (same one used by Fig 6/Supp Fig 4) filtered to overlapping_animals below --
+# the source's own df_80_corrected is just that dataframe with no further
+# pseudo-session splitting applied (df_80_mixed is None in source, lines 149-266,
+# so df_80_pseudo == df_80 unchanged; df_80_corrected = df_80_pseudo.copy(), line 1906).
+#
+# 100-0 side needs its own reconstruction (see src/behavior_metrics/cross_condition.py):
+# the source's 100-0 preprocessing (lines 92-1120ish) contains TWO competing
+# pseudo-session-splitting functions -- an early `create_pseudo_sessions`/
+# `detect_transitions` pair (lines 159-240, superseded, NOT ported) and the
+# author's own later "_correct" version, `create_correct_pseudo_sessions`
+# (lines 361-395, ported here as the only splitting logic used). The source
+# also computes High_Prob_Is_Right/Expected_PRight TWICE (lines 302-331, an
+# earlier block-majority-vote version; and lines 409-447, right after
+# create_correct_pseudo_sessions -- used for everything downstream in the
+# source's own execution and treated here as authoritative).
+#
+# NOT ported: the source's later STEP 7B/STEP 8/STEP 9 material (lines
+# ~1106-1750ish -- a THIRD session-identity concept, `Fit_Session_ID`, plus a
+# separate per-session Q-learning refit with boundary-solution flagging) that
+# feeds other exploratory panels in that notebook. Figure_8f/Figure_8fg's own
+# cells group state transitions by plain `Session_ID` -- for 80-20 that is
+# unambiguously the real session id, but for 100-0 the source's `Session_ID`
+# column at that point is a stale artifact of the superseded, un-ported
+# `create_pseudo_sessions` call (see cross_condition.py module docstring).
+# Since that superseded function is deliberately not implemented here, this
+# pipeline substitutes the `create_correct_pseudo_sessions`-derived segment id
+# for `Session_ID` throughout (the only legitimate session-like grouping
+# actually built) -- flagged as a judgment call, not silently matched to the
+# source's own (arguably buggy) stale-column behavior.
+# ---------------------------------------------------------------------------
+fig8:
+  input_files:
+    reversal_80_20_2abt: "filtered_df_Reversal_80-20_2-ABT_100.csv"  # same snapshot as state_taxonomy/fig3
+    reversal_100_0_raw: "100_reversal_data_only.csv"   # raw 100-0 snapshot (line 129); already has
+                                                         # Has_Cued_Transitions/Target1_location/
+                                                         # Target2_location -- no extra reconstruction needed
+  overlapping_animals: ["Fiona", "Knuckles", "Sonic", "Sunflower", "Zazu"]  # line 69 --
+                             # the 5 animals who ran both the 80-20 and 100-0 conditions
+  reversal_locations: ["LeftCenter", "RightCenter"]   # line 359 -- REVERSAL_LOCATIONS; a cued
+                             # transition is one where {Target1_location, Target2_location}
+                             # is NOT a subset of this set
+  rolling_window: 5           # ROLLING_WINDOW (lines 87, 678, 723) -- same as state_taxonomy.rolling_window
+  min_trials_per_transition: 10   # from_state must have >= this many trials (with a defined
+                             # next_state) to be included in the transition-probability
+                             # comparison at all (line 3399)
+  states_full: ["Exploit", "Directed Exploration", "Random Exploration", "Left Bias", "Right Bias"]
+                             # STATES (line 3377-3378) -- the full 5-state set trans_df is
+                             # computed over (Adapting/Unknown excluded); reported in the
+                             # values manifest for completeness even though only 2 of these
+                             # states are actually plotted (below)
+  states_key_main: ["Exploit", "Directed Exploration"]   # STATES_KEY_MAIN (line 3596) -- the
+                             # only 2 states actually shown in Figure_8f_transition_heatmap and
+                             # Figure_8fg's panel f. The source cell that produces the standalone
+                             # Figure_8f_transition_heatmap first sets a 4-state STATES_KEY/
+                             # STATES_PLOT (line 3456-3459: Exploit, Directed Exploration, Left
+                             # Bias, Right Bias) and then immediately overwrites both with this
+                             # same 2-state list (line 3461-3462) before either is used -- the
+                             # 4-state assignment is dead code in the source; both output
+                             # figures only ever render the 2x2 Exploit/Directed-Exploration
+                             # difference matrix.
+  # Sticky Q-learning model (STEP 6, lines 475-548): fits q_following_model.fit_sticky_qlearning
+  # per-animal on the 100-0 data. Bounds [(1e-4,1-1e-4),(1e-3,50.0),(-10.0,10.0)] at line 505
+  # are IDENTICAL to suppfig3.sticky_model_bounds, and there is no single fixed x0 in the
+  # source (it does a 10-seed random multistart, lines 515-521) -- reused here via
+  # suppfig3.sticky_model_x0/suppfig3.sticky_model_bounds directly (no override needed; a
+  # single-x0 fit, matching how this pipeline already fits the 80-20 sticky model for Supp Fig 3).
+  #
+  # Fig 8 REBUILD (Part 3 of the Fig7/Fig8 task): the panels below replace the
+  # earlier Figure_8f/Figure_8fg-only build (kept in git history), now classified with
+  # `state_classifier.classify_state_v7` (state_taxonomy.classify_updated thresholds,
+  # reused unchanged -- see that function's docstring) instead of `classify_state_updated`.
+  reversal_alignment_pre: 5    # trials before reversal shown, panels a/b (manuscript Fig 8a/8b x-axis: -5..)
+  reversal_alignment_post: 10  # trials after reversal shown, panels a/b (x-axis: ..10)
+  max_consecutive_losses: 4    # panel e x-axis range (0-4 consecutive losses within Exploitation), matches
+                                # the manuscript's Figure 8e x-axis tick range
+  states_non_adapting: ["Exploitation", "Directed Exploration", "Random Exploration", "Left Bias", "Right Bias"]
+                             # panel c's 5 states (display names) -- Adapting excluded per the
+                             # manuscript's own panel c legend ("excluding Adapting trials")
+  wsls_states: ["Exploit", "Directed Exploration"]   # panel d: Win-stay/lose-switch shown only
+                             # for Exploitation and Directed Exploration (manuscript legend)
+
+# ---------------------------------------------------------------------------
+# Figure 7 -- "A behavioral state framework reveals distinct modes of
+# reward-guided decision making in marmosets" (manuscript section by the
+# same name, ~pages 10-11 of 2026.06.30.734629v1.full.pdf; Fig 7 legend
+# ~page 26-27). Uses the SAME 80-20 2-ABT snapshot as Fig 3/Fig 6/Supp Fig 3
+# /state_taxonomy, classified with the new canonical 7-state taxonomy
+# (`state_classifier.classify_state_v7`) built for this figure -- see that
+# function's docstring for the fast/slow Adaptation pre-pass design.
+# ---------------------------------------------------------------------------
+fig7:
+  input_files:
+    reversal_80_20_2abt: "filtered_df_Reversal_80-20_2-ABT_100.csv"  # same snapshot as fig3/state_taxonomy
+  representative_animal: "Knuckles"   # panel a legend: "Representative sessions from a
+                                       # single animal (Knuckles)" -- same animal Fig 6a uses
+  states_transition_matrix: ["Exploit", "Directed Exploration", "Random Exploration", "Left Bias", "Right Bias"]
+                             # panel d's 5x5 matrix -- Adapting states excluded (Results text
+                             # discusses transitions "beyond block transitions", i.e. among the
+                             # 5 non-Adaptation states only; matches Fig 8's states_full)
+  states_all_7_order: ["Exploit", "Adapting (fast)", "Adapting (slow)", "Directed Exploration",
+                        "Random Exploration", "Left Bias", "Right Bias"]
+                             # display order for panels e/f (manuscript x-axis groups
+                             # "Exploitation | Fast/Slow Adaptation | Directed/Random Exploration
+                             # | Left Bias | Right Bias")
+  panel_g_states: ["Directed Exploration", "Random Exploration"]   # panel g: separate linear
+                             # fits of violation rate vs. |Q-value difference| for these 2 states only
+  q_alignment_min_valid_trials: 10   # per (animal, session, state) minimum trial count before a
+                             # Q-value-alignment estimate is computed -- matches the orphaned
+                             # 07c_FinalClassifier_Fig6.ipynb's own `compute_q_alignment_marmoset`
+                             # threshold (_source_archive/by_figure/Fig7/07c_FinalClassifier_Fig6.ipynb,
+                             # cell 10: "if len(valid) < 10: return np.nan")
+  lose_switch_min_trials_per_state_session: 3   # floor so a (session, state) pair with only 1-2
+                             # loss trials can't produce a degenerate 0.0/1.0 lose-switch estimate
+                             # (same convention as state_taxonomy.wsls_min_trials_per_state_session)
+  win_stay_lose_switch_min_trials_per_state_session: 3   # same floor, applied separately to win-stay
+  violation_qdiff_n_bins: 10   # panel g binning of |Q_right - Q_left| for the visual fit overlay
+                             # (the reported slope/intercept/p-value themselves are fit on raw,
+                             # unbinned trial-level data -- binning is display-only)
+
+# ---------------------------------------------------------------------------
+# Behavioral-state taxonomy -- shared by Fig 6, Fig 7, Fig 8, Supp Fig 4.
+# Sources: _source_archive/by_figure/Fig6/07b_KMEANS_Final.ipynb (Fig 6 K-Means,
+# Supp Fig 4 HMM) and _source_archive/by_figure/Fig8/09b_CrossProb_StickyModel_v1.ipynb
+# (Fig 8's classify_state_updated). The features/preprocessing needed to
+# reconstruct the black-box `df_with_states.csv` input (no generating script
+# was ever found for it -- see INDEX.md) are the same STEP 3/7/7B columns
+# built for Supp Fig 3 (same underlying 07_GLM_HMM preprocessing notebook).
+# ---------------------------------------------------------------------------
+state_taxonomy:
+  input_files:
+    reversal_80_20_2abt: "filtered_df_Reversal_80-20_2-ABT_100.csv"
+  task_type: "Reversal"
+  prob_condition: "80-20"
+  rolling_window: 5   # matches suppfig3's ROLLING_WINDOW (07_GLM_HMM, line 48)
+  train_test_split:
+    test_size: 0.2    # (07b, line 232)
+    seed: 42
+
+  # classify_state_v3 (Fig 6 / Supp Fig 4 clustering-validation target;
+  # 07b_KMEANS_Final.ipynb lines 159-200) -- unchanged from source, no
+  # if-ordering issue (Directed/Random Exploration are already merged).
+  classify_v3:
+    bias_abs_deviation_threshold: 0.5     # line 188
+    bias_prright_threshold_low: 0.4       # line 189
+    bias_prright_threshold_high: 0.6      # line 191
+    engaged_accuracy_threshold: 0.6       # line 196
+    engaged_switch_threshold: 0.2         # line 196
+
+  # classify_state_updated (Fig 8; 09b_CrossProb_StickyModel_v1.ipynb lines
+  # 1766-1795) -- if-ordering bug fixed (REVIEWER_AUDIT.md Audit 1/5):
+  # Directed Exploration is now checked before Random Exploration.
+  classify_updated:
+    adapting_trials_since_transition: 5          # line 1776
+    bias_deviation_threshold: 0.4                # line 1780
+    bias_prright_threshold_low: 0.4              # line 1782
+    bias_prright_threshold_high: 0.6             # line 1784
+    directed_exploration_switch_threshold: 0.2   # line 1791
+    directed_exploration_accuracy_threshold: 0.6 # line 1791
+    random_exploration_accuracy_threshold: 0.4   # line 1787
+    # `classify_state_v7` (Fig 7; Fig 8 rebuild) reuses this SAME
+    # `classify_updated` dict verbatim for its Directed/Random Exploration
+    # and Left/Right Bias branches (identical thresholds and if-ordering --
+    # see state_classifier.py's module docstring for why these are not
+    # re-derived). Only its Adapting branch differs, and that branch reads
+    # the two keys below instead of `adapting_trials_since_transition` above.
+
+  # classify_state_v7's fast/slow Adaptation pre-pass (Fig 7; Fig 8 rebuild).
+  # Manuscript Results text ("A behavioral state framework reveals distinct
+  # modes of reward-guided decision making in marmosets"): "Post-reversal
+  # trials, defined as the first five trials following a contingency
+  # change, were classified as a period of 'Adaptation'... The speed of
+  # adaptation was based on whether the animal achieved greater than chance
+  # accuracy during this period (fast: accuracy >= 0.6; slow: accuracy <
+  # 0.6)". `adaptation_window` is conceptually similar to but a DISTINCT
+  # constant from `classify_updated.adapting_trials_since_transition` above
+  # (both happen to be 5): the latter is a per-trial Adapting-vs-not cutoff
+  # used by the old single-Adapting-state classifier, while this one
+  # defines the accuracy-AVERAGING window for the new block-level fast/slow
+  # pre-pass (see `state_classifier.label_block_adaptation_speed`).
+  adaptation_window: 5
+  adaptation_fast_accuracy_threshold: 0.6
+
+  # Fixes REVIEWER_AUDIT.md's documented duplicated-feature bug
+  # (Abs_Deviation and Choice_Deviation were the same quantity, computed
+  # twice under different names) and inconsistent-feature-set bug (K-Means
+  # used Signed_Deviation+Choice_Deviation, HMM used Abs_Deviation+
+  # Choice_Deviation) -- one feature list, used identically by both.
+  features: ["Signed_Deviation", "Choice_Deviation", "Rolling_Accuracy", "Rolling_Switch_Rate"]
+
+  kmeans:
+    k_range: [2, 3, 4, 5, 6, 7, 8]   # (07b, line 4058)
+    k_best: 4                        # (07b, line 4118 -- hardcoded in source,
+                                      # not the silhouette/BIC-selected K; kept
+                                      # as-is since Fig 6 explicitly reports
+                                      # "K-Means (K=4)", but the silhouette/BIC
+                                      # optima are still computed and reported
+                                      # alongside it rather than hidden)
+
+  hmm:
+    n_states: 3          # (07b, line 6085 -- Fig 6/Supp Fig 4 report a 3-state HMM)
+    n_trials_drop: 5     # warmup trials dropped per session (line 5987)
+    n_restarts: 10       # (line 5988)
+
+  pca_n_components: 3       # (07b, line 4158)
+  pca_plot_subsample_per_session: 30   # (07b, line 5671 -- the source's later/final
+                                        # publication-figure cell resamples 30/session,
+                                        # not CHUNK 2's original 40; matched here)
+
+  # `classify_state_v3` names its non-bias, high-accuracy/low-switch state
+  # "Engaged" internally (see state_classifier.py), but the manuscript's
+  # actual Fig 6 / Supp Fig 4 panels label this same state "Exploitation"
+  # everywhere (legend text, PCA scatter legend, occupancy/dwell/emission
+  # axis labels). Display-only relabeling used by plotting -- no
+  # computation or other config value depends on it, and every
+  # `Behavioral_State_v3`/`States_Merged_v3` value stays "Engaged" as-is.
+  display_labels:
+    Engaged: "Exploitation"
+
+  # Fig 6 panel f (win-stay/lose-switch by state -- new computation, see
+  # src/behavior_metrics/wsls.py::win_stay_lose_switch_by_state_session).
+  # Not in the source notebook and not tuned to any manuscript number --
+  # just a floor so a (session, state) pair with only a couple of trials
+  # can't produce a degenerate win_stay/lose_switch of exactly 0.0 or 1.0.
+  wsls_min_trials_per_state_session: 5
+  wsls_states: ["Engaged", "Exploration"]   # the two states Fig 6f actually plots
+                                             # (manuscript: "Exploitation and Exploration
+                                             # trials"); "Engaged" is classify_state_v3's
+                                             # internal name for Exploitation (see
+                                             # display_labels above)
+
+  # Supp Fig 4 panel d (four per-state behavioral metrics on the canonical
+  # 7-state taxonomy -- state_taxonomy_v7.state_behavioral_metrics_by_state).
+  # Same floor convention as wsls_min_trials_per_state_session above: a
+  # (session, state) pair with too few trials can't produce a degenerate
+  # entropy/rate estimate. Not in any source notebook, not tuned to a
+  # manuscript value. Panel d reuses fig7.states_all_7_order for its x-axis
+  # ordering and state_taxonomy.classify_updated/adaptation_window/
+  # adaptation_fast_accuracy_threshold for classification (same
+  # classify_state_v7 call as Fig 7/Fig 8 -- one taxonomy, not rebuilt here).
+  panel_d_min_trials_per_state_session: 5
+
+plotting:
+  fontsize: 8
+  line_width: 0.5
+  tick_length: 2
+  font_family: "Arial"
+  svg_fonttype: "none"
+  # Supp Fig 3 (Q-following panels) source cell uses its own local FONTSIZE/
+  # TICK_LENGTH constants, distinct from the shared defaults above -- its
+  # LINE_WIDTH (0.5) matches line_width above so is not overridden here.
+  # (SuppFig3_candidate_07_GLM_HMM_v1_cleaned.ipynb, lines 35-37)
+  suppfig3_fontsize: 11
+  suppfig3_tick_length: 4
+  # NOTE on Fig 8: 09b_CrossProb_StickyModel_v1.ipynb sets its own notebook-
+  # global FONTSIZE=8/LINE_WIDTH=0.8/TICK_LENGTH=3 at the top (lines 29-31),
+  # but neither of the two cells this pipeline actually ports
+  # (Figure_8f_transition_heatmap, Figure_8fg) references those globals --
+  # both use their own hardcoded per-element fontsizes, and the Figure_8fg
+  # cell additionally redefines its own LOCAL FONTSIZE=7 (line 3603, only
+  # used by that cell). Not added as config keys since nothing in
+  # src/plotting/fig8.py reads them -- see that module's docstring.
+  # 7-state taxonomy palette (Fig 7, Fig 8 rebuild) -- from the orphaned
+  # 07c_FinalClassifier_Fig6.ipynb's own STATE_COLORS dict
+  # (_source_archive/by_figure/Fig7/07c_FinalClassifier_Fig6.ipynb, cell 10),
+  # which independently matches the manuscript's own printed Fig 7 panel
+  # colors (teal Exploitation, purple/light-purple Fast/Slow Adaptation,
+  # orange Directed Exploration, gray Random Exploration, blue/red Left/Right
+  # Bias) -- confirmed by visual comparison against the PDF figure.
+  state_colors_v7:
+    Exploit: "#1abc9c"
+    "Adapting (fast)": "#8e44ad"
+    "Adapting (slow)": "#c39bd3"
+    "Directed Exploration": "#f39c12"
+    "Random Exploration": "#7f8c8d"
+    "Left Bias": "#2980b9"
+    "Right Bias": "#e74c3c"
+  state_colors:   # (07b_KMEANS_Final.ipynb, lines 69-75)
+    Engaged: "#1abc9c"
+    Exploration: "#f39c12"
+    Left Bias: "#3498db"
+    Right Bias: "#e74c3c"
+    Bias: "#8e44ad"
+  animal_order:
+    - Coral
+    - Tuna
+    - Fiona
+    - Salmon
+    - Knuckles
+    - Raven
+    - Sonic
+    - Zazu
+    - Griffin
+    - Sunflower
+  animal_colors:
+    Coral: "#e74c3c"
+    Raven: "#2ecc71"
+    Tuna: "#8b7355"
+    Sonic: "#34495e"
+    Griffin: "#9b59b6"
+    Sunflower: "#1abc9c"
+    Zazu: "#3498db"
+    Salmon: "#f39c12"
+    Fiona: "#e91e63"
+    Knuckles: "#e67e22"
+
+# ---------------------------------------------------------------------------
+# Fig 9 -- NEW figure for the reviewer response, not part of the original
+# manuscript (no legend to match against -- panel layout agreed directly
+# with the user). Cross-species comparison of behavioral states, sticky
+# Q-learning model parameters, and win-stay/lose-switch, across each
+# species' own reward-probability difficulty gradient (marmoset: 80-20 /
+# 90-10 / 100-0 Reversal task; mouse: 70-30 / 80-20 / 90-10, Beron et al.
+# bandit data). Both species are classified with the SAME
+# `classify_state_updated_noAdapting` rule set (see
+# cross_species_comparison/run_pipeline.py's own docstring) -- deliberately
+# the simpler 6-state space (no Adapting split), not this pipeline's own
+# 7-state classify_state_v7, so a given state means the same thing in both
+# species and the comparison is valid.
+# ---------------------------------------------------------------------------
+fig9:
+  cross_species_dir: "../cross_species_comparison"
+  threshold_set: "marmoset"   # which outputs/<name>_thresholds/ directory to read from
+  marmoset_input_master_file: "preprocessed_master_merged_data_with_metadata_20260917.csv"
+
+  # Shared x-axis across both species: reward probability of the
+  # higher-value option. Marmoset and mouse overlap at 0.8/0.9; each
+  # species also has one condition the other doesn't (marmoset's
+  # deterministic 100-0, mouse's harder 70-30) -- plotted on the same axis
+  # rather than force-aligning mismatched condition sets.
+  condition_to_prob:
+    "70-30": 0.7
+    "80-20": 0.8
+    "90-10": 0.9
+    "100-0": 1.0
+  marmoset_conditions_order: ["80-20", "90-10", "100-0"]
+  mouse_conditions_order: ["70-30", "80-20", "90-10"]
+
+  states_order: ["Exploitation", "Directed Exploration", "Random Exploration", "Left Bias", "Right Bias"]
+  # "Unknown" (NaN-feature trials) excluded from all Fig 9 panels -- not a
+  # real behavioral state, just a rolling-window edge artifact.
+  state_colors:
+    Exploitation: "#1abc9c"
+    Directed Exploration: "#f39c12"
+    Random Exploration: "#7f8c8d"
+    Left Bias: "#2980b9"
+    Right Bias: "#e74c3c"
+  species_style:
+    marmoset: {color: "#8e44ad", marker: "o", linestyle: "-"}
+    mouse: {color: "#16a085", marker: "s", linestyle: "--"}
+
+# New, standalone companion to Fig 8 for the 2026 reviewer response: 80-20 vs.
+# 90-10 vs. 100-0 (three conditions instead of Fig 8's two), now that 90-10
+# sessions exist. Does NOT touch the `fig8:` section above -- Fig 8 itself
+# (80-20 vs. 100-0, its own two dedicated snapshot files) is unchanged.
+fig8_3cond:
+  cross_species_dir: "../cross_species_comparison"   # for run_pipeline_marmoset.py's
+                             # already-validated load_and_prepare/add_rolling_features
+  master_input_file: "preprocessed_master_merged_data_with_metadata_20260917.csv"
+  conditions: ["80-20", "90-10", "100-0"]
+  # Fig 8's own 5 overlapping animals -- all 5 also have 90-10 sessions in
+  # the new merged master file (verified before building this figure), so
+  # the animal set doesn't need to shrink to add the third condition.
+  overlapping_animals: ["Fiona", "Knuckles", "Sonic", "Sunflower", "Zazu"]
+  reversal_alignment_pre: 5
+  reversal_alignment_post: 10
+  max_consecutive_losses: 4
+  min_trials_per_transition: 10
+  states_full: ["Exploit", "Directed Exploration", "Random Exploration", "Left Bias", "Right Bias"]
+  states_key_main: ["Exploit", "Directed Exploration"]
+  wsls_states: ["Exploit", "Directed Exploration"]

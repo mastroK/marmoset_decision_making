@@ -1,0 +1,673 @@
+{
+  "_stage": "Fig 9 -- cross-species comparison (marmoset vs. mouse), NEW figure for the reviewer response",
+  "panel_a_marmoset_state_proportions": [
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.6033805258595781
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.132996243860156
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1257728980063565
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.123808147934123
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0064143311181739
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.4274276982825855
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.3066675155585974
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1012462794658347
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.0943225046556416
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0643831473729447
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.4980450365650568
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.1727246397798855
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1559626384765766
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1504597784374773
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0144812106292086
+    }
+  ],
+  "panel_a_mouse_state_proportions": [
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.6664729583139625
+    },
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1440415310708197
+    },
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1270597654837543
+    },
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.0548323777054599
+    },
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0050105893899478
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.7580752382088738
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.0954710484599519
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.089445514514122
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.051613343106005
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0026846438372509
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.784012435818927
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.0789862923359555
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.0743699656130764
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.0576475575863206
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0018559517640962
+    }
+  ],
+  "panel_b_marmoset_param_summary": [
+    {
+      "Condition": "100-0",
+      "alpha_mean": 0.9183578071526618,
+      "alpha_sem": 0.07530075218345368,
+      "beta_mean": 1.0873770643809217,
+      "beta_sem": 0.21121549907075332,
+      "kappa_mean": 1.2410102220517127,
+      "kappa_sem": 0.10232992957753237
+    },
+    {
+      "Condition": "80-20",
+      "alpha_mean": 0.7280446920260618,
+      "alpha_sem": 0.048230582121991834,
+      "beta_mean": 1.04552979789683,
+      "beta_sem": 0.07473889485535612,
+      "kappa_mean": 1.307061310128497,
+      "kappa_sem": 0.16737810696614117
+    },
+    {
+      "Condition": "90-10",
+      "alpha_mean": 0.8663951085174698,
+      "alpha_sem": 0.04612413812916821,
+      "beta_mean": 0.9408844405487002,
+      "beta_sem": 0.04371935198141031,
+      "kappa_mean": 1.3527762902176825,
+      "kappa_sem": 0.118723195491078
+    }
+  ],
+  "panel_b_mouse_param_summary": [
+    {
+      "Condition": "70-30",
+      "alpha_mean": 0.5169130958657494,
+      "alpha_sem": 0.038875233758818864,
+      "beta_mean": 2.084851111569035,
+      "beta_sem": 0.3637246369192106,
+      "kappa_mean": 2.2921134491680957,
+      "kappa_sem": 0.22972454012122764
+    },
+    {
+      "Condition": "80-20",
+      "alpha_mean": 0.5292955705446224,
+      "alpha_sem": 0.034652013378429554,
+      "beta_mean": 2.70197160341791,
+      "beta_sem": 0.21110743602846915,
+      "kappa_mean": 1.8183659344836993,
+      "kappa_sem": 0.11318931493644427
+    },
+    {
+      "Condition": "90-10",
+      "alpha_mean": 0.6482213960005815,
+      "alpha_sem": 0.027825590517909636,
+      "beta_mean": 2.0543193697022706,
+      "beta_sem": 0.08833506499370618,
+      "kappa_mean": 1.5567654157680655,
+      "kappa_sem": 0.04502003769388266
+    }
+  ],
+  "panel_c_marmoset_winstay_loseswitch": [
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8543172308862685,
+      "lose_switch": 0.3810386473429952,
+      "n_win_trials": 2629,
+      "n_lose_trials": 1656,
+      "n_trials": 4285
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9431268032666634,
+      "lose_switch": 0.9470046082949308,
+      "n_win_trials": 20449,
+      "n_lose_trials": 434,
+      "n_trials": 20883
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8342120679554774,
+      "lose_switch": 0.3276933701657458,
+      "n_win_trials": 1707,
+      "n_lose_trials": 2896,
+      "n_trials": 4603
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.6444444444444445,
+      "lose_switch": 0.4971751412429379,
+      "n_win_trials": 45,
+      "n_lose_trials": 177,
+      "n_trials": 222
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8094074526573,
+      "lose_switch": 0.3468335787923416,
+      "n_win_trials": 1637,
+      "n_lose_trials": 2716,
+      "n_trials": 4353
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.841901603095633,
+      "lose_switch": 0.4710566979674314,
+      "n_win_trials": 10854,
+      "n_lose_trials": 8413,
+      "n_trials": 19267
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9499821842152146,
+      "lose_switch": 0.1015447523852794,
+      "n_win_trials": 22452,
+      "n_lose_trials": 4402,
+      "n_trials": 26854
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8338192419825073,
+      "lose_switch": 0.2951792923296129,
+      "n_win_trials": 1715,
+      "n_lose_trials": 4211,
+      "n_trials": 5926
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.7403560830860534,
+      "lose_switch": 0.4342924948086621,
+      "n_win_trials": 674,
+      "n_lose_trials": 3371,
+      "n_trials": 4045
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8604407135362014,
+      "lose_switch": 0.2864197530864197,
+      "n_win_trials": 1906,
+      "n_lose_trials": 4455,
+      "n_trials": 6361
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8454578356858488,
+      "lose_switch": 0.4367529880478087,
+      "n_win_trials": 2763,
+      "n_lose_trials": 2008,
+      "n_trials": 4771
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9569006876699184,
+      "lose_switch": 0.1574740207833733,
+      "n_win_trials": 12506,
+      "n_lose_trials": 1251,
+      "n_trials": 13757
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8473648186173853,
+      "lose_switch": 0.2564007421150278,
+      "n_win_trials": 1461,
+      "n_lose_trials": 2695,
+      "n_trials": 4156
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.8695652173913043,
+      "lose_switch": 0.3504531722054381,
+      "n_win_trials": 69,
+      "n_lose_trials": 331,
+      "n_trials": 400
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8383233532934131,
+      "lose_switch": 0.271301247771836,
+      "n_win_trials": 1503,
+      "n_lose_trials": 2805,
+      "n_trials": 4308
+    }
+  ],
+  "panel_c_mouse_winstay_loseswitch": [
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.9585537918871252,
+      "lose_switch": 0.2967644084934277,
+      "n_win_trials": 4536,
+      "n_lose_trials": 3956,
+      "n_trials": 8492
+    },
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9908706889364424,
+      "lose_switch": 0.0927940611800844,
+      "n_win_trials": 71966,
+      "n_lose_trials": 31252,
+      "n_trials": 103218
+    },
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.9705919003115264,
+      "lose_switch": 0.1684520058811174,
+      "n_win_trials": 8025,
+      "n_lose_trials": 14283,
+      "n_trials": 22308
+    },
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.9314516129032258,
+      "lose_switch": 0.2613636363636363,
+      "n_win_trials": 248,
+      "n_lose_trials": 528,
+      "n_trials": 776
+    },
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.9639189564252012,
+      "lose_switch": 0.1852148813341886,
+      "n_win_trials": 7206,
+      "n_lose_trials": 12472,
+      "n_trials": 19678
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.9483095836825928,
+      "lose_switch": 0.3714170367379895,
+      "n_win_trials": 3579,
+      "n_lose_trials": 2477,
+      "n_trials": 6056
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9900967655101086,
+      "lose_switch": 0.1175061257827389,
+      "n_win_trials": 70583,
+      "n_lose_trials": 18365,
+      "n_trials": 88948
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.9555680539932508,
+      "lose_switch": 0.24182158812509,
+      "n_win_trials": 3556,
+      "n_lose_trials": 6939,
+      "n_trials": 10495
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.9210526315789472,
+      "lose_switch": 0.3765690376569037,
+      "n_win_trials": 76,
+      "n_lose_trials": 239,
+      "n_trials": 315
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.9536859413537956,
+      "lose_switch": 0.2271944922547332,
+      "n_win_trials": 3649,
+      "n_lose_trials": 7553,
+      "n_trials": 11202
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.9094076655052264,
+      "lose_switch": 0.4396984924623116,
+      "n_win_trials": 3731,
+      "n_lose_trials": 2388,
+      "n_trials": 6119
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.981758328458912,
+      "lose_switch": 0.2333608077477848,
+      "n_win_trials": 73513,
+      "n_lose_trials": 9706,
+      "n_trials": 83219
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8987068965517241,
+      "lose_switch": 0.2794642857142857,
+      "n_win_trials": 2784,
+      "n_lose_trials": 5600,
+      "n_trials": 8384
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.8936170212765957,
+      "lose_switch": 0.4866666666666667,
+      "n_win_trials": 47,
+      "n_lose_trials": 150,
+      "n_trials": 197
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.900749063670412,
+      "lose_switch": 0.294218989280245,
+      "n_win_trials": 2670,
+      "n_lose_trials": 5224,
+      "n_trials": 7894
+    }
+  ],
+  "panel_d_marmoset_switch_rate": [
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Directed Exploration",
+      "switch_rate": 0.2590431738623104,
+      "n_trials": 4285
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Exploitation",
+      "switch_rate": 0.0769046592922472,
+      "n_trials": 20883
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Left Bias",
+      "switch_rate": 0.3082772105148816,
+      "n_trials": 4603
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Random Exploration",
+      "switch_rate": 0.6576576576576577,
+      "n_trials": 222
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Right Bias",
+      "switch_rate": 0.2984148862853205,
+      "n_trials": 4353
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Directed Exploration",
+      "switch_rate": 0.3075206311309493,
+      "n_trials": 19267
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Exploitation",
+      "switch_rate": 0.0600655395844194,
+      "n_trials": 26854
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Left Bias",
+      "switch_rate": 0.295308808639892,
+      "n_trials": 5926
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Random Exploration",
+      "switch_rate": 0.434363411619283,
+      "n_trials": 4045
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Right Bias",
+      "switch_rate": 0.2655242886338626,
+      "n_trials": 6361
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "switch_rate": 0.3074827080276671,
+      "n_trials": 4771
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Exploitation",
+      "switch_rate": 0.0561168859489714,
+      "n_trials": 13757
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "switch_rate": 0.2718960538979788,
+      "n_trials": 4156
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "switch_rate": 0.595,
+      "n_trials": 400
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "switch_rate": 0.2629990714948932,
+      "n_trials": 4308
+    }
+  ],
+  "panel_d_mouse_switch_rate": [
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Directed Exploration",
+      "switch_rate": 0.1603862458784738,
+      "n_trials": 8492
+    },
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Exploitation",
+      "switch_rate": 0.0344610436164234,
+      "n_trials": 103218
+    },
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Left Bias",
+      "switch_rate": 0.1184328492020799,
+      "n_trials": 22308
+    },
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Random Exploration",
+      "switch_rate": 0.1997422680412371,
+      "n_trials": 776
+    },
+    {
+      "Condition": "70-30",
+      "Behavioral_State": "Right Bias",
+      "switch_rate": 0.1306027035267812,
+      "n_trials": 19678
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Directed Exploration",
+      "switch_rate": 0.1824636723910171,
+      "n_trials": 6056
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Exploitation",
+      "switch_rate": 0.0321198902729684,
+      "n_trials": 88948
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Left Bias",
+      "switch_rate": 0.1749404478323011,
+      "n_trials": 10495
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Random Exploration",
+      "switch_rate": 0.3047619047619048,
+      "n_trials": 315
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Right Bias",
+      "switch_rate": 0.1682735225852526,
+      "n_trials": 11202
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "switch_rate": 0.2268344500735414,
+      "n_trials": 6119
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Exploitation",
+      "switch_rate": 0.0433314507504295,
+      "n_trials": 83219
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "switch_rate": 0.2203005725190839,
+      "n_trials": 8384
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "switch_rate": 0.3959390862944162,
+      "n_trials": 197
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "switch_rate": 0.2282746389663035,
+      "n_trials": 7894
+    }
+  ]
+}

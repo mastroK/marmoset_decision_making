@@ -1,0 +1,384 @@
+{
+  "n_trials": 36673,
+  "n_sessions": 100,
+  "n_animals": 5,
+  "sticky_qlearning_params": {
+    "per_animal": {
+      "Fiona": {
+        "alpha": 0.5887916440470615,
+        "beta": 1.4583941567186733,
+        "kappa": 1.4381419814838194
+      },
+      "Knuckles": {
+        "alpha": 0.7000456805911974,
+        "beta": 1.201414626495217,
+        "kappa": 1.1019630213351626
+      },
+      "Sonic": {
+        "alpha": 0.836053593858941,
+        "beta": 0.826765180139414,
+        "kappa": 1.4626484976366674
+      },
+      "Sunflower": {
+        "alpha": 0.8747374580559218,
+        "beta": 1.3470998700435606,
+        "kappa": 0.8304892691978306
+      },
+      "Zazu": {
+        "alpha": 0.7011987214184545,
+        "beta": 0.7643393102836361,
+        "kappa": 1.470407356326845
+      }
+    },
+    "mean_alpha": 0.7401654195943153,
+    "mean_beta": 1.1196026287361,
+    "mean_kappa": 1.260730025196065,
+    "sem_alpha": 0.051646002966034374,
+    "sem_beta": 0.1387792660938735,
+    "sem_kappa": 0.12777416103688982
+  },
+  "q_following_by_animal": {
+    "animal_means": {
+      "Fiona": 0.739627251704875,
+      "Knuckles": 0.7121464953707136,
+      "Sonic": 0.6690729534982494,
+      "Sunflower": 0.7230434951733861,
+      "Zazu": 0.6653843023232285
+    },
+    "n_animals": 5,
+    "mean": 0.7018548996140905,
+    "sem": 0.014809430382964554,
+    "wilcoxon_stat_vs_chance": 0.0,
+    "wilcoxon_p_vs_chance": 0.0625
+  },
+  "q_following_by_trial_in_block": {
+    "n_positions": 20,
+    "position_means": {
+      "0": 0.7290432478496914,
+      "1": 0.6530141132784995,
+      "2": 0.597693714821545,
+      "3": 0.6563647623360471,
+      "4": 0.6842291970013804,
+      "5": 0.6958268532678042,
+      "6": 0.7295677464247662,
+      "7": 0.715633768132577,
+      "8": 0.7273889390992937,
+      "9": 0.7345328135576453,
+      "10": 0.7344111142297675,
+      "11": 0.7381093501100635,
+      "12": 0.7232992550404382,
+      "13": 0.7127844818156771,
+      "14": 0.7397912429884768,
+      "15": 0.7231856582558595,
+      "16": 0.722698455972369,
+      "17": 0.719464355262178,
+      "18": 0.7127002400878562,
+      "19": 0.7094517432152309
+    }
+  },
+  "q_following_by_outcome": {
+    "n_animals": 5,
+    "p_follow_win": 0.792614044582278,
+    "p_follow_loss": 0.5687286334878845,
+    "wilcoxon_stat": 0.0,
+    "wilcoxon_p": 0.0625,
+    "paired_ttest_stat_by_animal": 25.36137755592515,
+    "paired_ttest_p_by_animal": 1.4353964055131748e-05,
+    "paired_ttest_df_by_animal": 4,
+    "paired_ttest_stat_naive_session_level": 38.67458723197068,
+    "paired_ttest_p_naive_session_level": 1.4711979968252276e-61,
+    "n_sessions_naive": 100
+  },
+  "observed_vs_predicted_adherence": {
+    "animal_observed": {
+      "Fiona": 0.739627251704875,
+      "Knuckles": 0.7121464953707136,
+      "Sonic": 0.6690729534982494,
+      "Sunflower": 0.7230434951733861,
+      "Zazu": 0.6653843023232285
+    },
+    "animal_predicted": {
+      "Fiona": 0.7617464299939257,
+      "Knuckles": 0.6979646524681801,
+      "Sonic": 0.7332496585467686,
+      "Sunflower": 0.6869632787109325,
+      "Zazu": 0.7265849992477248
+    },
+    "n_animals": 5,
+    "observed_mean": 0.7018548996140905,
+    "observed_sem": 0.014809430382964554,
+    "predicted_mean": 0.7213018037935064,
+    "predicted_sem": 0.013285684236673517,
+    "paired_ttest_df": 4,
+    "paired_ttest_stat": -0.9744529707764094,
+    "paired_ttest_p": 0.38500950979640064,
+    "animal_predicted_argmax_single_draw": {
+      "Fiona": 0.8467944114667016,
+      "Knuckles": 0.7939982938873832,
+      "Sonic": 0.8330813544381901,
+      "Sunflower": 0.7850716384801842,
+      "Zazu": 0.8299633056905095
+    },
+    "predicted_argmax_single_draw_mean": 0.8177818007925935,
+    "predicted_argmax_single_draw_sem": 0.011957857041866152,
+    "paired_ttest_stat_argmax_single_draw": -5.519771841476095,
+    "paired_ttest_p_argmax_single_draw": 0.0052595531783353215
+  },
+  "adherence_diff_by_qdiff_and_outcome": [
+    {
+      "bin_label": "(-0.001, 0.1]",
+      "bin_center": 0.0495,
+      "prev_outcome": 0,
+      "mean": -0.1158160587808476,
+      "sem": 0.00759485728738505,
+      "n": 4330
+    },
+    {
+      "bin_label": "(0.1, 0.2]",
+      "bin_center": 0.15000000000000002,
+      "prev_outcome": 0,
+      "mean": -0.04976307648005772,
+      "sem": 0.008452938893334587,
+      "n": 3343
+    },
+    {
+      "bin_label": "(0.2, 0.3]",
+      "bin_center": 0.25,
+      "prev_outcome": 0,
+      "mean": -0.029236888207261655,
+      "sem": 0.010135745677446241,
+      "n": 2108
+    },
+    {
+      "bin_label": "(0.3, 0.4]",
+      "bin_center": 0.35,
+      "prev_outcome": 0,
+      "mean": -0.06627844871948861,
+      "sem": 0.020184968869391442,
+      "n": 474
+    },
+    {
+      "bin_label": "(0.4, 0.5]",
+      "bin_center": 0.45,
+      "prev_outcome": 0,
+      "mean": -0.2846327075044542,
+      "sem": 0.02602825716786331,
+      "n": 294
+    },
+    {
+      "bin_label": "(0.5, 0.6]",
+      "bin_center": 0.55,
+      "prev_outcome": 0,
+      "mean": -0.23961860896483766,
+      "sem": 0.035486525427352124,
+      "n": 173
+    },
+    {
+      "bin_label": "(0.6, 0.7]",
+      "bin_center": 0.6499999999999999,
+      "prev_outcome": 0,
+      "mean": -0.22031648064472628,
+      "sem": 0.022081505077562895,
+      "n": 464
+    },
+    {
+      "bin_label": "(0.7, 0.8]",
+      "bin_center": 0.75,
+      "prev_outcome": 0,
+      "mean": -0.1700785626962731,
+      "sem": 0.016262575806277876,
+      "n": 894
+    },
+    {
+      "bin_label": "(0.8, 0.9]",
+      "bin_center": 0.8500000000000001,
+      "prev_outcome": 0,
+      "mean": -0.1847483999878591,
+      "sem": 0.015043470527864852,
+      "n": 1034
+    },
+    {
+      "bin_label": "(0.9, 1.0]",
+      "bin_center": 0.95,
+      "prev_outcome": 0,
+      "mean": -0.12240585659973005,
+      "sem": 0.013007660986273787,
+      "n": 1444
+    },
+    {
+      "bin_label": "(-0.001, 0.1]",
+      "bin_center": 0.0495,
+      "prev_outcome": 1,
+      "mean": -0.20717349059581158,
+      "sem": 0.011455379916939946,
+      "n": 1849
+    },
+    {
+      "bin_label": "(0.1, 0.2]",
+      "bin_center": 0.15000000000000002,
+      "prev_outcome": 1,
+      "mean": -0.07106392131835272,
+      "sem": 0.013559917017632182,
+      "n": 1228
+    },
+    {
+      "bin_label": "(0.2, 0.3]",
+      "bin_center": 0.25,
+      "prev_outcome": 1,
+      "mean": -0.011123256226195607,
+      "sem": 0.013559836178562634,
+      "n": 1046
+    },
+    {
+      "bin_label": "(0.3, 0.4]",
+      "bin_center": 0.35,
+      "prev_outcome": 1,
+      "mean": 0.09039922052611803,
+      "sem": 0.02213381428274953,
+      "n": 235
+    },
+    {
+      "bin_label": "(0.4, 0.5]",
+      "bin_center": 0.45,
+      "prev_outcome": 1,
+      "mean": 0.13803006253106742,
+      "sem": 0.011452725314699033,
+      "n": 765
+    },
+    {
+      "bin_label": "(0.5, 0.6]",
+      "bin_center": 0.55,
+      "prev_outcome": 1,
+      "mean": 0.08480121339672746,
+      "sem": 0.013187125019023105,
+      "n": 582
+    },
+    {
+      "bin_label": "(0.6, 0.7]",
+      "bin_center": 0.6499999999999999,
+      "prev_outcome": 1,
+      "mean": 0.10672058832549056,
+      "sem": 0.007388971890541463,
+      "n": 1621
+    },
+    {
+      "bin_label": "(0.7, 0.8]",
+      "bin_center": 0.75,
+      "prev_outcome": 1,
+      "mean": 0.09710390819896912,
+      "sem": 0.005911822050981378,
+      "n": 2701
+    },
+    {
+      "bin_label": "(0.8, 0.9]",
+      "bin_center": 0.8500000000000001,
+      "prev_outcome": 1,
+      "mean": 0.10711973917887271,
+      "sem": 0.003903819235907868,
+      "n": 4863
+    },
+    {
+      "bin_label": "(0.9, 1.0]",
+      "bin_center": 0.95,
+      "prev_outcome": 1,
+      "mean": 0.09088482138285159,
+      "sem": 0.003272389048349617,
+      "n": 7005
+    }
+  ],
+  "violation_direction_by_animal": {
+    "n_violations_total": 10652,
+    "n_violations_per_animal": {
+      "Fiona": 1294,
+      "Knuckles": 3186,
+      "Sonic": 2376,
+      "Sunflower": 2688,
+      "Zazu": 1108
+    },
+    "population_prop_right": 0.4773751408186256,
+    "population_prop_left": 0.5226248591813745,
+    "population_binomial_p_naive": 3.1433491314982346e-06,
+    "per_animal_prop_right": {
+      "Fiona": 0.3956723338485317,
+      "Knuckles": 0.5332705586942875,
+      "Sonic": 0.17382154882154882,
+      "Sunflower": 0.6145833333333334,
+      "Zazu": 0.73014440433213
+    },
+    "per_animal_prop_left": {
+      "Fiona": 0.6043276661514683,
+      "Knuckles": 0.4667294413057125,
+      "Sonic": 0.8261784511784511,
+      "Sunflower": 0.38541666666666663,
+      "Zazu": 0.26985559566787
+    },
+    "per_animal_wilcoxon_stat_vs_chance": 7.0,
+    "per_animal_wilcoxon_p_vs_chance": 1.0,
+    "n_animals": 5
+  },
+  "reward_next_trial_by_violation": {
+    "n_sessions": 100,
+    "after_violation_mean": 0.5269220582798013,
+    "after_violation_sem": 0.005962276486992881,
+    "after_adherence_mean": 0.6298545573369903,
+    "after_adherence_sem": 0.00351266285328434,
+    "naive_session_level_ttest_stat": -16.217319043916326,
+    "naive_session_level_ttest_p": 1.254816720236319e-29,
+    "naive_session_level_df": 99,
+    "n_animals": 5,
+    "per_animal_ttest_stat": -9.242157770190987,
+    "per_animal_ttest_p": 0.0007619035058971931,
+    "per_animal_df": 4
+  },
+  "follow_next_trial_by_violation": {
+    "n_sessions": 100,
+    "after_violation_mean": 0.4831833306998955,
+    "after_violation_sem": 0.009472888507780022,
+    "after_adherence_mean": 0.8022697985930776,
+    "after_adherence_sem": 0.004917373944893803,
+    "naive_session_level_ttest_stat": -30.48145138678489,
+    "naive_session_level_ttest_p": 4.0959242309266305e-52,
+    "naive_session_level_df": 99,
+    "n_animals": 5,
+    "per_animal_ttest_stat": -11.927148841168787,
+    "per_animal_ttest_p": 0.00028308794518866134,
+    "per_animal_df": 4
+  },
+  "violation_rate_vs_accuracy_by_animal": {
+    "Fiona": {
+      "n_sessions": 14,
+      "r": -0.6079288006381725,
+      "p": 0.021088119975719754,
+      "slope": -0.4483147199557167,
+      "intercept": 0.8209297935831056
+    },
+    "Knuckles": {
+      "n_sessions": 23,
+      "r": -0.2968226358798863,
+      "p": 0.1690204885754297,
+      "slope": -0.14006268074186237,
+      "intercept": 0.7367822383230445
+    },
+    "Sonic": {
+      "n_sessions": 14,
+      "r": -0.6244706710593252,
+      "p": 0.016972925883528632,
+      "slope": -0.41303265092195296,
+      "intercept": 0.8002893193239685
+    },
+    "Sunflower": {
+      "n_sessions": 35,
+      "r": -0.768195575169719,
+      "p": 7.152048149918251e-08,
+      "slope": -0.6563643453099729,
+      "intercept": 0.8677850640758528
+    },
+    "Zazu": {
+      "n_sessions": 14,
+      "r": -0.08604637367128108,
+      "p": 0.7699187248060774,
+      "slope": -0.05183330817634832,
+      "intercept": 0.6507289983052291
+    }
+  }
+}

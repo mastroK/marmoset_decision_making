@@ -1,0 +1,340 @@
+{
+  "_stage": "Supp Fig 2: 4-model Q-learning comparison (pure QL / +sticky / +forgetting / +adaptive forgetting)",
+  "_manuscript_quoted_example_values_for_comparison_only": {
+    "note": "Quoted here for side-by-side comparison ONLY -- not used as a fitting target anywhere below (see standing constraint in the header cell).",
+    "pure_ql": {
+      "alpha": 0.7,
+      "beta": 1.74
+    },
+    "sticky": {
+      "alpha": 0.59,
+      "beta": 1.63,
+      "kappa": 1.29
+    },
+    "forgetting": {
+      "alpha": 0.43,
+      "beta": 3.18,
+      "kappa": 1.39,
+      "tau": 0.95
+    },
+    "adaptive_forgetting": {
+      "alpha": 0.44,
+      "beta": 2.87,
+      "kappa": 1.39,
+      "tau_max": 0.99,
+      "decay": 20.0
+    }
+  },
+  "n_trials": 36673,
+  "n_sessions": 100,
+  "n_animals": 5,
+  "n_train_sessions": 79,
+  "n_test_sessions": 21,
+  "fitted_parameters": {
+    "pure": {
+      "Fiona": {
+        "alpha": 0.6036,
+        "beta": 2.2105,
+        "train_nll": 0.5379
+      },
+      "Knuckles": {
+        "alpha": 0.7021,
+        "beta": 1.8521,
+        "train_nll": 0.5601
+      },
+      "Sonic": {
+        "alpha": 0.7997,
+        "beta": 1.47,
+        "train_nll": 0.5931
+      },
+      "Sunflower": {
+        "alpha": 0.9068,
+        "beta": 1.7583,
+        "train_nll": 0.5367
+      },
+      "Zazu": {
+        "alpha": 0.6496,
+        "beta": 1.4443,
+        "train_nll": 0.609
+      }
+    },
+    "sticky": {
+      "Fiona": {
+        "alpha": 0.6166,
+        "beta": 1.3892,
+        "kappa": 1.3904,
+        "train_nll": 1609.478
+      },
+      "Knuckles": {
+        "alpha": 0.7164,
+        "beta": 1.2118,
+        "kappa": 1.1189,
+        "train_nll": 3999.3838
+      },
+      "Sonic": {
+        "alpha": 0.7998,
+        "beta": 0.9145,
+        "kappa": 1.4571,
+        "train_nll": 2420.7567
+      },
+      "Sunflower": {
+        "alpha": 0.9045,
+        "beta": 1.2666,
+        "kappa": 0.8371,
+        "train_nll": 3830.0302
+      },
+      "Zazu": {
+        "alpha": 0.6948,
+        "beta": 0.8327,
+        "kappa": 1.5346,
+        "train_nll": 1154.7334
+      }
+    },
+    "forgetting": {
+      "Fiona": {
+        "alpha": 0.3823,
+        "beta": 3.5859,
+        "kappa": 1.5026,
+        "tau": 0.8875,
+        "train_nll": 0.3806
+      },
+      "Knuckles": {
+        "alpha": 0.471,
+        "beta": 3.306,
+        "kappa": 1.2204,
+        "tau": 0.99,
+        "train_nll": 0.4353
+      },
+      "Sonic": {
+        "alpha": 0.4234,
+        "beta": 3.2207,
+        "kappa": 1.5471,
+        "tau": 0.99,
+        "train_nll": 0.3946
+      },
+      "Sunflower": {
+        "alpha": 0.6957,
+        "beta": 2.6488,
+        "kappa": 1.1131,
+        "tau": 0.8746,
+        "train_nll": 0.4643
+      },
+      "Zazu": {
+        "alpha": 0.3477,
+        "beta": 2.5648,
+        "kappa": 1.577,
+        "tau": 0.99,
+        "train_nll": 0.4086
+      }
+    },
+    "adaptive_forgetting": {
+      "Fiona": {
+        "alpha": 0.3901,
+        "beta": 3.3238,
+        "kappa": 1.5047,
+        "tau_max": 0.99,
+        "decay": 20.0,
+        "train_nll": 0.3826
+      },
+      "Knuckles": {
+        "alpha": 0.47,
+        "beta": 2.9888,
+        "kappa": 1.2081,
+        "tau_max": 0.99,
+        "decay": 20.0,
+        "train_nll": 0.4403
+      },
+      "Sonic": {
+        "alpha": 0.4376,
+        "beta": 2.8291,
+        "kappa": 1.5396,
+        "tau_max": 0.99,
+        "decay": 20.0,
+        "train_nll": 0.3994
+      },
+      "Sunflower": {
+        "alpha": 0.7021,
+        "beta": 2.4931,
+        "kappa": 1.0891,
+        "tau_max": 0.99,
+        "decay": 20.0,
+        "train_nll": 0.4662
+      },
+      "Zazu": {
+        "alpha": 0.3436,
+        "beta": 2.3271,
+        "kappa": 1.5805,
+        "tau_max": 0.99,
+        "decay": 20.0,
+        "train_nll": 0.4105
+      }
+    }
+  },
+  "panel_a_pure": {
+    "mean_fitted_params": {
+      "alpha": 0.7323822701495604,
+      "beta": 1.7470431112885958
+    },
+    "n_scatter_sessions": 21
+  },
+  "panel_b_sticky": {
+    "mean_fitted_params": {
+      "alpha": 0.746414005390949,
+      "beta": 1.12297615771051,
+      "kappa": 1.2676242265726678
+    },
+    "n_scatter_sessions": 21
+  },
+  "panel_c_forgetting": {
+    "mean_fitted_params": {
+      "alpha": 0.464014559389433,
+      "beta": 3.0652362427424036,
+      "kappa": 1.3920358488999311,
+      "tau": 0.9464113243166082
+    },
+    "n_scatter_sessions": 21
+  },
+  "panel_d_adaptive_forgetting": {
+    "mean_fitted_params": {
+      "alpha": 0.46870162029010337,
+      "beta": 2.792386944226045,
+      "kappa": 1.3844213906008236,
+      "tau_max": 0.99,
+      "decay": 20.0
+    },
+    "n_scatter_sessions": 21
+  },
+  "model_comparison_per_animal": {
+    "pure": {
+      "test_nll": {
+        "mean": 0.5806884380917633,
+        "sem": 0.040030448689023106
+      },
+      "r_phigh": {
+        "mean": 0.8503997001048585,
+        "sem": 0.1016550310604479
+      },
+      "r_pswitch": {
+        "mean": 0.5517045974796497,
+        "sem": 0.07850383514242461
+      },
+      "r_switch_trial": {
+        "mean": 0.24097641676423112,
+        "sem": 0.04933116732298581
+      },
+      "composite": {
+        "mean": 0.4495239772495453,
+        "sem": 0.06597495634540546
+      }
+    },
+    "sticky": {
+      "test_nll": {
+        "mean": 0.4545456540127974,
+        "sem": 0.03330216954542591
+      },
+      "r_phigh": {
+        "mean": 0.8961544030272421,
+        "sem": 0.05730080227942518
+      },
+      "r_pswitch": {
+        "mean": 0.5103892269793026,
+        "sem": 0.06990301392462289
+      },
+      "r_switch_trial": {
+        "mean": 0.23878478010393236,
+        "sem": 0.04695348871674484
+      },
+      "composite": {
+        "mean": 0.49597485336268454,
+        "sem": 0.049905203720698815
+      }
+    },
+    "forgetting": {
+      "test_nll": {
+        "mean": 0.4297785703040911,
+        "sem": 0.03527811572143406
+      },
+      "r_phigh": {
+        "mean": 0.9163725222942709,
+        "sem": 0.048488131221702195
+      },
+      "r_pswitch": {
+        "mean": 0.6142326970871921,
+        "sem": 0.08799192275869644
+      },
+      "r_switch_trial": {
+        "mean": 0.35642289913273234,
+        "sem": 0.041559637090136846
+      },
+      "composite": {
+        "mean": 0.565409693540011,
+        "sem": 0.0511867153858517
+      }
+    },
+    "adaptive_forgetting": {
+      "test_nll": {
+        "mean": 0.43337497915557616,
+        "sem": 0.03579596611062134
+      },
+      "r_phigh": {
+        "mean": 0.9145504585577975,
+        "sem": 0.05056456297085859
+      },
+      "r_pswitch": {
+        "mean": 0.5863975428671735,
+        "sem": 0.08535811031566881
+      },
+      "r_switch_trial": {
+        "mean": 0.33849555207272247,
+        "sem": 0.046004852296467544
+      },
+      "composite": {
+        "mean": 0.5522052298559956,
+        "sem": 0.052391712787349214
+      }
+    }
+  },
+  "model_comparison_naive_session_level_PSEUDOREPLICATED": {
+    "pure": {
+      "test_nll": {
+        "mean": 0.5615170787143894,
+        "sem": 0.019460505925162776
+      },
+      "r_switch_trial": {
+        "mean": 0.28245056455668793,
+        "sem": 0.027075437714077513
+      }
+    },
+    "sticky": {
+      "test_nll": {
+        "mean": 0.45897717995123616,
+        "sem": 0.015889974208376366
+      },
+      "r_switch_trial": {
+        "mean": 0.278626782317724,
+        "sem": 0.02566345283883671
+      }
+    },
+    "forgetting": {
+      "test_nll": {
+        "mean": 0.4301577148850658,
+        "sem": 0.01673878826374642
+      },
+      "r_switch_trial": {
+        "mean": 0.38458572277456,
+        "sem": 0.025258614781798857
+      }
+    },
+    "adaptive_forgetting": {
+      "test_nll": {
+        "mean": 0.43402633336721813,
+        "sem": 0.016867916287192357
+      },
+      "r_switch_trial": {
+        "mean": 0.36995073983485366,
+        "sem": 0.026717945666374737
+      }
+    }
+  },
+  "winner_by_composite_per_animal": "forgetting"
+}

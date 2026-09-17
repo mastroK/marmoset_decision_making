@@ -1,0 +1,26 @@
+name: final_paper_pipeline
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pandas
+  - numpy
+  - scipy
+  - matplotlib
+  - seaborn
+  - pyyaml
+  - jupyter
+  - nbformat
+  - nbconvert
+  - hmmlearn      # needed by later stages (Fig 6/7), included now for one shared env
+  - scikit-learn  # needed by later stages (Fig 4/6/7), included now for one shared env
+  - ipykernel
+
+# After creating this env, register it as an explicitly-named Jupyter kernel so
+# run_all.sh's nbconvert calls resolve to it unambiguously (see run_all.sh's
+# comment -- multiple identically-named "python3" kernelspecs can otherwise be
+# registered across environments on one machine, and nbconvert's choice among
+# them is not guaranteed):
+#   conda activate final_paper_pipeline
+#   python -m ipykernel install --user --name final_paper_pipeline \
+#       --display-name "Final Paper Pipeline (bandit_env)"

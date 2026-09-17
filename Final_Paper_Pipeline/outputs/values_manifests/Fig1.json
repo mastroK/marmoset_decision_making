@@ -1,0 +1,229 @@
+{
+  "n_trials": 79606,
+  "n_sessions": 363,
+  "n_animals_raw": 10,
+  "n_animals_qualifying": 10,
+  "animals_qualifying": [
+    "Coral",
+    "Fiona",
+    "Griffin",
+    "Knuckles",
+    "Raven",
+    "Salmon",
+    "Sonic",
+    "Sunflower",
+    "Tuna",
+    "Zazu"
+  ],
+  "n_qualifying_blocks": 349,
+  "within_block_learning_first_bin_accuracy": 0.5081184336198663,
+  "within_block_learning_last_bin_accuracy": 0.5,
+  "trials_to_criterion": {
+    "n_sessions_total": 349,
+    "n_reached": 318,
+    "pct_reached": 91.11747851002865,
+    "mean": 8.817610062893081,
+    "sem": 0.28676022827893327,
+    "n_animals": 10,
+    "mean_per_animal": 8.730418446644858,
+    "sem_per_animal": 0.45071964099390055
+  },
+  "late_accuracy": {
+    "n_sessions": 349,
+    "mean": 0.748997134670487,
+    "sem": 0.014060901933667396,
+    "n_animals": 10,
+    "mean_per_animal": 0.7449245884067118,
+    "sem_per_animal": 0.024881409716392668
+  },
+  "session_bins": {
+    "bin0_mean": 0.7246507612849945,
+    "bin0_sem": 0.03275057590892238,
+    "bin0_n": 50.0,
+    "bin1_mean": 0.6712588094110988,
+    "bin1_sem": 0.024644660343997725,
+    "bin1_n": 50.0,
+    "bin1_per_animal_mean": 0.6712588094110988,
+    "bin1_per_animal_sem": 0.026211960224475715,
+    "n_animals": 10.0,
+    "mannwhitney_p_bin0_vs_bin1": 0.06556923132623889,
+    "wilcoxon_p_bin1_vs_chance_per_animal": 0.001953125
+  },
+  "asymptotic_accuracy_overall_mean": 0.7400887573964497,
+  "asymptotic_accuracy_overall_sem": 0.01136377596053545,
+  "iti": {
+    "n_trials": 79118,
+    "mean": 13.20193245834576,
+    "median": 4.8328407999998895,
+    "std": 50.7226376147602
+  },
+  "iti_by_animal": {
+    "Coral": {
+      "median_iti": 6.2326200999999415,
+      "mean_iti": 22.712778380365105,
+      "std_iti": 67.78221534554936
+    },
+    "Tuna": {
+      "median_iti": 5.716557200000156,
+      "mean_iti": 27.755193224771087,
+      "std_iti": 92.99482021278882
+    },
+    "Fiona": {
+      "median_iti": 4.032850400000112,
+      "mean_iti": 9.531617916325706,
+      "std_iti": 40.9120009658836
+    },
+    "Salmon": {
+      "median_iti": 3.249445900000166,
+      "mean_iti": 15.695596393594125,
+      "std_iti": 67.2166376177191
+    },
+    "Knuckles": {
+      "median_iti": 5.216656200000085,
+      "mean_iti": 11.54869110496476,
+      "std_iti": 32.07397659266491
+    },
+    "Raven": {
+      "median_iti": 5.932657000000123,
+      "mean_iti": 13.952739141891499,
+      "std_iti": 56.67264827180771
+    },
+    "Sonic": {
+      "median_iti": 4.849811199999997,
+      "mean_iti": 15.52017708961229,
+      "std_iti": 56.29106753638673
+    },
+    "Zazu": {
+      "median_iti": 3.66627314999979,
+      "mean_iti": 10.97096898813855,
+      "std_iti": 44.8388755467024
+    },
+    "Griffin": {
+      "median_iti": 6.999210399999749,
+      "mean_iti": 13.404599965919891,
+      "std_iti": 36.43332778944509
+    },
+    "Sunflower": {
+      "median_iti": 4.749498699999764,
+      "mean_iti": 14.476234680089117,
+      "std_iti": 53.968076738675684
+    }
+  },
+  "performance_by_iti_bin": {
+    "2-5s": {
+      "accuracy": 0.7896822372933019,
+      "sem": 0.002053962381856778,
+      "n": 39369
+    },
+    "5-10s": {
+      "accuracy": 0.786788774872191,
+      "sem": 0.002483965043647936,
+      "n": 27189
+    },
+    "10-15s": {
+      "accuracy": 0.7210383572258814,
+      "sem": 0.006242873008905857,
+      "n": 5162
+    },
+    "15-30s": {
+      "accuracy": 0.667654028436019,
+      "sem": 0.008108379328391641,
+      "n": 3376
+    },
+    "30-60s": {
+      "accuracy": 0.632537688442211,
+      "sem": 0.012086888479891224,
+      "n": 1592
+    },
+    ">60s": {
+      "accuracy": 0.6090534979423868,
+      "sem": 0.009900853383933532,
+      "n": 2430
+    }
+  },
+  "disengagement_accuracy_crosscheck": {
+    "n_trials": 2555,
+    "n_animals": 10,
+    "mean": 0.6039138943248532,
+    "sem": 0.009677693606940712,
+    "wilcoxon_p_vs_chance_per_animal": 0.01171875
+  },
+  "long_break": {
+    "threshold_s": 25,
+    "trial_level_t_stat": 25.09352053810693,
+    "trial_level_p": 2.0434547658006903e-138,
+    "n_animals_paired": 10,
+    "per_animal_short_mean": 0.7622076569773965,
+    "per_animal_long_mean": 0.601194615502039,
+    "per_animal_wilcoxon_p": 0.001953125
+  },
+  "bouts_per_session": {
+    "mean": 27.90909090909091,
+    "std": 13.62135956738858,
+    "n_sessions": 363
+  },
+  "representative_session_id": "2021-08-25_20210825_Griffin_100%Con_WhereBlocks(1)",
+  "bout_start_vs_end": [
+    {
+      "bout_rank": 1,
+      "n_bouts": 363,
+      "n_animals": 10,
+      "start_mean": 0.566838265304854,
+      "start_sem": 0.026810449785255028,
+      "end_mean": 0.5710237437231401,
+      "end_sem": 0.02739754605007352,
+      "wilcoxon_p": 0.25
+    },
+    {
+      "bout_rank": 2,
+      "n_bouts": 363,
+      "n_animals": 10,
+      "start_mean": 0.6278913285613642,
+      "start_sem": 0.025056518727848764,
+      "end_mean": 0.6775666263458956,
+      "end_sem": 0.03344383802214263,
+      "wilcoxon_p": 0.109375
+    },
+    {
+      "bout_rank": 3,
+      "n_bouts": 358,
+      "n_animals": 10,
+      "start_mean": 0.66160465536513,
+      "start_sem": 0.02683080487053654,
+      "end_mean": 0.6875840523338961,
+      "end_sem": 0.037955426152128866,
+      "wilcoxon_p": 0.375
+    }
+  ],
+  "bout_length_kruskal": {
+    "bout_ranks": [
+      1,
+      2,
+      3
+    ],
+    "means": [
+      2.0358126721763083,
+      12.275482093663912,
+      10.150837988826815
+    ],
+    "sems": [
+      0.17900329032361978,
+      0.7362705769204723,
+      0.5745098910014375
+    ],
+    "n_per_rank": [
+      363,
+      363,
+      358
+    ],
+    "h_stat": 238.4058273723024,
+    "p_value": 1.7015015901891942e-52
+  },
+  "reengagement": {
+    "n_bouts_total": 2460,
+    "n_animals": 10,
+    "frac_reached_criterion": 0.6386178861788618,
+    "mean_trials_to_criterion": 5.315722469764482,
+    "sem_trials_to_criterion": 0.05967514085540024
+  }
+}

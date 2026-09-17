@@ -1,0 +1,458 @@
+{
+  "_stage": "Fig 7 -- canonical 7-state taxonomy (classify_state_v7)",
+  "n_trials": 36673,
+  "n_sessions": 100,
+  "n_animals": 5,
+  "n_block_transitions": 1779,
+  "adaptation_speed_distribution": {
+    "slow": 894,
+    "fast": 885
+  },
+  "state_distribution": {
+    "Exploit": 14167,
+    "Directed Exploration": 8527,
+    "Adapting (slow)": 4448,
+    "Adapting (fast)": 4410,
+    "Left Bias": 1728,
+    "Random Exploration": 1625,
+    "Right Bias": 1568,
+    "Unknown": 200
+  },
+  "adaptation_prepass_validation": {
+    "n_blocks_checked": 1779,
+    "n_blocks_ok": 1779
+  },
+  "random_exploration_n_trials": 1625,
+  "sticky_qlearning_params": {
+    "Fiona": {
+      "alpha": 0.5887916440470615,
+      "beta": 1.4583941567186733,
+      "kappa": 1.4381419814838194
+    },
+    "Knuckles": {
+      "alpha": 0.7000456805911974,
+      "beta": 1.201414626495217,
+      "kappa": 1.1019630213351626
+    },
+    "Sonic": {
+      "alpha": 0.836053593858941,
+      "beta": 0.826765180139414,
+      "kappa": 1.4626484976366674
+    },
+    "Sunflower": {
+      "alpha": 0.8747374580559218,
+      "beta": 1.3470998700435606,
+      "kappa": 0.8304892691978306
+    },
+    "Zazu": {
+      "alpha": 0.7011987214184545,
+      "beta": 0.7643393102836361,
+      "kappa": 1.470407356326845
+    }
+  },
+  "p_follow_q_values_overall": 0.7085875304352584,
+  "panel_a_example_session": {
+    "animal": "Knuckles",
+    "session_id": "2023-09-21_20230921_Knuckles_Reversal3.1",
+    "n_trials": 524
+  },
+  "panel_b_q_alignment": {
+    "Adapting (fast)": {
+      "mean": 0.22542923821864536,
+      "sem": 0.019300719535744304,
+      "n": 5
+    },
+    "Adapting (slow)": {
+      "mean": 0.40431773344631583,
+      "sem": 0.02064966612735684,
+      "n": 5
+    },
+    "Directed Exploration": {
+      "mean": 0.350599852570579,
+      "sem": 0.018479592255557602,
+      "n": 5
+    },
+    "Exploit": {
+      "mean": 0.671919877509248,
+      "sem": 0.03817117332353709,
+      "n": 5
+    },
+    "Left Bias": {
+      "mean": 0.1261742086608975,
+      "sem": 0.012468897899048958,
+      "n": 5
+    },
+    "Random Exploration": {
+      "mean": 0.06945683841108814,
+      "sem": 0.05557074190686417,
+      "n": 5
+    },
+    "Right Bias": {
+      "mean": 0.11601080472364919,
+      "sem": 0.03822097110302039,
+      "n": 5
+    }
+  },
+  "panel_b_lose_switch": {
+    "Adapting (fast)": {
+      "mean": 0.40504167460904733,
+      "sem": 0.034157446825664024,
+      "n": 5
+    },
+    "Adapting (slow)": {
+      "mean": 0.2988514360601761,
+      "sem": 0.036375637847255025,
+      "n": 5
+    },
+    "Directed Exploration": {
+      "mean": 0.32043616840381917,
+      "sem": 0.03725892786466445,
+      "n": 5
+    },
+    "Exploit": {
+      "mean": 0.2494951384400017,
+      "sem": 0.0429424795434706,
+      "n": 5
+    },
+    "Left Bias": {
+      "mean": 0.456146706062332,
+      "sem": 0.036194383175670225,
+      "n": 5
+    },
+    "Random Exploration": {
+      "mean": 0.37510194351525405,
+      "sem": 0.0337425276099324,
+      "n": 5
+    },
+    "Right Bias": {
+      "mean": 0.43683403004187243,
+      "sem": 0.031566942518167974,
+      "n": 5
+    }
+  },
+  "panel_c_composition": [
+    {
+      "adaptation_speed": "fast",
+      "post_adaptation_state": "Directed Exploration",
+      "n": 243,
+      "n_total": 877,
+      "proportion": 0.27708095781071834
+    },
+    {
+      "adaptation_speed": "fast",
+      "post_adaptation_state": "Exploit",
+      "n": 593,
+      "n_total": 877,
+      "proportion": 0.6761687571265679
+    },
+    {
+      "adaptation_speed": "fast",
+      "post_adaptation_state": "Left Bias",
+      "n": 23,
+      "n_total": 877,
+      "proportion": 0.026225769669327253
+    },
+    {
+      "adaptation_speed": "fast",
+      "post_adaptation_state": "Right Bias",
+      "n": 18,
+      "n_total": 877,
+      "proportion": 0.020524515393386546
+    },
+    {
+      "adaptation_speed": "slow",
+      "post_adaptation_state": "Directed Exploration",
+      "n": 450,
+      "n_total": 880,
+      "proportion": 0.5113636363636364
+    },
+    {
+      "adaptation_speed": "slow",
+      "post_adaptation_state": "Exploit",
+      "n": 6,
+      "n_total": 880,
+      "proportion": 0.006818181818181818
+    },
+    {
+      "adaptation_speed": "slow",
+      "post_adaptation_state": "Left Bias",
+      "n": 138,
+      "n_total": 880,
+      "proportion": 0.15681818181818183
+    },
+    {
+      "adaptation_speed": "slow",
+      "post_adaptation_state": "Random Exploration",
+      "n": 114,
+      "n_total": 880,
+      "proportion": 0.12954545454545455
+    },
+    {
+      "adaptation_speed": "slow",
+      "post_adaptation_state": "Right Bias",
+      "n": 172,
+      "n_total": 880,
+      "proportion": 0.19545454545454546
+    }
+  ],
+  "panel_c_n_blocks_with_post_adaptation_trial": 1757,
+  "panel_d_transition_matrix": {
+    "states": [
+      "Exploit",
+      "Directed Exploration",
+      "Random Exploration",
+      "Left Bias",
+      "Right Bias"
+    ],
+    "probs": [
+      [
+        0.8996442897146749,
+        0.09513358056459548,
+        0.001967759025202452,
+        0.0017407099069098615,
+        0.0015136607886172709
+      ],
+      [
+        0.2012847965738758,
+        0.6849729185035899,
+        0.06512155183272453,
+        0.02569593147751606,
+        0.022924801612293738
+      ],
+      [
+        0.0013080444735120995,
+        0.3708306082406802,
+        0.49836494440810986,
+        0.07848266841072596,
+        0.051013734466971876
+      ],
+      [
+        0.0085995085995086,
+        0.1891891891891892,
+        0.06265356265356266,
+        0.7395577395577395,
+        0.0
+      ],
+      [
+        0.004830917874396135,
+        0.18219461697722567,
+        0.05728088336783989,
+        0.0,
+        0.7556935817805382
+      ]
+    ],
+    "counts": [
+      [
+        11887.0,
+        1257.0,
+        26.0,
+        23.0,
+        20.0
+      ],
+      [
+        1598.0,
+        5438.0,
+        517.0,
+        204.0,
+        182.0
+      ],
+      [
+        2.0,
+        567.0,
+        762.0,
+        120.0,
+        78.0
+      ],
+      [
+        14.0,
+        308.0,
+        102.0,
+        1204.0,
+        0.0
+      ],
+      [
+        7.0,
+        264.0,
+        83.0,
+        0.0,
+        1095.0
+      ]
+    ]
+  },
+  "panel_e_win_stay": {
+    "Adapting (fast)": {
+      "mean": 0.8798536721236564,
+      "sem": 0.009588456964362932,
+      "n": 5
+    },
+    "Adapting (slow)": {
+      "mean": 0.8652257897508908,
+      "sem": 0.012243756800974174,
+      "n": 5
+    },
+    "Directed Exploration": {
+      "mean": 0.7687078826143308,
+      "sem": 0.014824108517461534,
+      "n": 5
+    },
+    "Exploit": {
+      "mean": 0.9473873527112613,
+      "sem": 0.008954991338399767,
+      "n": 5
+    },
+    "Left Bias": {
+      "mean": 0.8241551452716122,
+      "sem": 0.011255490572892771,
+      "n": 5
+    },
+    "Random Exploration": {
+      "mean": 0.6503356278972977,
+      "sem": 0.0326024635594582,
+      "n": 5
+    },
+    "Right Bias": {
+      "mean": 0.7679370589346586,
+      "sem": 0.049678961122261965,
+      "n": 5
+    }
+  },
+  "panel_e_lose_switch": {
+    "Adapting (fast)": {
+      "mean": 0.4020574272753349,
+      "sem": 0.036699187885437114,
+      "n": 5
+    },
+    "Adapting (slow)": {
+      "mean": 0.2585632980783782,
+      "sem": 0.032597318918626196,
+      "n": 5
+    },
+    "Directed Exploration": {
+      "mean": 0.37671150553791627,
+      "sem": 0.037547394667688076,
+      "n": 5
+    },
+    "Exploit": {
+      "mean": 0.07109403883264981,
+      "sem": 0.01710829649016489,
+      "n": 5
+    },
+    "Left Bias": {
+      "mean": 0.3484157358013053,
+      "sem": 0.021291366314842377,
+      "n": 5
+    },
+    "Random Exploration": {
+      "mean": 0.40494658795597954,
+      "sem": 0.02970910495676082,
+      "n": 5
+    },
+    "Right Bias": {
+      "mean": 0.3080131737805334,
+      "sem": 0.026057004872594023,
+      "n": 5
+    }
+  },
+  "panel_f_violation_rate": {
+    "Adapting (fast)": {
+      "mean": 0.39694335997937774,
+      "sem": 0.012053634614147948,
+      "n": 5
+    },
+    "Adapting (slow)": {
+      "mean": 0.29978577174175103,
+      "sem": 0.009147146353511097,
+      "n": 5
+    },
+    "Directed Exploration": {
+      "mean": 0.33232145007484853,
+      "sem": 0.010582928362891191,
+      "n": 5
+    },
+    "Exploit": {
+      "mean": 0.1423905397154968,
+      "sem": 0.013793961284878585,
+      "n": 5
+    },
+    "Left Bias": {
+      "mean": 0.6048000982751018,
+      "sem": 0.01924307219653991,
+      "n": 5
+    },
+    "Random Exploration": {
+      "mean": 0.4932508900634879,
+      "sem": 0.018056746617499238,
+      "n": 5
+    },
+    "Right Bias": {
+      "mean": 0.5818092228038813,
+      "sem": 0.027490760673791352,
+      "n": 5
+    }
+  },
+  "panel_g_fits": {
+    "Directed Exploration": {
+      "slope": -0.30955399947333845,
+      "intercept": 0.5175667833360508,
+      "r": -0.2356334201107121,
+      "p": 6.745006849311541e-108,
+      "se": 0.01382844925470857,
+      "n_trials": 8526
+    },
+    "Random Exploration": {
+      "slope": -0.07557169043982971,
+      "intercept": 0.5139624387800624,
+      "r": -0.04940216558565698,
+      "p": 0.047212691399314166,
+      "se": 0.03805397421064969,
+      "n_trials": 1614
+    }
+  },
+  "panel_h_occupancy_pct": {
+    "Fiona": {
+      "Exploit": 43.99538106235566,
+      "Adapting (fast)": 10.54657428791378,
+      "Adapting (slow)": 13.779830638953042,
+      "Directed Exploration": 18.84141647421093,
+      "Random Exploration": 4.176289453425712,
+      "Left Bias": 5.542725173210162,
+      "Right Bias": 3.117782909930716
+    },
+    "Knuckles": {
+      "Exploit": 38.95856052344602,
+      "Adapting (fast)": 12.313704107597237,
+      "Adapting (slow)": 12.195565249000364,
+      "Directed Exploration": 23.954925481643038,
+      "Random Exploration": 4.561977462740821,
+      "Left Bias": 3.462377317339149,
+      "Right Bias": 4.55288985823337
+    },
+    "Sonic": {
+      "Exploit": 38.55522889542209,
+      "Adapting (fast)": 12.3337533249335,
+      "Adapting (slow)": 12.151756964860702,
+      "Directed Exploration": 20.369592608147837,
+      "Random Exploration": 4.507909841803164,
+      "Left Bias": 10.471790564188717,
+      "Right Bias": 1.6099678006439873
+    },
+    "Zazu": {
+      "Exploit": 38.095238095238095,
+      "Adapting (fast)": 11.5995115995116,
+      "Adapting (slow)": 12.454212454212454,
+      "Directed Exploration": 20.665445665445663,
+      "Random Exploration": 3.4493284493284495,
+      "Left Bias": 3.1746031746031744,
+      "Right Bias": 10.561660561660561
+    },
+    "Sunflower": {
+      "Exploit": 36.452202151410596,
+      "Adapting (fast)": 12.64461132535011,
+      "Adapting (slow)": 11.305053785264867,
+      "Directed Exploration": 28.21189364724985,
+      "Random Exploration": 4.779784858940532,
+      "Left Bias": 2.1006697787700426,
+      "Right Bias": 4.505784453014004
+    }
+  }
+}
