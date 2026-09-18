@@ -721,8 +721,46 @@ plotting:
 # ---------------------------------------------------------------------------
 fig9:
   cross_species_dir: "../cross_species_comparison"
-  threshold_set: "marmoset"   # which outputs/<name>_thresholds/ directory to read from
+  # CHANGED (2026-09-18): marmoset and mouse are now read from DIFFERENT
+  # threshold-set directories, not the same one. Originally both species
+  # used "marmoset" thresholds (classify_state_updated_noAdapting's cutoffs
+  # as committed for marmoset, applied to mouse UNCHANGED) -- confirmed
+  # via raw, classifier-independent accuracy/switch-rate at the two shared
+  # conditions (80-20/90-10) that mice really do have higher accuracy and
+  # lower switching than marmosets at those conditions (not a threshold
+  # artifact), so an absolute, one-species-calibrated classifier applied to
+  # both species conflates "different baseline performance level" with
+  # "different strategy." mouse_threshold_set now points at
+  # mouse_calibrated (derive_mouse_thresholds.py -- mouse's own K-means
+  # cluster centroids), so each species' Exploitation/Exploration/Bias
+  # boundary is calibrated to its OWN behavioral distribution -- a fair
+  # strategy comparison, at the cost of no longer sharing one absolute
+  # scale. Panel a (raw performance) is unaffected by this -- it uses no
+  # classifier at all.
+  #
+  # KNOWN LIMITATION, disclosed rather than silently worked around: under
+  # mouse_calibrated thresholds, mouse Exploitation's win-stay/lose-switch
+  # and switch-rate are EXACTLY 1.0/0.0/0.0 (verified: 0 of 247,325
+  # Exploitation-labeled trials have PhysicalSwitch==1) -- not a real
+  # behavioral finding, but a tautological consequence of that threshold
+  # set's directed_switch_floor (0.16, chosen because mouse Exploitation's
+  # own K-means centroid switch-rate is ~0.008) sitting below the smallest
+  # achievable nonzero Rolling_Switch_Rate, combined with
+  # Rolling_Accuracy/Rolling_Switch_Rate being computed from the same
+  # trailing window (so a same-trial switch almost always drags accuracy
+  # below directed_acc_ceiling too, routing it to Directed Exploration
+  # instead of Exploitation). Panels c/d therefore exclude mouse
+  # Exploitation specifically (see fig9.py's own panel c/d docstrings),
+  # rather than plot a misleading exact 0/1.
+  marmoset_threshold_set: "marmoset"
+  mouse_threshold_set: "mouse_calibrated"
   marmoset_input_master_file: "preprocessed_master_merged_data_with_metadata_20260917.csv"
+
+  # Part 1 -- raw, classifier-independent performance comparison at the
+  # ONE condition both species' own task design shares most directly
+  # (80-20). High_Prob = P(chose the higher-value option); PhysicalSwitch
+  # = raw single-trial switch rate. No Behavioral_State involved.
+  performance_condition: "80-20"
 
   # Shared x-axis across both species: reward probability of the
   # higher-value option. Marmoset and mouse overlap at 0.8/0.9; each
@@ -740,6 +778,11 @@ fig9:
   states_order: ["Exploitation", "Directed Exploration", "Random Exploration", "Left Bias", "Right Bias"]
   # "Unknown" (NaN-feature trials) excluded from all Fig 9 panels -- not a
   # real behavioral state, just a rolling-window edge artifact.
+  # States excluded per-species from panels c/d specifically (see the
+  # KNOWN LIMITATION note above) -- panel a (state proportions) and panel b
+  # (model params) are unaffected.
+  panels_cd_excluded_states:
+    mouse: ["Exploitation"]
   state_colors:
     Exploitation: "#1abc9c"
     Directed Exploration: "#f39c12"

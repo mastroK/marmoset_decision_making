@@ -18,6 +18,7 @@ is carried by marker shape + line style (marmoset: filled circle, solid;
 mouse: open square, dashed), consistent across every panel.
 """
 
+import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
@@ -233,42 +234,119 @@ def plot_panel_c_winstay_loseswitch(marmoset_wsls, mouse_wsls, cfg, out_path):
     Exploitation lose-switch jump at marmoset's deterministic 100-0 (a
     loss is a 100%-reliable "you picked wrong" signal there, unlike the
     probabilistic conditions).
+
+    Mouse Exploitation is excluded here (cfg["panels_cd_excluded_states"]):
+    under mouse_calibrated thresholds, its win-stay/lose-switch is exactly
+    1.0/0.0 by construction (directed_switch_floor sits below the smallest
+    achievable nonzero Rolling_Switch_Rate, and Rolling_Accuracy/
+    Rolling_Switch_Rate share a trailing window, so a same-trial switch
+    almost never survives inside Exploitation's boundary) -- not a real
+    behavioral finding. See config.yaml's fig9 section for the full account.
     """
     states = cfg["states_order"]
     colors = cfg["state_colors"]
+    excluded = cfg.get("panels_cd_excluded_states", {})
     fig, axes = plt.subplots(1, 2, figsize=(8.4, 3.6))
 
     for ax, metric, label in zip(axes, ["win_stay", "lose_switch"], ["win-stay", "lose-switch"]):
         for state in states:
-            _plot_species_state_line(ax, marmoset_wsls, state, colors[state], "marmoset",
-                                       cfg["marmoset_conditions_order"], cfg["condition_to_prob"], metric)
-            _plot_species_state_line(ax, mouse_wsls, state, colors[state], "mouse",
-                                       cfg["mouse_conditions_order"], cfg["condition_to_prob"], metric)
+            if state not in excluded.get("marmoset", []):
+                _plot_species_state_line(ax, marmoset_wsls, state, colors[state], "marmoset",
+                                           cfg["marmoset_conditions_order"], cfg["condition_to_prob"], metric)
+            if state not in excluded.get("mouse", []):
+                _plot_species_state_line(ax, mouse_wsls, state, colors[state], "mouse",
+                                           cfg["mouse_conditions_order"], cfg["condition_to_prob"], metric)
         _finish(ax, label, ylim=(0, 1.0))
 
+    note = _annotate_exclusions(axes[0], excluded)
     leg1 = _state_legend(axes[1], states, colors)
     leg2 = _species_legend(axes[1], loc="upper left", bbox=(1.02, 0.32))
     plt.tight_layout()
-    plt.savefig(out_path, dpi=300, bbox_inches="tight", bbox_extra_artists=(leg1, leg2))
+    extra = (leg1, leg2) + ((note,) if note else ())
+    plt.savefig(out_path, dpi=300, bbox_inches="tight", bbox_extra_artists=extra)
     plt.close(fig)
 
 
 def plot_panel_d_switch_rate(marmoset_switch, mouse_switch, cfg, out_path):
     """Panel d: raw single-trial switch rate, one compact axis, state =
-    color, species = marker/linestyle."""
+    color, species = marker/linestyle. Same mouse-Exploitation exclusion
+    as panel c -- see that function's docstring."""
     states = cfg["states_order"]
     colors = cfg["state_colors"]
+    excluded = cfg.get("panels_cd_excluded_states", {})
     fig, ax = plt.subplots(figsize=(4.2, 3.4))
 
     for state in states:
-        _plot_species_state_line(ax, marmoset_switch, state, colors[state], "marmoset",
-                                   cfg["marmoset_conditions_order"], cfg["condition_to_prob"], "switch_rate")
-        _plot_species_state_line(ax, mouse_switch, state, colors[state], "mouse",
-                                   cfg["mouse_conditions_order"], cfg["condition_to_prob"], "switch_rate")
+        if state not in excluded.get("marmoset", []):
+            _plot_species_state_line(ax, marmoset_switch, state, colors[state], "marmoset",
+                                       cfg["marmoset_conditions_order"], cfg["condition_to_prob"], "switch_rate")
+        if state not in excluded.get("mouse", []):
+            _plot_species_state_line(ax, mouse_switch, state, colors[state], "mouse",
+                                       cfg["mouse_conditions_order"], cfg["condition_to_prob"], "switch_rate")
 
     _finish(ax, "Switch rate", ylim=(0, 0.7))
+    note = _annotate_exclusions(ax, excluded)
     leg1 = _state_legend(ax, states, colors)
     leg2 = _species_legend(ax, loc="upper left", bbox=(1.02, 0.32))
     plt.tight_layout()
-    plt.savefig(out_path, dpi=300, bbox_inches="tight", bbox_extra_artists=(leg1, leg2))
+    extra = (leg1, leg2) + ((note,) if note else ())
+    plt.savefig(out_path, dpi=300, bbox_inches="tight", bbox_extra_artists=extra)
+    plt.close(fig)
+
+
+def _annotate_exclusions(ax, excluded):
+    """Small in-panel footnote naming any species/state combo left out of
+    panels c/d, so a missing line reads as a disclosed exclusion rather
+    than a rendering gap. Returns the text artist (or None) -- callers
+    MUST pass it through savefig's bbox_extra_artists, since a bare
+    ax.text() placed below the axes (negative axes-fraction y) is not
+    reliably picked up by bbox_inches="tight" on its own and can get
+    silently clipped off the saved canvas (found by inspecting the SVG's
+    own viewBox height directly -- the text existed in the file but sat
+    below it)."""
+    notes = [f"{species} {', '.join(states)} excluded (degenerate under this classifier)"
+             for species, states in excluded.items() if states]
+    if not notes:
+        return None
+    return ax.text(0.02, -0.30, "\n".join(notes), transform=ax.transAxes, fontsize=FONTSIZE - 3,
+                    color="#666666", ha="left", va="top", style="italic")
+
+
+def plot_panel_performance_80_20(marmoset_perf, mouse_perf, cfg, out_path):
+    """Part 1 -- raw, classifier-independent performance at the one
+    condition both species share most directly (80-20): P(chose the
+    higher-value option) and raw single-trial switch rate. Per-subject
+    dots (species-colored) + group mean +/- SEM bar. No Behavioral_State
+    involved -- this is deliberately upstream of any classifier choice,
+    so it can't be confounded by which threshold set panels a/c/d use.
+    """
+    fig, axes = plt.subplots(1, 2, figsize=(4.6, 3.0))
+    species_order = ["marmoset", "mouse"]
+    x = np.arange(len(species_order))
+
+    for ax, (df_col, perf_by_species), ylabel in zip(
+        axes,
+        [("accuracy", {"marmoset": marmoset_perf, "mouse": mouse_perf}),
+         ("switch_rate", {"marmoset": marmoset_perf, "mouse": mouse_perf})],
+        ["P(chose higher-value option)", "Switch rate"],
+    ):
+        for xi, species in zip(x, species_order):
+            vals = perf_by_species[species][df_col].values
+            color = cfg["species_style"][species]["color"]
+            mean, sem = np.nanmean(vals), np.nanstd(vals, ddof=1) / np.sqrt(len(vals))
+            ax.bar(xi, mean, width=0.6, yerr=sem, color=color, alpha=0.35,
+                   capsize=3, edgecolor=color, linewidth=1.2, zorder=1)
+            rng = np.random.default_rng(0)
+            ax.scatter(xi + rng.normal(0, 0.04, size=len(vals)), vals, color=color,
+                       edgecolor="black", linewidth=0.4, s=22, zorder=2)
+        ax.set_xticks(x)
+        ax.set_xticklabels(species_order, fontsize=FONTSIZE)
+        ax.set_ylabel(ylabel, fontsize=FONTSIZE - 1)
+        ax.set_xlim(-0.6, len(species_order) - 0.4)
+        ax.tick_params(labelsize=FONTSIZE - 1)
+        clean_axes(ax)
+
+    fig.suptitle(f"Raw performance ({cfg['performance_condition']})", fontsize=FONTSIZE, y=1.03)
+    plt.tight_layout()
+    plt.savefig(out_path, dpi=300, bbox_inches="tight")
     plt.close(fig)
