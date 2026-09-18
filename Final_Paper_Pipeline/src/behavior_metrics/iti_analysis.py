@@ -112,3 +112,99 @@ def performance_by_long_break(df_timing_filtered, long_break_threshold, outcome_
         "wilcoxon_stat_per_animal": w_stat,
         "p_per_animal": p_per_animal,
     }
+
+
+# ---------------------------------------------------------------------------
+# Reviewer-response additions (RA3_iti_and_transitions.ipynb, R1-C3, R2-4).
+# `df_timing` throughout below is `compute_iti`'s own output (already has
+# ITI, Session_ID, Animal_Name) additionally carrying `Behavioral_State`
+# (from a `classify_state_v7` call) and `Outcome_Binary`/`Trial` -- i.e. the
+# canonical state-classified dataframe, run through `compute_iti` first.
+# ---------------------------------------------------------------------------
+
+def iti_by_state(df_timing, state_col="Behavioral_State", animal_col="Animal_Name"):
+    """ITI distribution by behavioral state, and post-win vs. post-loss ITI
+    within each state. Per this pipeline's standing pseudoreplication
+    convention: session-level means first, then animal-level means, then
+    the reported summary is mean +/- SEM ACROSS ANIMALS.
+    """
+    d = df_timing.sort_values([animal_col, "Session_ID", "Trial"]).copy()
+    d["Prev_Outcome_Binary"] = d.groupby("Session_ID")["Outcome_Binary"].shift(1)
+
+    session_state = (
+        d.groupby([animal_col, "Session_ID", state_col])["ITI"].mean().reset_index()
+    )
+    animal_state = session_state.groupby([animal_col, state_col])["ITI"].mean().reset_index()
+    state_summary = animal_state.groupby(state_col)["ITI"].agg(
+        mean="mean",
+        sem=lambda x: x.std(ddof=1) / np.sqrt(len(x)) if len(x) > 1 else np.nan,
+        n="count",
+    ).reset_index()
+
+    d_valid = d.dropna(subset=["Prev_Outcome_Binary"])
+    session_winloss = (
+        d_valid.groupby([animal_col, "Session_ID", state_col, "Prev_Outcome_Binary"])["ITI"]
+        .mean().reset_index()
+    )
+    animal_winloss = (
+        session_winloss.groupby([animal_col, state_col, "Prev_Outcome_Binary"])["ITI"]
+        .mean().unstack("Prev_Outcome_Binary").rename(columns={0.0: "post_loss", 1.0: "post_win"})
+        .reset_index()
+    )
+    winloss_summary_rows = []
+    for state, sdf in animal_winloss.groupby(state_col):
+        sdf = sdf.dropna(subset=["post_win", "post_loss"])
+        if len(sdf) > 1:
+            stat, p = scipy_stats.wilcoxon(sdf["post_win"], sdf["post_loss"])
+        else:
+            stat, p = np.nan, np.nan
+        winloss_summary_rows.append({
+            state_col: state,
+            "post_win_mean": float(sdf["post_win"].mean()) if len(sdf) else np.nan,
+            "post_loss_mean": float(sdf["post_loss"].mean()) if len(sdf) else np.nan,
+            "n_animals": int(len(sdf)),
+            "wilcoxon_stat": float(stat) if pd.notna(stat) else None,
+            "wilcoxon_p": float(p) if pd.notna(p) else None,
+        })
+
+    return {
+        "state_summary": state_summary,
+        "animal_state": animal_state,
+        "post_win_vs_post_loss_by_state": pd.DataFrame(winloss_summary_rows),
+        "animal_winloss_by_state": animal_winloss,
+    }
+
+
+def iti_preceding_transitions(df_timing, state_col="Behavioral_State", animal_col="Animal_Name"):
+    """ITI on trials immediately preceding a behavioral-state transition
+    (current trial's state differs from the previous trial's) vs. ITI on
+    trials that stay within the same state as the previous trial. Same
+    per-animal-then-across-animals summary convention as `iti_by_state`.
+    """
+    d = df_timing.sort_values([animal_col, "Session_ID", "Trial"]).copy()
+    d["Prev_State"] = d.groupby("Session_ID")[state_col].shift(1)
+    d = d.dropna(subset=["Prev_State"])
+    d["Is_State_Transition"] = d[state_col] != d["Prev_State"]
+
+    session_level = (
+        d.groupby([animal_col, "Session_ID", "Is_State_Transition"])["ITI"].mean().reset_index()
+    )
+    animal_level = (
+        session_level.groupby([animal_col, "Is_State_Transition"])["ITI"]
+        .mean().unstack("Is_State_Transition").rename(columns={True: "preceding_transition", False: "within_state"})
+        .dropna()
+    )
+    if animal_level.shape[0] > 1:
+        stat, p = scipy_stats.wilcoxon(animal_level["preceding_transition"], animal_level["within_state"])
+    else:
+        stat, p = np.nan, np.nan
+
+    return {
+        "session_level": session_level,
+        "animal_level": animal_level.reset_index(),
+        "preceding_transition_mean": float(animal_level["preceding_transition"].mean()),
+        "within_state_mean": float(animal_level["within_state"].mean()),
+        "n_animals": int(animal_level.shape[0]),
+        "wilcoxon_stat": float(stat) if pd.notna(stat) else None,
+        "wilcoxon_p": float(p) if pd.notna(p) else None,
+    }

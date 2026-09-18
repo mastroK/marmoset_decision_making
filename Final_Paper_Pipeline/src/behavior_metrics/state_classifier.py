@@ -382,3 +382,77 @@ STATES_V7_ALL = [
 STATES_V7_NON_ADAPTING = [
     "Exploit", "Directed Exploration", "Random Exploration", "Left Bias", "Right Bias",
 ]
+
+
+# ---------------------------------------------------------------------------
+# Reviewer-response addition (RA1_exploration_states.ipynb, R1-C1/R2-1/R1-s):
+# the reordered Directed-before-Random variant, provided as its own function
+# (not a config flag on classify_state_v7) so both orderings can be run
+# side by side and cross-tabulated without touching the taxonomy actually
+# used by Fig 7/Fig 8. Per this module's own docstring above ("STATUS ...
+# REVISED"), this is the literal one-line swap described there -- kept here
+# rather than re-derived, so RA1's reclassification-impact analysis is
+# comparing against the exact alternative this pipeline already considered
+# and rejected, not a fresh reimplementation of it.
+# ---------------------------------------------------------------------------
+
+def classify_state_v7_reordered(row, adaptation_labels, config):
+    """Same as `classify_state_v7`, except the Directed Exploration check
+    is evaluated BEFORE the Random Exploration check (the ordering
+    REVIEWER_AUDIT.md Audit 1/5 originally recommended). Everything else
+    (Adapting pre-pass, Bias branch, thresholds) is identical."""
+    label = adaptation_labels.get(row.name)
+    if isinstance(label, str):
+        return label
+
+    acc = row["Rolling_Accuracy"]
+    dev = row["Choice_Deviation"]
+    switch_rate = row["Rolling_Switch_Rate"]
+
+    if pd.isna(acc) or pd.isna(dev):
+        return "Unknown"
+
+    if dev > config["bias_deviation_threshold"]:
+        if row["High_Prob_Is_Right"]:
+            return "Left Bias" if row["Rolling_PRight"] < config["bias_prright_threshold_low"] else "Right Bias"
+        else:
+            return "Right Bias" if row["Rolling_PRight"] > config["bias_prright_threshold_high"] else "Left Bias"
+
+    # Reordered: Directed Exploration checked BEFORE Random Exploration.
+    if switch_rate >= config["directed_exploration_switch_threshold"] and acc <= config["directed_exploration_accuracy_threshold"]:
+        return "Directed Exploration"
+    if acc < config["random_exploration_accuracy_threshold"]:
+        return "Random Exploration"
+
+    return "Exploit"
+
+
+def reclassification_crosstab(df, col_a, col_b):
+    """Generic before/after reclassification-impact summary between two
+    state-label columns on the same dataframe (e.g. `Behavioral_State`
+    from `classify_state_v7` vs. `classify_state_v7_reordered`).
+    Generalizes the one-off `audit_scratch/reclassification_impact.py`
+    script (REVIEWER_AUDIT.md Audit 5) into reusable src code, so it can be
+    re-run on the corrected (reward-based Rolling_Accuracy) classification
+    rather than only the original audit's pre-fix numbers.
+
+    Returns (crosstab_df, moved_pct, per_state_moved_pct):
+      - crosstab_df: full col_a x col_b contingency table.
+      - moved_pct: % of all trials whose label differs between col_a/col_b.
+      - per_state_moved_pct: for each col_a state, % of its trials that
+        changed label under col_b (e.g. "99.86% of Random Exploration
+        trials moved to Directed Exploration").
+    """
+    crosstab = pd.crosstab(df[col_a], df[col_b])
+    moved = df[col_a] != df[col_b]
+    moved_pct = float(moved.mean() * 100)
+
+    per_state = {}
+    for state, sdf in df.groupby(col_a, observed=True):
+        state_moved = (sdf[col_a] != sdf[col_b]).mean()
+        per_state[state] = {
+            "n_trials": int(len(sdf)),
+            "pct_moved": float(state_moved * 100),
+            "destination_counts": sdf.loc[sdf[col_a] != sdf[col_b], col_b].value_counts().to_dict(),
+        }
+    return crosstab, moved_pct, per_state

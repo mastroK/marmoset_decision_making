@@ -1,0 +1,472 @@
+{
+  "_stage": "RA5 -- choice-history-conditioned switching (Fig 2e extension) + signed-deviation ablation (Fig 6/Supp Fig 4)",
+  "figures": {
+    "choice_history_variance": {
+      "path": "../../outputs/figures/reviewer_analyses/RA5/RA5_choice_history_variance.svg",
+      "tag": "LETTER-ONLY"
+    },
+    "ablation_ari_comparison": {
+      "path": "../../outputs/figures/reviewer_analyses/RA5/supp_candidates/RA5_ablation_ari_comparison.svg",
+      "tag": "PAPER"
+    },
+    "mechanism_crosstab": {
+      "path": "../../outputs/figures/reviewer_analyses/RA5/supp_candidates/RA5_mechanism_crosstab.svg",
+      "tag": "PAPER"
+    }
+  },
+  "part1_n_trials": 11484,
+  "part1_n_sessions": 53,
+  "part1_reward_history_only": {
+    "111": {
+      "p_switch": 0.11557021406596345,
+      "sem": 0.015335454363458645,
+      "n_animals": 6,
+      "n_trials": 6148
+    },
+    "011": {
+      "p_switch": 0.16394962022839263,
+      "sem": 0.03496511677446026,
+      "n_animals": 6,
+      "n_trials": 949
+    },
+    "001": {
+      "p_switch": 0.2015526104131143,
+      "sem": 0.043194400537915845,
+      "n_animals": 6,
+      "n_trials": 780
+    },
+    "101": {
+      "p_switch": 0.21959116210905408,
+      "sem": 0.04653500389265846,
+      "n_animals": 6,
+      "n_trials": 427
+    },
+    "110": {
+      "p_switch": 0.35199186622806056,
+      "sem": 0.042098926575675585,
+      "n_animals": 6,
+      "n_trials": 957
+    },
+    "010": {
+      "p_switch": 0.35387692327347503,
+      "sem": 0.0381269202421509,
+      "n_animals": 6,
+      "n_trials": 266
+    },
+    "100": {
+      "p_switch": 0.4305767054296466,
+      "sem": 0.027039340605147167,
+      "n_animals": 6,
+      "n_trials": 793
+    },
+    "000": {
+      "p_switch": 0.5086144474249116,
+      "sem": 0.05383805320239945,
+      "n_animals": 6,
+      "n_trials": 1005
+    }
+  },
+  "part1_choice_and_reward_joint": [
+    {
+      "choice_reward_code": "001|101",
+      "decision_seq": "001",
+      "reward_seq": "101",
+      "p_switch": 0.0,
+      "sem": NaN,
+      "n_animals": 1,
+      "n_trials": 2
+    },
+    {
+      "choice_reward_code": "111|111",
+      "decision_seq": "111",
+      "reward_seq": "111",
+      "p_switch": 0.11557021406596345,
+      "sem": 0.015335454363458645,
+      "n_animals": 6,
+      "n_trials": 6148
+    },
+    {
+      "choice_reward_code": "011|011",
+      "decision_seq": "011",
+      "reward_seq": "011",
+      "p_switch": 0.1608052102905044,
+      "sem": 0.03266184283607745,
+      "n_animals": 6,
+      "n_trials": 946
+    },
+    {
+      "choice_reward_code": "001|001",
+      "decision_seq": "001",
+      "reward_seq": "001",
+      "p_switch": 0.1939951517686991,
+      "sem": 0.036204339083279836,
+      "n_animals": 6,
+      "n_trials": 773
+    },
+    {
+      "choice_reward_code": "101|101",
+      "decision_seq": "101",
+      "reward_seq": "101",
+      "p_switch": 0.21537660272208092,
+      "sem": 0.042854422964758276,
+      "n_animals": 6,
+      "n_trials": 420
+    },
+    {
+      "choice_reward_code": "010|010",
+      "decision_seq": "010",
+      "reward_seq": "010",
+      "p_switch": 0.3429621623587141,
+      "sem": 0.028580364921450916,
+      "n_animals": 6,
+      "n_trials": 257
+    },
+    {
+      "choice_reward_code": "110|110",
+      "decision_seq": "110",
+      "reward_seq": "110",
+      "p_switch": 0.34969902632460115,
+      "sem": 0.04056958559451174,
+      "n_animals": 6,
+      "n_trials": 954
+    },
+    {
+      "choice_reward_code": "100|100",
+      "decision_seq": "100",
+      "reward_seq": "100",
+      "p_switch": 0.4263661791138571,
+      "sem": 0.02445908457411865,
+      "n_animals": 6,
+      "n_trials": 788
+    },
+    {
+      "choice_reward_code": "000|000",
+      "decision_seq": "000",
+      "reward_seq": "000",
+      "p_switch": 0.5086144474249116,
+      "sem": 0.05383805320239945,
+      "n_animals": 6,
+      "n_trials": 1005
+    },
+    {
+      "choice_reward_code": "000|001",
+      "decision_seq": "000",
+      "reward_seq": "001",
+      "p_switch": 1.0,
+      "sem": NaN,
+      "n_animals": 1,
+      "n_trials": 7
+    },
+    {
+      "choice_reward_code": "000|010",
+      "decision_seq": "000",
+      "reward_seq": "010",
+      "p_switch": 1.0,
+      "sem": NaN,
+      "n_animals": 1,
+      "n_trials": 9
+    },
+    {
+      "choice_reward_code": "000|011",
+      "decision_seq": "000",
+      "reward_seq": "011",
+      "p_switch": 1.0,
+      "sem": NaN,
+      "n_animals": 1,
+      "n_trials": 3
+    },
+    {
+      "choice_reward_code": "000|100",
+      "decision_seq": "000",
+      "reward_seq": "100",
+      "p_switch": 1.0,
+      "sem": NaN,
+      "n_animals": 1,
+      "n_trials": 5
+    },
+    {
+      "choice_reward_code": "000|101",
+      "decision_seq": "000",
+      "reward_seq": "101",
+      "p_switch": 1.0,
+      "sem": NaN,
+      "n_animals": 1,
+      "n_trials": 5
+    },
+    {
+      "choice_reward_code": "000|110",
+      "decision_seq": "000",
+      "reward_seq": "110",
+      "p_switch": 1.0,
+      "sem": NaN,
+      "n_animals": 1,
+      "n_trials": 3
+    }
+  ],
+  "part1_choice_history_variance_given_reward_history": [
+    {
+      "reward_seq": "101",
+      "n_choice_codes": 3,
+      "p_switch_min": 0.0,
+      "p_switch_max": 1.0,
+      "p_switch_range": 1.0,
+      "p_switch_sd_across_choice_codes": 0.42973130578641144
+    },
+    {
+      "reward_seq": "011",
+      "n_choice_codes": 2,
+      "p_switch_min": 0.1608052102905044,
+      "p_switch_max": 1.0,
+      "p_switch_range": 0.8391947897094956,
+      "p_switch_sd_across_choice_codes": 0.4195973948547478
+    },
+    {
+      "reward_seq": "001",
+      "n_choice_codes": 2,
+      "p_switch_min": 0.1939951517686991,
+      "p_switch_max": 1.0,
+      "p_switch_range": 0.8060048482313009,
+      "p_switch_sd_across_choice_codes": 0.40300242411565046
+    },
+    {
+      "reward_seq": "010",
+      "n_choice_codes": 2,
+      "p_switch_min": 0.3429621623587141,
+      "p_switch_max": 1.0,
+      "p_switch_range": 0.657037837641286,
+      "p_switch_sd_across_choice_codes": 0.32851891882064294
+    },
+    {
+      "reward_seq": "110",
+      "n_choice_codes": 2,
+      "p_switch_min": 0.34969902632460115,
+      "p_switch_max": 1.0,
+      "p_switch_range": 0.6503009736753989,
+      "p_switch_sd_across_choice_codes": 0.3251504868376994
+    },
+    {
+      "reward_seq": "100",
+      "n_choice_codes": 2,
+      "p_switch_min": 0.4263661791138571,
+      "p_switch_max": 1.0,
+      "p_switch_range": 0.5736338208861429,
+      "p_switch_sd_across_choice_codes": 0.28681691044307145
+    },
+    {
+      "reward_seq": "000",
+      "n_choice_codes": 1,
+      "p_switch_min": 0.5086144474249116,
+      "p_switch_max": 0.5086144474249116,
+      "p_switch_range": 0.0,
+      "p_switch_sd_across_choice_codes": 0.0
+    },
+    {
+      "reward_seq": "111",
+      "n_choice_codes": 1,
+      "p_switch_min": 0.11557021406596345,
+      "p_switch_max": 0.11557021406596345,
+      "p_switch_range": 0.0,
+      "p_switch_sd_across_choice_codes": 0.0
+    }
+  ],
+  "part2_n_trials": 36673,
+  "part2_ablation": {
+    "features_full": [
+      "Signed_Deviation",
+      "Choice_Deviation",
+      "Rolling_Accuracy",
+      "Rolling_Switch_Rate"
+    ],
+    "features_no_signed_deviation": [
+      "Choice_Deviation",
+      "Rolling_Accuracy",
+      "Rolling_Switch_Rate"
+    ],
+    "kmeans_ari_test_full": 0.8512892780043468,
+    "kmeans_ari_test_no_signed_deviation": 0.4514894384552576,
+    "hmm_ari_test_full": 0.471551313289314,
+    "hmm_ari_test_no_signed_deviation": 0.24235703516321808
+  },
+  "part2_ablation_no_choice_deviation": {
+    "features_no_choice_deviation": [
+      "Signed_Deviation",
+      "Rolling_Accuracy",
+      "Rolling_Switch_Rate"
+    ],
+    "kmeans_ari_test_full": 0.8512892780043468,
+    "kmeans_ari_test_no_choice_deviation": 0.6974120911227444,
+    "hmm_ari_test_full": 0.471551313289314,
+    "hmm_ari_test_no_choice_deviation": 0.2783998653812102,
+    "bias_recall_no_choice_deviation": {
+      "Left Bias": 0.9088471849865952,
+      "Right Bias": 0.9540942928039702
+    }
+  },
+  "part2_mechanism_diagnostic": {
+    "crosstab_no_signed_deviation": {
+      "Engaged": {
+        "Engaged": 2567,
+        "Exploration": 71,
+        "Left Bias": 2,
+        "Right Bias": 1
+      },
+      "Exploration": {
+        "Engaged": 0,
+        "Exploration": 1257,
+        "Left Bias": 162,
+        "Right Bias": 172
+      },
+      "Left Bias": {
+        "Engaged": 0,
+        "Exploration": 0,
+        "Left Bias": 581,
+        "Right Bias": 633
+      },
+      "Right Bias": {
+        "Engaged": 1216,
+        "Exploration": 1028,
+        "Left Bias": 1,
+        "Right Bias": 0
+      }
+    },
+    "cluster_profiles_no_signed_deviation": {
+      "Engaged": {
+        "Choice_Deviation": 0.2027,
+        "Rolling_Accuracy": 0.8252,
+        "Rolling_Switch_Rate": 0.0191
+      },
+      "Exploration": {
+        "Choice_Deviation": 0.3641,
+        "Rolling_Accuracy": 0.3432,
+        "Rolling_Switch_Rate": 0.4279
+      },
+      "Left Bias": {
+        "Choice_Deviation": 0.7332,
+        "Rolling_Accuracy": 0.4253,
+        "Rolling_Switch_Rate": 0.0883
+      },
+      "Right Bias": {
+        "Choice_Deviation": 0.117,
+        "Rolling_Accuracy": 0.632,
+        "Rolling_Switch_Rate": 0.272
+      }
+    },
+    "true_right_bias_trials_assigned_to_left_bias_cluster": 633,
+    "true_right_bias_trials_total": 806,
+    "predicted_right_bias_cluster_true_label_composition": {
+      "Engaged": 1216,
+      "Exploration": 1028,
+      "Left Bias": 1,
+      "Right Bias": 0
+    }
+  },
+  "part2_bias_recall_comparison": {
+    "Left Bias": {
+      "recall_full": 1.0,
+      "recall_no_signed_deviation": 0.7788203753351206
+    },
+    "Right Bias": {
+      "recall_full": 1.0,
+      "recall_no_signed_deviation": 0.0
+    }
+  },
+  "response_manifest": {
+    "R1-f_choice_history_conditioning": {
+      "sentence": "Conditioning P(switch) additionally on the trailing choice sequence (not just reward history, as Fig 2e itself does) gives a maximum within-reward-sequence spread across choice-history codes of 1.000 (reward_seq=101); full per-reward-sequence spread is in part1_choice_history_variance_given_reward_history.",
+      "max_range_across_choice_codes": 1.0,
+      "mean_range_across_choice_codes": 0.565771533767953
+    },
+    "R2-3_signed_deviation_ablation": {
+      "sentence": "Contrary to the premise this check was originally scoped around, removing Signed_Deviation substantially HURTS recovery: held-out ARI drops from 0.851 to 0.451 (K-Means) and 0.472 to 0.242 (HMM); Right Bias recall collapses from 1.000 to exactly 0.000 (Left Bias: 1.000 to 0.779). Mechanism (verified directly, not inferred): Signed_Deviation is the only feature carrying LEFT-vs-RIGHT direction -- Choice_Deviation is its absolute value, so it flags that bias exists but not which side. Without the signed feature, 633/806 true Right Bias trials are assigned to the Left Bias cluster (both directions merge), and the cluster Hungarian-matched to the 'Right Bias' label is actually {'Engaged': 1216, 'Exploration': 1028, 'Left Bias': 1, 'Right Bias': 0} by true label -- a non-bias cluster, not a genuine Right Bias recovery.",
+      "kmeans_ari_full": 0.8512892780043468,
+      "kmeans_ari_no_signed_deviation": 0.4514894384552576,
+      "hmm_ari_full": 0.471551313289314,
+      "hmm_ari_no_signed_deviation": 0.24235703516321808,
+      "bias_recall_comparison": {
+        "Left Bias": {
+          "recall_full": 1.0,
+          "recall_no_signed_deviation": 0.7788203753351206
+        },
+        "Right Bias": {
+          "recall_full": 1.0,
+          "recall_no_signed_deviation": 0.0
+        }
+      },
+      "mechanism": {
+        "crosstab_no_signed_deviation": {
+          "Engaged": {
+            "Engaged": 2567,
+            "Exploration": 71,
+            "Left Bias": 2,
+            "Right Bias": 1
+          },
+          "Exploration": {
+            "Engaged": 0,
+            "Exploration": 1257,
+            "Left Bias": 162,
+            "Right Bias": 172
+          },
+          "Left Bias": {
+            "Engaged": 0,
+            "Exploration": 0,
+            "Left Bias": 581,
+            "Right Bias": 633
+          },
+          "Right Bias": {
+            "Engaged": 1216,
+            "Exploration": 1028,
+            "Left Bias": 1,
+            "Right Bias": 0
+          }
+        },
+        "cluster_profiles_no_signed_deviation": {
+          "Engaged": {
+            "Choice_Deviation": 0.2027,
+            "Rolling_Accuracy": 0.8252,
+            "Rolling_Switch_Rate": 0.0191
+          },
+          "Exploration": {
+            "Choice_Deviation": 0.3641,
+            "Rolling_Accuracy": 0.3432,
+            "Rolling_Switch_Rate": 0.4279
+          },
+          "Left Bias": {
+            "Choice_Deviation": 0.7332,
+            "Rolling_Accuracy": 0.4253,
+            "Rolling_Switch_Rate": 0.0883
+          },
+          "Right Bias": {
+            "Choice_Deviation": 0.117,
+            "Rolling_Accuracy": 0.632,
+            "Rolling_Switch_Rate": 0.272
+          }
+        },
+        "true_right_bias_trials_assigned_to_left_bias_cluster": 633,
+        "true_right_bias_trials_total": 806,
+        "predicted_right_bias_cluster_true_label_composition": {
+          "Engaged": 1216,
+          "Exploration": 1028,
+          "Left Bias": 1,
+          "Right Bias": 0
+        }
+      },
+      "contradicts_original_task_premise": true,
+      "choice_deviation_redundancy_check": {
+        "sentence": "Choice_Deviation is exactly abs(Signed_Deviation), so it adds no information in PRINCIPLE once Signed_Deviation is present -- tested directly rather than assumed: dropping Choice_Deviation while keeping Signed_Deviation changes K-Means ARI from 0.851 to 0.697 (delta=-0.154) and HMM ARI from 0.472 to 0.278 (delta=-0.193), with Left/Right Bias recall at {'Left Bias': 0.9088471849865952, 'Right Bias': 0.9540942928039702} -- at least one delta is non-trivial (>= 0.05), so Choice_Deviation is NOT simply redundant in practice, despite being a deterministic function of Signed_Deviation in principle -- see the exact deltas above rather than assuming redundancy.",
+        "features_no_choice_deviation": [
+          "Signed_Deviation",
+          "Rolling_Accuracy",
+          "Rolling_Switch_Rate"
+        ],
+        "kmeans_ari_test_full": 0.8512892780043468,
+        "kmeans_ari_test_no_choice_deviation": 0.6974120911227444,
+        "hmm_ari_test_full": 0.471551313289314,
+        "hmm_ari_test_no_choice_deviation": 0.2783998653812102,
+        "bias_recall_no_choice_deviation": {
+          "Left Bias": 0.9088471849865952,
+          "Right Bias": 0.9540942928039702
+        }
+      }
+    }
+  }
+}

@@ -104,6 +104,37 @@ def load_and_classify_3way(master_csv_path, cross_species_dir, conditions, anima
     return dfs_by_condition, block_labels_by_condition
 
 
+def tag_cohort_and_session_order(df, animal_col="Animal_Name", session_col="Session_ID",
+                                   date_col="Date", filename_col="Session_Filename"):
+    """Reviewer-response addition (RA4_condition_wise_RL.ipynb, R2-5/R1-D):
+    tags each trial with `Cohort` ("2026" if its Session_Filename contains
+    '2abt', else "original") and `Session_Order` (that session's ordinal
+    position, 0-indexed, within its own animal's full chronological
+    session history) -- the cumulative-experience covariate. Applied to
+    the output of `load_and_classify_3way` (one call per condition's
+    dataframe), NOT inside that function itself, so Fig8_3cond.ipynb/
+    Fig9.ipynb's own existing calls are completely unaffected.
+
+    The '2abt' filename rule and the choice not to use a date cutoff or
+    Has_Cued_Transitions instead were verified empirically earlier this
+    session (see run_pipeline_marmoset.py's own docstring/commit history):
+    0 pre-2024 sessions contain '2abt', all 167 later 2026 sessions do,
+    and Has_Cued_Transitions is False for both cohorts so cannot
+    discriminate between them.
+    """
+    d = df.copy()
+    d["Cohort"] = np.where(
+        d[filename_col].str.lower().str.contains("2abt", na=False), "2026", "original"
+    )
+    session_dates = (
+        d[[animal_col, session_col, date_col]].drop_duplicates(subset=session_col)
+        .sort_values([animal_col, date_col])
+    )
+    session_dates["Session_Order"] = session_dates.groupby(animal_col).cumcount()
+    d = d.merge(session_dates[[session_col, "Session_Order"]], on=session_col, how="left")
+    return d
+
+
 def friedman_paired_comparison(values_by_condition, animals, conditions):
     """N-way generalization of `cross_condition.paired_animal_comparison`:
     per-animal values across `conditions` (>= 2), repeated-measures
@@ -274,3 +305,31 @@ def fit_sticky_nway(dfs_by_condition, x0, bounds, fit_sticky_qlearning, animals,
         "params_by_condition": {c: params[c].reset_index().to_dict(orient="records") for c in conditions},
         "comparison": comparison,
     }
+
+
+def paired_two_condition_comparison(values_a, values_b, animals, label_a, label_b):
+    """Reviewer-response addition (RA4_condition_wise_RL.ipynb, R2-5):
+    generic paired per-animal comparison between exactly two conditions,
+    correctly labeled by whichever `label_a`/`label_b` are passed in --
+    unlike `cross_condition.paired_animal_comparison` (hardcoded to
+    "80-20"/"100-0" key names) or `friedman_paired_comparison` (Friedman's
+    test itself requires >= 3 related samples, so it cannot be called with
+    only two conditions). Same paired t-test as
+    `cross_condition.paired_animal_comparison` -- this project's standard
+    pseudoreplication-correction pattern, one value per animal.
+    `values_a`/`values_b` are dicts or pd.Series keyed by animal name.
+    """
+    va = np.array([values_a.get(a, np.nan) if hasattr(values_a, "get") else values_a[a] for a in animals], dtype=float)
+    vb = np.array([values_b.get(a, np.nan) if hasattr(values_b, "get") else values_b[a] for a in animals], dtype=float)
+    mask = ~(np.isnan(va) | np.isnan(vb))
+    used_animals = [a for a, keep in zip(animals, mask) if keep]
+    result = {
+        "animals": list(animals), "used_animals": used_animals, "n": int(mask.sum()),
+        f"values_{label_a.replace('-', '_')}": va.tolist(), f"values_{label_b.replace('-', '_')}": vb.tolist(),
+    }
+    if mask.sum() < 2:
+        result["t"], result["p"] = None, None
+        return result
+    t, p = stats.ttest_rel(va[mask], vb[mask])
+    result["t"], result["p"] = float(t), float(p)
+    return result

@@ -1,0 +1,524 @@
+{
+  "_stage": "RA1 -- exploration-state circularity, reclassification impact, sensitivity sweep",
+  "figures": {
+    "psychometric_slope_by_state": {
+      "path": "../../outputs/figures/reviewer_analyses/RA1/supp_candidates/RA1_psychometric_slope_by_state.svg",
+      "tag": "PAPER"
+    },
+    "reclassification_crosstab": {
+      "path": "../../outputs/figures/reviewer_analyses/RA1/RA1_reclassification_crosstab.svg",
+      "tag": "LETTER-ONLY"
+    },
+    "threshold_sensitivity_sweep": {
+      "path": "../../outputs/figures/reviewer_analyses/RA1/RA1_threshold_sensitivity.svg",
+      "tag": "LETTER-ONLY"
+    }
+  },
+  "n_trials": 36673,
+  "n_sessions": 100,
+  "n_animals": 5,
+  "state_distribution": {
+    "Exploit": 14167,
+    "Directed Exploration": 8527,
+    "Adapting (slow)": 4448,
+    "Adapting (fast)": 4410,
+    "Left Bias": 1728,
+    "Random Exploration": 1625,
+    "Right Bias": 1568,
+    "Unknown": 200
+  },
+  "fitted_params_source": "outputs/values_manifests/Fig4.json:sticky_qlearning_params.per_animal",
+  "psychometric_slope_by_state": {
+    "per_animal": [
+      {
+        "Animal_Name": "Fiona",
+        "Behavioral_State": "Directed Exploration",
+        "slope": 1.5856337472486872,
+        "ci95_low": 1.3481811822116911,
+        "ci95_high": 1.8230863122856833,
+        "n_trials": 979
+      },
+      {
+        "Animal_Name": "Fiona",
+        "Behavioral_State": "Random Exploration",
+        "slope": 0.022765844560048824,
+        "ci95_low": -0.6604629509853456,
+        "ci95_high": 0.7059946401054432,
+        "n_trials": 215
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "Behavioral_State": "Directed Exploration",
+        "slope": 1.3504543901174084,
+        "ci95_low": 1.2178723602949137,
+        "ci95_high": 1.483036419939903,
+        "n_trials": 2636
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "Behavioral_State": "Random Exploration",
+        "slope": -0.1151631313531623,
+        "ci95_low": -0.5034100594718485,
+        "ci95_high": 0.2730837967655238,
+        "n_trials": 501
+      },
+      {
+        "Animal_Name": "Sonic",
+        "Behavioral_State": "Directed Exploration",
+        "slope": 1.1414247269880684,
+        "ci95_low": 0.9749559800953519,
+        "ci95_high": 1.3078934738807848,
+        "n_trials": 1455
+      },
+      {
+        "Animal_Name": "Sonic",
+        "Behavioral_State": "Random Exploration",
+        "slope": 0.3334741212368355,
+        "ci95_low": -0.12726037763173748,
+        "ci95_high": 0.7942086201054085,
+        "n_trials": 321
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "Behavioral_State": "Directed Exploration",
+        "slope": 1.3769048328875202,
+        "ci95_low": 1.2549739018822585,
+        "ci95_high": 1.4988357638927818,
+        "n_trials": 2779
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "Behavioral_State": "Random Exploration",
+        "slope": 0.7305677253876276,
+        "ci95_low": 0.2825675917546838,
+        "ci95_high": 1.1785678590205713,
+        "n_trials": 467
+      },
+      {
+        "Animal_Name": "Zazu",
+        "Behavioral_State": "Directed Exploration",
+        "slope": 1.0768175598817593,
+        "ci95_low": 0.8406141219911798,
+        "ci95_high": 1.3130209977723388,
+        "n_trials": 677
+      },
+      {
+        "Animal_Name": "Zazu",
+        "Behavioral_State": "Random Exploration",
+        "slope": 0.15543861341604515,
+        "ci95_low": -0.70571251513714,
+        "ci95_high": 1.0165897419692302,
+        "n_trials": 110
+      }
+    ],
+    "summary": [
+      {
+        "Behavioral_State": "Directed Exploration",
+        "mean_slope": 1.3062470514246887,
+        "ci95_low": 1.0542106481287568,
+        "ci95_high": 1.5582834547206206,
+        "n_animals": 5.0
+      },
+      {
+        "Behavioral_State": "Random Exploration",
+        "mean_slope": 0.22541663464947898,
+        "ci95_low": -0.18112778876750396,
+        "ci95_high": 0.6319610580664619,
+        "n_animals": 5.0
+      }
+    ],
+    "random_vs_directed_ci_comparison": {
+      "Random Exploration": {
+        "mean_slope": 0.22541663464947898,
+        "ci95": [
+          -0.18112778876750396,
+          0.6319610580664619
+        ]
+      },
+      "Directed Exploration": {
+        "mean_slope": 1.3062470514246887,
+        "ci95": [
+          1.0542106481287568,
+          1.5582834547206206
+        ]
+      },
+      "cis_non_overlapping": true
+    },
+    "paired_ttest": {
+      "t": 5.909204722037558,
+      "p": 0.004105409501771091,
+      "n": 5
+    }
+  },
+  "circularity_control": {
+    "accuracy_band": [
+      0.3,
+      0.5
+    ],
+    "n_trials_in_band_by_state": {
+      "Directed Exploration": 3767,
+      "Adapting (slow)": 1762,
+      "Adapting (fast)": 771,
+      "Right Bias": 562,
+      "Left Bias": 556,
+      "Exploit": 192,
+      "Random Exploration": 15
+    },
+    "comparison_in_band": null,
+    "per_animal_in_band": [
+      {
+        "Animal_Name": "Fiona",
+        "Behavioral_State": "Directed Exploration",
+        "slope": 1.5219928288380171,
+        "ci95_low": 1.1546243247277297,
+        "ci95_high": 1.8893613329483046,
+        "n_trials": 441
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "Behavioral_State": "Directed Exploration",
+        "slope": 0.9730036452911134,
+        "ci95_low": 0.7797219777185598,
+        "ci95_high": 1.166285312863667,
+        "n_trials": 1208
+      },
+      {
+        "Animal_Name": "Sonic",
+        "Behavioral_State": "Directed Exploration",
+        "slope": 0.8283184178542408,
+        "ci95_low": 0.5792885583389962,
+        "ci95_high": 1.0773482773694854,
+        "n_trials": 658
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "Behavioral_State": "Directed Exploration",
+        "slope": 1.2073950505448225,
+        "ci95_low": 1.0096523166159883,
+        "ci95_high": 1.4051377844736568,
+        "n_trials": 1175
+      },
+      {
+        "Animal_Name": "Zazu",
+        "Behavioral_State": "Directed Exploration",
+        "slope": 1.006679514763165,
+        "ci95_low": 0.6229978894305171,
+        "ci95_high": 1.3903611400958131,
+        "n_trials": 285
+      }
+    ],
+    "summary_in_band": [
+      {
+        "Behavioral_State": "Directed Exploration",
+        "mean_slope": 1.107477891458272,
+        "ci95_low": 0.7743162099147678,
+        "ci95_high": 1.440639573001776,
+        "n_animals": 5.0
+      }
+    ]
+  },
+  "reclassification_impact": {
+    "crosstab": {
+      "Adapting (fast)": {
+        "Adapting (fast)": 4410,
+        "Adapting (slow)": 0,
+        "Directed Exploration": 0,
+        "Exploit": 0,
+        "Left Bias": 0,
+        "Random Exploration": 0,
+        "Right Bias": 0,
+        "Unknown": 0
+      },
+      "Adapting (slow)": {
+        "Adapting (fast)": 0,
+        "Adapting (slow)": 4448,
+        "Directed Exploration": 0,
+        "Exploit": 0,
+        "Left Bias": 0,
+        "Random Exploration": 0,
+        "Right Bias": 0,
+        "Unknown": 0
+      },
+      "Directed Exploration": {
+        "Adapting (fast)": 0,
+        "Adapting (slow)": 0,
+        "Directed Exploration": 8526,
+        "Exploit": 0,
+        "Left Bias": 0,
+        "Random Exploration": 1608,
+        "Right Bias": 0,
+        "Unknown": 0
+      },
+      "Exploit": {
+        "Adapting (fast)": 0,
+        "Adapting (slow)": 0,
+        "Directed Exploration": 0,
+        "Exploit": 14166,
+        "Left Bias": 0,
+        "Random Exploration": 0,
+        "Right Bias": 0,
+        "Unknown": 0
+      },
+      "Left Bias": {
+        "Adapting (fast)": 0,
+        "Adapting (slow)": 0,
+        "Directed Exploration": 0,
+        "Exploit": 0,
+        "Left Bias": 1722,
+        "Random Exploration": 0,
+        "Right Bias": 0,
+        "Unknown": 0
+      },
+      "Random Exploration": {
+        "Adapting (fast)": 0,
+        "Adapting (slow)": 0,
+        "Directed Exploration": 0,
+        "Exploit": 0,
+        "Left Bias": 0,
+        "Random Exploration": 6,
+        "Right Bias": 0,
+        "Unknown": 0
+      },
+      "Right Bias": {
+        "Adapting (fast)": 0,
+        "Adapting (slow)": 0,
+        "Directed Exploration": 0,
+        "Exploit": 0,
+        "Left Bias": 0,
+        "Random Exploration": 0,
+        "Right Bias": 1567,
+        "Unknown": 0
+      },
+      "Unknown": {
+        "Adapting (fast)": 0,
+        "Adapting (slow)": 0,
+        "Directed Exploration": 0,
+        "Exploit": 0,
+        "Left Bias": 0,
+        "Random Exploration": 0,
+        "Right Bias": 0,
+        "Unknown": 100
+      }
+    },
+    "pct_all_trials_moved": 4.399091729816978,
+    "per_state_moved": {
+      "Adapting (fast)": {
+        "n_trials": 4410,
+        "pct_moved": 0.0,
+        "destination_counts": {}
+      },
+      "Adapting (slow)": {
+        "n_trials": 4448,
+        "pct_moved": 0.0,
+        "destination_counts": {}
+      },
+      "Directed Exploration": {
+        "n_trials": 8526,
+        "pct_moved": 0.0,
+        "destination_counts": {}
+      },
+      "Exploit": {
+        "n_trials": 14166,
+        "pct_moved": 0.0,
+        "destination_counts": {}
+      },
+      "Left Bias": {
+        "n_trials": 1722,
+        "pct_moved": 0.0,
+        "destination_counts": {}
+      },
+      "Random Exploration": {
+        "n_trials": 1614,
+        "pct_moved": 99.62825278810409,
+        "destination_counts": {
+          "Directed Exploration": 1608
+        }
+      },
+      "Right Bias": {
+        "n_trials": 1567,
+        "pct_moved": 0.0,
+        "destination_counts": {}
+      },
+      "Unknown": {
+        "n_trials": 100,
+        "pct_moved": 0.0,
+        "destination_counts": {}
+      }
+    }
+  },
+  "downstream_qalignment_check": {
+    "original_ordering": [
+      {
+        "Behavioral_State": "Directed Exploration",
+        "mean": 0.350599852570579,
+        "sem": 0.018479592255557602,
+        "n": 5
+      },
+      {
+        "Behavioral_State": "Random Exploration",
+        "mean": 0.06945683841108814,
+        "sem": 0.05557074190686417,
+        "n": 5
+      }
+    ],
+    "reordered_ordering": [
+      {
+        "Behavioral_State": "Directed Exploration",
+        "mean": 0.3024696063097639,
+        "sem": 0.01174750353302614,
+        "n": 5
+      }
+    ]
+  },
+  "threshold_sensitivity_sweep": {
+    "baseline": {
+      "Random Exploration": 0.044310528181495924,
+      "Directed Exploration": 0.23251438387914813,
+      "pct_default_exploit": 0.3863060016906171,
+      "pct_explicit_criteria": 0.6082403948408912
+    },
+    "random_exploration_accuracy_threshold__minus25pct": {
+      "perturbed_value": 0.30000000000000004,
+      "base_value": 0.4,
+      "Random Exploration": 0.043819703869331664,
+      "Directed Exploration": 0.23289613612194257,
+      "pct_default_exploit": 0.3864150737599869,
+      "pct_explicit_criteria": 0.6081313227715213
+    },
+    "random_exploration_accuracy_threshold__plus25pct": {
+      "perturbed_value": 0.5,
+      "base_value": 0.4,
+      "Random Exploration": 0.15152837237204483,
+      "Directed Exploration": 0.13042292694898153,
+      "pct_default_exploit": 0.3811796144302348,
+      "pct_explicit_criteria": 0.6133667821012734
+    },
+    "directed_exploration_switch_threshold__minus25pct": {
+      "perturbed_value": 0.15000000000000002,
+      "base_value": 0.2,
+      "Random Exploration": 0.044310528181495924,
+      "Directed Exploration": 0.23251438387914813,
+      "pct_default_exploit": 0.3863060016906171,
+      "pct_explicit_criteria": 0.6082403948408912
+    },
+    "directed_exploration_switch_threshold__plus25pct": {
+      "perturbed_value": 0.25,
+      "base_value": 0.2,
+      "Random Exploration": 0.044310528181495924,
+      "Directed Exploration": 0.11837046328361465,
+      "pct_default_exploit": 0.5004499222861506,
+      "pct_explicit_criteria": 0.4940964742453576
+    },
+    "directed_exploration_accuracy_threshold__minus25pct": {
+      "perturbed_value": 0.44999999999999996,
+      "base_value": 0.6,
+      "Random Exploration": 0.044310528181495924,
+      "Directed Exploration": 0.10209145693016661,
+      "pct_default_exploit": 0.5167289286395986,
+      "pct_explicit_criteria": 0.47781746789190954
+    },
+    "directed_exploration_accuracy_threshold__plus25pct": {
+      "perturbed_value": 0.75,
+      "base_value": 0.6,
+      "Random Exploration": 0.044310528181495924,
+      "Directed Exploration": 0.23338696043410684,
+      "pct_default_exploit": 0.38543342513565837,
+      "pct_explicit_criteria": 0.6091129713958499
+    },
+    "bias_deviation_threshold__minus25pct": {
+      "perturbed_value": 0.30000000000000004,
+      "base_value": 0.4,
+      "Random Exploration": 0.016987974804351977,
+      "Directed Exploration": 0.17669675237913451,
+      "pct_default_exploit": 0.38259755133204265,
+      "pct_explicit_criteria": 0.6119488451994656
+    },
+    "bias_deviation_threshold__plus25pct": {
+      "perturbed_value": 0.5,
+      "base_value": 0.4,
+      "Random Exploration": 0.04463774438960543,
+      "Directed Exploration": 0.23251438387914813,
+      "pct_default_exploit": 0.3864150737599869,
+      "pct_explicit_criteria": 0.6081313227715213
+    }
+  },
+  "rolling_window_sensitivity_sweep": {
+    "window_3": {
+      "Random Exploration": 0.08774847980803316,
+      "Directed Exploration": 0.0,
+      "pct_default_exploit": 0.4757178305565402,
+      "pct_explicit_criteria": 0.5188285659749681
+    },
+    "window_5": {
+      "Random Exploration": 0.044310528181495924,
+      "Directed Exploration": 0.23251438387914813,
+      "pct_default_exploit": 0.3863060016906171,
+      "pct_explicit_criteria": 0.6082403948408912
+    },
+    "window_7": {
+      "Random Exploration": 0.048128050609440184,
+      "Directed Exploration": 0.1432934311346222,
+      "pct_default_exploit": 0.4605022768794481,
+      "pct_explicit_criteria": 0.5340441196520601
+    },
+    "window_10": {
+      "Random Exploration": 0.03520301038911461,
+      "Directed Exploration": 0.21612630545633027,
+      "pct_default_exploit": 0.39909470182423035,
+      "pct_explicit_criteria": 0.5954516947072779
+    }
+  },
+  "response_manifest": {
+    "R1-C1_R2-1_psychometric_slope": {
+      "sentence": "Within the manuscript's canonical 7-state taxonomy, the choice-vs-\u0394Q psychometric slope was 0.225 (95% CI [-0.181, 0.632], n=5 animals) for Random Exploration trials, versus 1.306 (95% CI [1.054, 1.558], n=5 animals) for Directed Exploration trials; the two 95% CIs are non-overlapping.",
+      "test": "per-animal logistic regression, Choice_Binary ~ Q_diff, within state",
+      "random_exploration": {
+        "mean_slope": 0.22541663464947898,
+        "ci95": [
+          -0.18112778876750396,
+          0.6319610580664619
+        ],
+        "n_animals": 5
+      },
+      "directed_exploration": {
+        "mean_slope": 1.3062470514246887,
+        "ci95": [
+          1.0542106481287568,
+          1.5582834547206206
+        ],
+        "n_animals": 5
+      },
+      "cis_non_overlapping": true
+    },
+    "R1-C1_circularity_control": {
+      "sentence": "The circularity control could not be fit: only 15 Random Exploration trials (pooled across all 5 animals) fall within the shared Rolling_Accuracy band (0.3, 0.5), below the 20-trial minimum for even one animal's logistic fit -- reported as an honest limitation, not evidence for or against circularity.",
+      "n_trials_in_band_by_state": {
+        "Directed Exploration": 3767,
+        "Adapting (slow)": 1762,
+        "Adapting (fast)": 771,
+        "Right Bias": 562,
+        "Left Bias": 556,
+        "Exploit": 192,
+        "Random Exploration": 15
+      },
+      "inconclusive": true
+    },
+    "R2-5_R1-s_reclassification_impact": {
+      "sentence": "4.40% of all trials changed state label when Directed Exploration was checked before Random Exploration; 99.63% of trials originally labeled Random Exploration moved under the reordered rule, predominantly to Directed Exploration.",
+      "pct_all_trials_moved": 4.399091729816978,
+      "pct_random_exploration_moved": 99.62825278810409,
+      "destination_of_moved_random_exploration_trials": {
+        "Directed Exploration": 1608
+      }
+    },
+    "R1-s_threshold_and_window_sensitivity": {
+      "sentence": "State occupancy under +/-25% one-at-a-time threshold perturbations and rolling-window sizes 3/5/7/10 is reported in full in threshold_sensitivity_sweep / rolling_window_sensitivity_sweep above; see those keys for exact occupancy at each perturbation.",
+      "baseline_occupancy": {
+        "Random Exploration": 0.044310528181495924,
+        "Directed Exploration": 0.23251438387914813,
+        "pct_default_exploit": 0.3863060016906171,
+        "pct_explicit_criteria": 0.6082403948408912
+      }
+    }
+  }
+}

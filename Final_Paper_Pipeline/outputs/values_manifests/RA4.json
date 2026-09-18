@@ -1,0 +1,1039 @@
+{
+  "_stage": "RA4 -- condition-wise RL, parameter recovery, predictability gradient",
+  "conditions": [
+    "80-20",
+    "90-10",
+    "100-0"
+  ],
+  "animals": [
+    "Fiona",
+    "Knuckles",
+    "Sonic",
+    "Sunflower",
+    "Zazu"
+  ],
+  "figures": {
+    "primary_8020_vs_9010_alpha": {
+      "path": "../../outputs/figures/reviewer_analyses/RA4/RA4_primary_8020_vs_9010_alpha.svg",
+      "tag": "LETTER-ONLY"
+    },
+    "parameter_recovery": {
+      "path": "../../outputs/figures/reviewer_analyses/RA4/supp_candidates/RA4_parameter_recovery.svg",
+      "tag": "PAPER"
+    },
+    "predictability_gradient_dwell_time": {
+      "path": "../../outputs/figures/reviewer_analyses/RA4/supp_candidates/RA4_predictability_gradient_dwell_time.svg",
+      "tag": "PAPER"
+    }
+  },
+  "n_trials_80_20": 66178,
+  "n_trials_90_10": 37952,
+  "n_trials_100_0": 26322,
+  "cohort_breakdown_by_condition": {
+    "80-20": {
+      "Fiona": {
+        "2026": 6467,
+        "original": 5256
+      },
+      "Knuckles": {
+        "2026": 9085,
+        "original": 11050
+      },
+      "Sonic": {
+        "2026": 3023,
+        "original": 7171
+      },
+      "Sunflower": {
+        "2026": 5383,
+        "original": 9924
+      },
+      "Zazu": {
+        "2026": 5484,
+        "original": 3335
+      }
+    },
+    "90-10": {
+      "Fiona": {
+        "2026": 5101,
+        "original": 7146
+      },
+      "Knuckles": {
+        "2026": 7542,
+        "original": 565
+      },
+      "Sonic": {
+        "2026": 3486,
+        "original": 0
+      },
+      "Sunflower": {
+        "2026": 4434,
+        "original": 342
+      },
+      "Zazu": {
+        "2026": 4471,
+        "original": 4865
+      }
+    },
+    "100-0": {
+      "Fiona": {
+        "2026": 3060,
+        "original": 2403
+      },
+      "Knuckles": {
+        "2026": 0,
+        "original": 6506
+      },
+      "Sonic": {
+        "2026": 2023,
+        "original": 1623
+      },
+      "Sunflower": {
+        "2026": 0,
+        "original": 3755
+      },
+      "Zazu": {
+        "2026": 0,
+        "original": 6952
+      }
+    }
+  },
+  "condition_wise_rl": {
+    "animals": [
+      "Fiona",
+      "Knuckles",
+      "Sonic",
+      "Sunflower",
+      "Zazu"
+    ],
+    "params_by_condition": {
+      "80-20": [
+        {
+          "animal": "Fiona",
+          "alpha": 0.6895727639260866,
+          "beta": 0.8445797536291796,
+          "kappa": 1.6781949167547858,
+          "nll": 4622.225037608902
+        },
+        {
+          "animal": "Knuckles",
+          "alpha": 0.6706319921079757,
+          "beta": 1.0190941100080837,
+          "kappa": 0.9650510742109475,
+          "nll": 10517.74578986955
+        },
+        {
+          "animal": "Sonic",
+          "alpha": 0.8115793339423446,
+          "beta": 0.8941266513498964,
+          "kappa": 1.5167504770430018,
+          "nll": 4235.05321566247
+        },
+        {
+          "animal": "Sunflower",
+          "alpha": 0.9279074825981038,
+          "beta": 1.3918553991414946,
+          "kappa": 0.8935436758469968,
+          "nll": 7032.921192546483
+        },
+        {
+          "animal": "Zazu",
+          "alpha": 0.8081081852091446,
+          "beta": 1.260614967137099,
+          "kappa": 1.3992187098651923,
+          "nll": 3453.5393622898127
+        }
+      ],
+      "90-10": [
+        {
+          "animal": "Fiona",
+          "alpha": 0.0001,
+          "beta": 0.001,
+          "kappa": 1.8639111847051442,
+          "nll": 4830.304959827763
+        },
+        {
+          "animal": "Knuckles",
+          "alpha": 0.8244357442542231,
+          "beta": 1.0054119620643034,
+          "kappa": 1.1056879831456718,
+          "nll": 3779.935110587288
+        },
+        {
+          "animal": "Sonic",
+          "alpha": 0.9984652623867872,
+          "beta": 0.941290746628507,
+          "kappa": 1.5030195836707017,
+          "nll": 1342.827385048245
+        },
+        {
+          "animal": "Sunflower",
+          "alpha": 0.9999,
+          "beta": 1.6698707905224341,
+          "kappa": 0.9607772943378482,
+          "nll": 1758.4232933372366
+        },
+        {
+          "animal": "Zazu",
+          "alpha": 0.8044845794838026,
+          "beta": 1.0326816960068492,
+          "kappa": 1.7271567546844873,
+          "nll": 3213.357621317359
+        }
+      ],
+      "100-0": [
+        {
+          "animal": "Fiona",
+          "alpha": 0.9999,
+          "beta": 0.9126777384675776,
+          "kappa": 1.4611759242719684,
+          "nll": 2084.066042748493
+        },
+        {
+          "animal": "Knuckles",
+          "alpha": 0.9999,
+          "beta": 1.133469322819991,
+          "kappa": 1.1897103572235117,
+          "nll": 2547.3058322458905
+        },
+        {
+          "animal": "Sonic",
+          "alpha": 0.9999,
+          "beta": 1.0747528747779738,
+          "kappa": 1.387915419166053,
+          "nll": 1331.7045982245352
+        },
+        {
+          "animal": "Sunflower",
+          "alpha": 0.9999,
+          "beta": 1.2330000308144655,
+          "kappa": 1.2950017192590058,
+          "nll": 1317.3266998416077
+        },
+        {
+          "animal": "Zazu",
+          "alpha": 0.9835142996562986,
+          "beta": 1.1821652023773335,
+          "kappa": 1.5754135493606127,
+          "nll": 2222.57416694468
+        }
+      ]
+    },
+    "comparison": {
+      "alpha": {
+        "animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "used_animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "n": 5,
+        "values_80_20": "[0.68957276 0.67063199 0.81157933 0.92790748 0.80810819]",
+        "values_90_10": "[1.00000000e-04 8.24435744e-01 9.98465262e-01 9.99900000e-01\n 8.04484579e-01]",
+        "values_100_0": "[0.9999    0.9999    0.9999    0.9999    0.9835143]",
+        "chi2": 6.631578947368419,
+        "p": 0.03630537512210584
+      },
+      "beta": {
+        "animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "used_animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "n": 5,
+        "values_80_20": "[0.84457975 1.01909411 0.89412665 1.3918554  1.26061497]",
+        "values_90_10": "[1.00000000e-03 1.00541196e+00 9.41290747e-01 1.66987079e+00\n 1.03268170e+00]",
+        "values_100_0": "[0.91267774 1.13346932 1.07475287 1.23300003 1.1821652 ]",
+        "chi2": 1.6000000000000014,
+        "p": 0.44932896411722134
+      },
+      "kappa": {
+        "animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "used_animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "n": 5,
+        "values_80_20": "[1.67819492 0.96505107 1.51675048 0.89354368 1.39921871]",
+        "values_90_10": "[1.86391118 1.10568798 1.50301958 0.96077729 1.72715675]",
+        "values_100_0": "[1.46117592 1.18971036 1.38791542 1.29500172 1.57541355]",
+        "chi2": 1.6000000000000014,
+        "p": 0.44932896411722134
+      }
+    }
+  },
+  "boundary_pinning_by_condition": {
+    "80-20": [
+      {
+        "animal": "Fiona",
+        "alpha": 0.6895727639260866,
+        "beta": 0.8445797536291796,
+        "kappa": 1.6781949167547858,
+        "nll": 4622.225037608902,
+        "alpha_boundary_pinned": false,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": false
+      },
+      {
+        "animal": "Knuckles",
+        "alpha": 0.6706319921079757,
+        "beta": 1.0190941100080837,
+        "kappa": 0.9650510742109475,
+        "nll": 10517.74578986955,
+        "alpha_boundary_pinned": false,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": false
+      },
+      {
+        "animal": "Sonic",
+        "alpha": 0.8115793339423446,
+        "beta": 0.8941266513498964,
+        "kappa": 1.5167504770430018,
+        "nll": 4235.05321566247,
+        "alpha_boundary_pinned": false,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": false
+      },
+      {
+        "animal": "Sunflower",
+        "alpha": 0.9279074825981038,
+        "beta": 1.3918553991414946,
+        "kappa": 0.8935436758469968,
+        "nll": 7032.921192546483,
+        "alpha_boundary_pinned": false,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": false
+      },
+      {
+        "animal": "Zazu",
+        "alpha": 0.8081081852091446,
+        "beta": 1.260614967137099,
+        "kappa": 1.3992187098651923,
+        "nll": 3453.5393622898127,
+        "alpha_boundary_pinned": false,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": false
+      }
+    ],
+    "90-10": [
+      {
+        "animal": "Fiona",
+        "alpha": 0.0001,
+        "beta": 0.001,
+        "kappa": 1.8639111847051442,
+        "nll": 4830.304959827763,
+        "alpha_boundary_pinned": true,
+        "beta_boundary_pinned": true,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": true
+      },
+      {
+        "animal": "Knuckles",
+        "alpha": 0.8244357442542231,
+        "beta": 1.0054119620643034,
+        "kappa": 1.1056879831456718,
+        "nll": 3779.935110587288,
+        "alpha_boundary_pinned": false,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": false
+      },
+      {
+        "animal": "Sonic",
+        "alpha": 0.9984652623867872,
+        "beta": 0.941290746628507,
+        "kappa": 1.5030195836707017,
+        "nll": 1342.827385048245,
+        "alpha_boundary_pinned": false,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": false
+      },
+      {
+        "animal": "Sunflower",
+        "alpha": 0.9999,
+        "beta": 1.6698707905224341,
+        "kappa": 0.9607772943378482,
+        "nll": 1758.4232933372366,
+        "alpha_boundary_pinned": true,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": true
+      },
+      {
+        "animal": "Zazu",
+        "alpha": 0.8044845794838026,
+        "beta": 1.0326816960068492,
+        "kappa": 1.7271567546844873,
+        "nll": 3213.357621317359,
+        "alpha_boundary_pinned": false,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": false
+      }
+    ],
+    "100-0": [
+      {
+        "animal": "Fiona",
+        "alpha": 0.9999,
+        "beta": 0.9126777384675776,
+        "kappa": 1.4611759242719684,
+        "nll": 2084.066042748493,
+        "alpha_boundary_pinned": true,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": true
+      },
+      {
+        "animal": "Knuckles",
+        "alpha": 0.9999,
+        "beta": 1.133469322819991,
+        "kappa": 1.1897103572235117,
+        "nll": 2547.3058322458905,
+        "alpha_boundary_pinned": true,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": true
+      },
+      {
+        "animal": "Sonic",
+        "alpha": 0.9999,
+        "beta": 1.0747528747779738,
+        "kappa": 1.387915419166053,
+        "nll": 1331.7045982245352,
+        "alpha_boundary_pinned": true,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": true
+      },
+      {
+        "animal": "Sunflower",
+        "alpha": 0.9999,
+        "beta": 1.2330000308144655,
+        "kappa": 1.2950017192590058,
+        "nll": 1317.3266998416077,
+        "alpha_boundary_pinned": true,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": true
+      },
+      {
+        "animal": "Zazu",
+        "alpha": 0.9835142996562986,
+        "beta": 1.1821652023773335,
+        "kappa": 1.5754135493606127,
+        "nll": 2222.57416694468,
+        "alpha_boundary_pinned": false,
+        "beta_boundary_pinned": false,
+        "kappa_boundary_pinned": false,
+        "any_boundary_pinned": false
+      }
+    ]
+  },
+  "alpha_boundary_pinning_caveat": {
+    "n_animals_alpha_pinned_any_condition": 4,
+    "animals_alpha_pinned": [
+      "Fiona",
+      "Knuckles",
+      "Sonic",
+      "Sunflower"
+    ],
+    "animals_clean": [
+      "Zazu"
+    ],
+    "alpha_friedman_excluding_pinned": {
+      "chi2": null,
+      "p": null,
+      "n": 1
+    }
+  },
+  "primary_8020_vs_9010_comparison": {
+    "alpha_all_animals": {
+      "animals": [
+        "Fiona",
+        "Knuckles",
+        "Sonic",
+        "Sunflower",
+        "Zazu"
+      ],
+      "used_animals": [
+        "Fiona",
+        "Knuckles",
+        "Sonic",
+        "Sunflower",
+        "Zazu"
+      ],
+      "n": 5,
+      "values_80_20": [
+        0.6895727639260866,
+        0.6706319921079757,
+        0.8115793339423446,
+        0.9279074825981038,
+        0.8081081852091446
+      ],
+      "values_90_10": [
+        0.0001,
+        0.8244357442542231,
+        0.9984652623867872,
+        0.9999,
+        0.8044845794838026
+      ],
+      "t": 0.34667140820168724,
+      "p": 0.7463073747553759
+    },
+    "alpha_clean_animals": {
+      "animals": [
+        "Knuckles",
+        "Sonic",
+        "Zazu"
+      ],
+      "used_animals": [
+        "Knuckles",
+        "Sonic",
+        "Zazu"
+      ],
+      "n": 3,
+      "values_80_20": [
+        0.6706319921079757,
+        0.8115793339423446,
+        0.8081081852091446
+      ],
+      "values_90_10": [
+        0.8244357442542231,
+        0.9984652623867872,
+        0.8044845794838026
+      ],
+      "t": -1.9117615340836873,
+      "p": 0.19605958938378049
+    },
+    "alpha_pinned_animals_in_these_2_conditions": [
+      "Fiona",
+      "Sunflower"
+    ],
+    "beta_all_animals": {
+      "animals": [
+        "Fiona",
+        "Knuckles",
+        "Sonic",
+        "Sunflower",
+        "Zazu"
+      ],
+      "used_animals": [
+        "Fiona",
+        "Knuckles",
+        "Sonic",
+        "Sunflower",
+        "Zazu"
+      ],
+      "n": 5,
+      "values_80_20": [
+        0.8445797536291796,
+        1.0190941100080837,
+        0.8941266513498964,
+        1.3918553991414946,
+        1.260614967137099
+      ],
+      "values_90_10": [
+        0.001,
+        1.0054119620643034,
+        0.941290746628507,
+        1.6698707905224341,
+        1.0326816960068492
+      ],
+      "t": 0.7968443771633318,
+      "p": 0.47016241385139096
+    },
+    "kappa_all_animals": {
+      "animals": [
+        "Fiona",
+        "Knuckles",
+        "Sonic",
+        "Sunflower",
+        "Zazu"
+      ],
+      "used_animals": [
+        "Fiona",
+        "Knuckles",
+        "Sonic",
+        "Sunflower",
+        "Zazu"
+      ],
+      "n": 5,
+      "values_80_20": [
+        1.6781949167547858,
+        0.9650510742109475,
+        1.5167504770430018,
+        0.8935436758469968,
+        1.3992187098651923
+      ],
+      "values_90_10": [
+        1.8639111847051442,
+        1.1056879831456718,
+        1.5030195836707017,
+        0.9607772943378482,
+        1.7271567546844873
+      ],
+      "t": -2.458138850825544,
+      "p": 0.06983103942291932
+    }
+  },
+  "parameter_recovery": {
+    "n_trials": 5000,
+    "n_seeds_per_animal": 10,
+    "summary_by_condition": [
+      {
+        "prob_condition": "100-0",
+        "abs_error_alpha_mean": 0.38151146631728267,
+        "abs_error_alpha_sem": 0.03339912415255083,
+        "abs_error_beta_mean": 0.032095021113268125,
+        "abs_error_beta_sem": 0.003638997006975964,
+        "abs_error_kappa_mean": 0.03138304057755601,
+        "abs_error_kappa_sem": 0.003482806920597829
+      },
+      {
+        "prob_condition": "80-20",
+        "abs_error_alpha_mean": 0.052836373958782185,
+        "abs_error_alpha_sem": 0.005595592626330596,
+        "abs_error_beta_mean": 0.04250689498069136,
+        "abs_error_beta_sem": 0.004697532705664576,
+        "abs_error_kappa_mean": 0.03476133070662415,
+        "abs_error_kappa_sem": 0.0032329472841288666
+      },
+      {
+        "prob_condition": "90-10",
+        "abs_error_alpha_mean": 0.07414487999784214,
+        "abs_error_alpha_sem": 0.006947847146617777,
+        "abs_error_beta_mean": 0.03931761105480795,
+        "abs_error_beta_sem": 0.004281396370782745,
+        "abs_error_kappa_mean": 0.03203418159336489,
+        "abs_error_kappa_sem": 0.003390795227581194
+      }
+    ]
+  },
+  "predictability_gradient_state_occupancy": {
+    "Exploit": {
+      "no_covariate": {
+        "coef": 1.2453296882588578,
+        "p": 2.4662706367762836e-08
+      },
+      "with_session_order_covariate": {
+        "coef": 1.2324311330475544,
+        "p": 3.7533073097172034e-06,
+        "session_order_coef": -0.0015493969436007338,
+        "session_order_p": 0.9072269581188863
+      }
+    },
+    "Directed Exploration": {
+      "no_covariate": {
+        "coef": -0.8918220373486676,
+        "p": 8.93791516882748e-07
+      },
+      "with_session_order_covariate": {
+        "coef": -0.82088942713082,
+        "p": 0.00012252006489248577,
+        "session_order_coef": 0.00852054882680539,
+        "session_order_p": 0.5071933164455731
+      }
+    },
+    "Random Exploration": {
+      "no_covariate": {
+        "coef": -0.2883146887757425,
+        "p": 4.976917302688764e-06
+      },
+      "with_session_order_covariate": {
+        "coef": -0.25266766987496775,
+        "p": 0.0006106416514967708,
+        "session_order_coef": 0.004281982069196163,
+        "session_order_p": 0.3744686996242649
+      }
+    },
+    "Left Bias": {
+      "no_covariate": {
+        "coef": -0.07392948461083118,
+        "p": 0.49034726778025617
+      },
+      "with_session_order_covariate": {
+        "coef": -0.18309326376257468,
+        "p": 0.23317414588637425,
+        "session_order_coef": -0.013112943504044197,
+        "session_order_p": 0.30828480534157787
+      }
+    },
+    "Right Bias": {
+      "no_covariate": {
+        "coef": 0.008736522476382642,
+        "p": 0.9020651343473972
+      },
+      "with_session_order_covariate": {
+        "coef": 0.024219227720808395,
+        "p": 0.8159344480745206,
+        "session_order_coef": 0.0018598095516435958,
+        "session_order_p": 0.8324627017510299
+      }
+    }
+  },
+  "predictability_gradient_wsls_pooled": [
+    {
+      "prob_condition": "100-0",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8595509413041901,
+      "lose_switch": 0.48901678570786034
+    },
+    {
+      "prob_condition": "100-0",
+      "Behavioral_State": "Exploit",
+      "win_stay": 0.9467291864783778,
+      "lose_switch": 0.3344055597013106
+    },
+    {
+      "prob_condition": "100-0",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.7571653946652113,
+      "lose_switch": 0.3438832718678072
+    },
+    {
+      "prob_condition": "100-0",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.7369824201381893,
+      "lose_switch": 0.4026460231370078
+    },
+    {
+      "prob_condition": "80-20",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.7585458381088817,
+      "lose_switch": 0.39190719507799293
+    },
+    {
+      "prob_condition": "80-20",
+      "Behavioral_State": "Exploit",
+      "win_stay": 0.9555745223479427,
+      "lose_switch": 0.06733746649354799
+    },
+    {
+      "prob_condition": "80-20",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8025030525030525,
+      "lose_switch": 0.33374660385366794
+    },
+    {
+      "prob_condition": "80-20",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.6220466450055868,
+      "lose_switch": 0.4252983036594511
+    },
+    {
+      "prob_condition": "80-20",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.7968715777872794,
+      "lose_switch": 0.3172725628006729
+    },
+    {
+      "prob_condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.7525135606517739,
+      "lose_switch": 0.4087610227376601
+    },
+    {
+      "prob_condition": "90-10",
+      "Behavioral_State": "Exploit",
+      "win_stay": 0.9578850131776784,
+      "lose_switch": 0.08530217282098325
+    },
+    {
+      "prob_condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8065218267170504,
+      "lose_switch": 0.32143331066792985
+    },
+    {
+      "prob_condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.40384615384615385,
+      "lose_switch": 0.6172161172161172
+    },
+    {
+      "prob_condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.7587088557993731,
+      "lose_switch": 0.36993200671971227
+    }
+  ],
+  "predictability_gradient_exploit_dwell_time": [
+    {
+      "prob_condition": "80-20",
+      "predictability": 0.8,
+      "exploit_stay_prob": 0.9023029489492009,
+      "mean_dwell_trials": 10.235723486474887
+    },
+    {
+      "prob_condition": "90-10",
+      "predictability": 0.9,
+      "exploit_stay_prob": 0.9333333333333333,
+      "mean_dwell_trials": 15.000000000000004
+    },
+    {
+      "prob_condition": "100-0",
+      "predictability": 1.0,
+      "exploit_stay_prob": 0.9598547790267402,
+      "mean_dwell_trials": 24.909565217391307
+    }
+  ],
+  "response_manifest": {
+    "R2-5_primary_8020_vs_9010": {
+      "sentence": "The pre-registered comparison -- 80-20 vs. 90-10, the condition pair the 90-10 cohort was collected to enable, deliberately excluding 100-0 -- shows alpha t(4)=0.347, p=0.7463 across all 5 animals; restricted to the 3 animals with no boundary-pinned alpha in either condition (Knuckles/Sonic/Zazu; Fiona and Sunflower pin at the lower/upper optimizer bound in 90-10 specifically), t(2)=-1.912, p=0.1961. beta: t=0.797, p=0.4702 (n=5, no boundary-pinning). kappa: t=-2.458, p=0.06983 (n=5, no boundary-pinning).",
+      "alpha_all_animals": {
+        "animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "used_animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "n": 5,
+        "values_80_20": [
+          0.6895727639260866,
+          0.6706319921079757,
+          0.8115793339423446,
+          0.9279074825981038,
+          0.8081081852091446
+        ],
+        "values_90_10": [
+          0.0001,
+          0.8244357442542231,
+          0.9984652623867872,
+          0.9999,
+          0.8044845794838026
+        ],
+        "t": 0.34667140820168724,
+        "p": 0.7463073747553759
+      },
+      "alpha_clean_animals": {
+        "animals": [
+          "Knuckles",
+          "Sonic",
+          "Zazu"
+        ],
+        "used_animals": [
+          "Knuckles",
+          "Sonic",
+          "Zazu"
+        ],
+        "n": 3,
+        "values_80_20": [
+          0.6706319921079757,
+          0.8115793339423446,
+          0.8081081852091446
+        ],
+        "values_90_10": [
+          0.8244357442542231,
+          0.9984652623867872,
+          0.8044845794838026
+        ],
+        "t": -1.9117615340836873,
+        "p": 0.19605958938378049
+      },
+      "beta_all_animals": {
+        "animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "used_animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "n": 5,
+        "values_80_20": [
+          0.8445797536291796,
+          1.0190941100080837,
+          0.8941266513498964,
+          1.3918553991414946,
+          1.260614967137099
+        ],
+        "values_90_10": [
+          0.001,
+          1.0054119620643034,
+          0.941290746628507,
+          1.6698707905224341,
+          1.0326816960068492
+        ],
+        "t": 0.7968443771633318,
+        "p": 0.47016241385139096
+      },
+      "kappa_all_animals": {
+        "animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "used_animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "n": 5,
+        "values_80_20": [
+          1.6781949167547858,
+          0.9650510742109475,
+          1.5167504770430018,
+          0.8935436758469968,
+          1.3992187098651923
+        ],
+        "values_90_10": [
+          1.8639111847051442,
+          1.1056879831456718,
+          1.5030195836707017,
+          0.9607772943378482,
+          1.7271567546844873
+        ],
+        "t": -2.458138850825544,
+        "p": 0.06983103942291932
+      }
+    },
+    "R2-5_why_100_0_is_excluded": {
+      "sentence": "100-0 is excluded from the primary comparison because the sticky model cannot be reliably fit on deterministic-reward data: 4/5 animals have alpha pinned at an optimizer bound in at least one condition (mostly 100-0, where 4/5 pin at the upper bound 0.9999), and only 1 animal(s) have no boundary-pinned alpha anywhere across all three conditions -- consistent with the user's own pre-submission finding, not a new problem discovered here. The 3-way Friedman test across all three conditions (chi2=6.632, p=0.03631, n=5) is reported for completeness only and should NOT be read as a clean graded effect, for the same reason.",
+      "alpha_3way_friedman_for_context_only": {
+        "animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "used_animals": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower",
+          "Zazu"
+        ],
+        "n": 5,
+        "values_80_20": "[0.68957276 0.67063199 0.81157933 0.92790748 0.80810819]",
+        "values_90_10": "[1.00000000e-04 8.24435744e-01 9.98465262e-01 9.99900000e-01\n 8.04484579e-01]",
+        "values_100_0": "[0.9999    0.9999    0.9999    0.9999    0.9835143]",
+        "chi2": 6.631578947368419,
+        "p": 0.03630537512210584
+      },
+      "boundary_pinning_caveat": {
+        "n_animals_alpha_pinned_any_condition": 4,
+        "animals_alpha_pinned": [
+          "Fiona",
+          "Knuckles",
+          "Sonic",
+          "Sunflower"
+        ],
+        "animals_clean": [
+          "Zazu"
+        ],
+        "alpha_friedman_excluding_pinned": {
+          "chi2": null,
+          "p": null,
+          "n": 1
+        }
+      }
+    },
+    "R1-D_parameter_recovery": {
+      "sentence": "Parameter recovery on simulated agents shows alpha's mean absolute recovery error is 0.3815 at 100-0, versus a mean of 0.0635 across 90-10/80-20 -- confirming that 100-0 is harder to identify in principle, independent of any real-data quality issue.",
+      "alpha_recovery_error_100_0": 0.38151146631728267,
+      "alpha_recovery_error_other_conditions_mean": 0.06349062697831216,
+      "full_summary": [
+        {
+          "prob_condition": "100-0",
+          "abs_error_alpha_mean": 0.38151146631728267,
+          "abs_error_alpha_sem": 0.03339912415255083,
+          "abs_error_beta_mean": 0.032095021113268125,
+          "abs_error_beta_sem": 0.003638997006975964,
+          "abs_error_kappa_mean": 0.03138304057755601,
+          "abs_error_kappa_sem": 0.003482806920597829
+        },
+        {
+          "prob_condition": "80-20",
+          "abs_error_alpha_mean": 0.052836373958782185,
+          "abs_error_alpha_sem": 0.005595592626330596,
+          "abs_error_beta_mean": 0.04250689498069136,
+          "abs_error_beta_sem": 0.004697532705664576,
+          "abs_error_kappa_mean": 0.03476133070662415,
+          "abs_error_kappa_sem": 0.0032329472841288666
+        },
+        {
+          "prob_condition": "90-10",
+          "abs_error_alpha_mean": 0.07414487999784214,
+          "abs_error_alpha_sem": 0.006947847146617777,
+          "abs_error_beta_mean": 0.03931761105480795,
+          "abs_error_beta_sem": 0.004281396370782745,
+          "abs_error_kappa_mean": 0.03203418159336489,
+          "abs_error_kappa_sem": 0.003390795227581194
+        }
+      ]
+    },
+    "R2-5_predictability_gradient": {
+      "sentence": "State-occupancy, win-stay/lose-switch, and Exploit dwell-time gradients across predictability (1.0/0.9/0.8), with and without a session-order (cumulative-experience) covariate, are reported in full in predictability_gradient_state_occupancy / predictability_gradient_wsls_pooled / predictability_gradient_exploit_dwell_time above.",
+      "exploit_dwell_time_by_condition": [
+        {
+          "prob_condition": "80-20",
+          "predictability": 0.8,
+          "exploit_stay_prob": 0.9023029489492009,
+          "mean_dwell_trials": 10.235723486474887
+        },
+        {
+          "prob_condition": "90-10",
+          "predictability": 0.9,
+          "exploit_stay_prob": 0.9333333333333333,
+          "mean_dwell_trials": 15.000000000000004
+        },
+        {
+          "prob_condition": "100-0",
+          "predictability": 1.0,
+          "exploit_stay_prob": 0.9598547790267402,
+          "mean_dwell_trials": 24.909565217391307
+        }
+      ]
+    }
+  }
+}

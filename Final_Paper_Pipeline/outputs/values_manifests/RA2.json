@@ -1,0 +1,739 @@
+{
+  "_stage": "RA2 -- cross-validated ARI, k-selection, RF recoverability, PCA, control clustering",
+  "figures": {
+    "cross_validated_ari": {
+      "path": "../../outputs/figures/reviewer_analyses/RA2/supp_candidates/RA2_cross_validated_ari.svg",
+      "tag": "PAPER"
+    },
+    "k_selection": {
+      "path": "../../outputs/figures/reviewer_analyses/RA2/supp_candidates/RA2_k_selection.svg",
+      "tag": "PAPER"
+    },
+    "rf_confusion_matrix": {
+      "path": "../../outputs/figures/reviewer_analyses/RA2/supp_candidates/RA2_rf_confusion_matrix.svg",
+      "tag": "PAPER"
+    },
+    "pca_loadings": {
+      "path": "../../outputs/figures/reviewer_analyses/RA2/supp_candidates/RA2_pca_loadings.svg",
+      "tag": "PAPER"
+    },
+    "control_clustering_comparison": {
+      "path": "../../outputs/figures/reviewer_analyses/RA2/RA2_control_clustering_comparison.svg",
+      "tag": "LETTER-ONLY"
+    }
+  },
+  "n_trials": 36673,
+  "n_sessions": 100,
+  "n_animals": 5,
+  "state_v3_distribution": {
+    "Engaged": 17367,
+    "Exploration": 11653,
+    "Left Bias": 3736,
+    "Right Bias": 3717,
+    "Unknown": 200
+  },
+  "cv_design": {
+    "k": 5,
+    "seed": 42,
+    "fold_assignments_path": "config/splits.json",
+    "per_fold": [
+      {
+        "fold": 0,
+        "n_train_sessions": 80,
+        "n_test_sessions": 20,
+        "test_sessions_per_animal": {
+          "Fiona": 3,
+          "Knuckles": 5,
+          "Sonic": 3,
+          "Sunflower": 7,
+          "Zazu": 2
+        }
+      },
+      {
+        "fold": 1,
+        "n_train_sessions": 80,
+        "n_test_sessions": 20,
+        "test_sessions_per_animal": {
+          "Fiona": 3,
+          "Knuckles": 5,
+          "Sonic": 2,
+          "Sunflower": 7,
+          "Zazu": 3
+        }
+      },
+      {
+        "fold": 2,
+        "n_train_sessions": 80,
+        "n_test_sessions": 20,
+        "test_sessions_per_animal": {
+          "Fiona": 3,
+          "Knuckles": 4,
+          "Sonic": 3,
+          "Sunflower": 7,
+          "Zazu": 3
+        }
+      },
+      {
+        "fold": 3,
+        "n_train_sessions": 80,
+        "n_test_sessions": 20,
+        "test_sessions_per_animal": {
+          "Fiona": 3,
+          "Knuckles": 4,
+          "Sonic": 3,
+          "Sunflower": 7,
+          "Zazu": 3
+        }
+      },
+      {
+        "fold": 4,
+        "n_train_sessions": 80,
+        "n_test_sessions": 20,
+        "test_sessions_per_animal": {
+          "Fiona": 2,
+          "Knuckles": 5,
+          "Sonic": 3,
+          "Sunflower": 7,
+          "Zazu": 3
+        }
+      }
+    ]
+  },
+  "cross_validated_ari": {
+    "per_fold": [
+      {
+        "fold": 0,
+        "kmeans_ari_test": 0.8500138386540735,
+        "kmeans_ari_train": 0.8479308034548341,
+        "hmm_ari_test": 0.45910763627840173,
+        "hmm_ari_train": 0.46173012822394244,
+        "kmeans_best_k_silhouette": 4,
+        "kmeans_best_k_bic": 8,
+        "kmeans_silhouette_by_k": [
+          0.3070959838486481,
+          0.3839370828047463,
+          0.39455247585954967,
+          0.3359328695038547,
+          0.3325023087325942,
+          0.33327198957984683,
+          0.3272674724277536
+        ],
+        "kmeans_bic_by_k": [
+          -70183.57346868284,
+          -188413.26800072246,
+          -249369.02084664092,
+          -292125.2501027631,
+          -319010.0160796154,
+          -359277.7814239231,
+          -420230.1359595591
+        ]
+      },
+      {
+        "fold": 1,
+        "kmeans_ari_test": 0.8504147961602996,
+        "kmeans_ari_train": 0.847768232228176,
+        "hmm_ari_test": 0.4704601943422585,
+        "hmm_ari_train": 0.4542965936522356,
+        "kmeans_best_k_silhouette": 3,
+        "kmeans_best_k_bic": 8,
+        "kmeans_silhouette_by_k": [
+          0.32583082880794684,
+          0.39961593337879897,
+          0.39668748739996107,
+          0.339124121629481,
+          0.35592183148383494,
+          0.3301238165291605,
+          0.34830473910854387
+        ],
+        "kmeans_bic_by_k": [
+          271213.4784437505,
+          -192781.203348744,
+          -254509.793268445,
+          -314651.3667219057,
+          -316321.1848893885,
+          -357226.6133840236,
+          -403900.33525745245
+        ]
+      },
+      {
+        "fold": 2,
+        "kmeans_ari_test": 0.8479303878186819,
+        "kmeans_ari_train": 0.8484855969234922,
+        "hmm_ari_test": 0.45667351505521553,
+        "hmm_ari_train": 0.46049126639724675,
+        "kmeans_best_k_silhouette": 4,
+        "kmeans_best_k_bic": 8,
+        "kmeans_silhouette_by_k": [
+          0.32662798193578924,
+          0.3989138951076321,
+          0.4001894395842232,
+          0.34224567513684223,
+          0.34632258229314816,
+          0.3290258922314809,
+          0.33792597727961776
+        ],
+        "kmeans_bic_by_k": [
+          -70933.48094829496,
+          -193553.46582126888,
+          -255528.9473002748,
+          -353544.77341218875,
+          -319449.9731951318,
+          -401563.0450642467,
+          -445415.3669514399
+        ]
+      },
+      {
+        "fold": 3,
+        "kmeans_ari_test": 0.8447678534686213,
+        "kmeans_ari_train": 0.8492639295979376,
+        "hmm_ari_test": 0.44081919663907937,
+        "hmm_ari_train": 0.460815449821897,
+        "kmeans_best_k_silhouette": 4,
+        "kmeans_best_k_bic": 8,
+        "kmeans_silhouette_by_k": [
+          0.31437556098761893,
+          0.38990396734232197,
+          0.39930109710267603,
+          0.3428731853176231,
+          0.33999963549765133,
+          0.3339430168037236,
+          0.3410857954975058
+        ],
+        "kmeans_bic_by_k": [
+          -71871.62086891016,
+          -193259.28361827994,
+          -256231.65856138605,
+          -353720.04942198406,
+          -350263.5262904042,
+          -396821.4320680452,
+          -477235.9553384107
+        ]
+      },
+      {
+        "fold": 4,
+        "kmeans_ari_test": 0.8479357002231162,
+        "kmeans_ari_train": 0.8485467160773251,
+        "hmm_ari_test": 0.47152638021914406,
+        "hmm_ari_train": 0.4568845008013574,
+        "kmeans_best_k_silhouette": 4,
+        "kmeans_best_k_bic": 8,
+        "kmeans_silhouette_by_k": [
+          0.30852210702868615,
+          0.4002003671077959,
+          0.40286538869881444,
+          0.35573739715606545,
+          0.3376816590740274,
+          0.3295230287130096,
+          0.3399810034417926
+        ],
+        "kmeans_bic_by_k": [
+          275183.2299256485,
+          -194727.76267924916,
+          -257355.5143097553,
+          -287701.1253921241,
+          -305525.2789855475,
+          -341612.5250020369,
+          -456381.2495718557
+        ]
+      }
+    ],
+    "kmeans_summary": {
+      "mean": 0.8482125152649586,
+      "ci95_low": 0.8454279799710216,
+      "ci95_high": 0.8509970505588955,
+      "n_folds": 5
+    },
+    "hmm_summary": {
+      "mean": 0.4597173845068198,
+      "ci95_low": 0.4442383758301909,
+      "ci95_high": 0.47519639318344875,
+      "n_folds": 5
+    },
+    "note": "Replaces the manuscript's single-split ARI numbers -- see this notebook's intro cell for why."
+  },
+  "k_selection": {
+    "k_used": 4,
+    "table": [
+      {
+        "k": 2,
+        "mean_silhouette": 0.3164904925217379,
+        "mean_bic": 66681.60661670219
+      },
+      {
+        "k": 3,
+        "mean_silhouette": 0.39451424914825906,
+        "mean_bic": -192546.99669365288
+      },
+      {
+        "k": 4,
+        "mean_silhouette": 0.3987191777290449,
+        "mean_bic": -254598.98685730045
+      },
+      {
+        "k": 5,
+        "mean_silhouette": 0.34318264974877327,
+        "mean_bic": -320348.5130101931
+      },
+      {
+        "k": 6,
+        "mean_silhouette": 0.3424856034162512,
+        "mean_bic": -322113.99588801747
+      },
+      {
+        "k": 7,
+        "mean_silhouette": 0.33117754877144423,
+        "mean_bic": -371300.2793884551
+      },
+      {
+        "k": 8,
+        "mean_silhouette": 0.33891299755104265,
+        "mean_bic": -440632.6086157436
+      }
+    ],
+    "silhouette_optimal_k_per_fold": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "bic_optimal_k_per_fold": [
+      8,
+      8,
+      8,
+      8,
+      8
+    ]
+  },
+  "random_forest_validation": {
+    "per_fold": [
+      {
+        "fold": 0,
+        "rf_accuracy": 0.8050935550935551,
+        "majority_class_baseline_accuracy": 0.4928534303534304,
+        "corrected_accuracy_gain": 0.3122401247401247,
+        "per_class_report": {
+          "Engaged": {
+            "precision": 0.8999707516817783,
+            "recall": 0.8112312153967836,
+            "f1-score": 0.853300055463117,
+            "support": 3793.0
+          },
+          "Exploration": {
+            "precision": 0.7555266579973993,
+            "recall": 0.7369978858350952,
+            "f1-score": 0.7461472602739726,
+            "support": 2365.0
+          },
+          "Left Bias": {
+            "precision": 0.7038834951456311,
+            "recall": 0.9096612296110415,
+            "f1-score": 0.7936507936507936,
+            "support": 797.0
+          },
+          "Right Bias": {
+            "precision": 0.6925531914893617,
+            "recall": 0.8785425101214575,
+            "f1-score": 0.7745389649018442,
+            "support": 741.0
+          },
+          "accuracy": 0.8050935550935551,
+          "macro avg": {
+            "precision": 0.7629835240785425,
+            "recall": 0.8341082102410944,
+            "f1-score": 0.7919092685724318,
+            "support": 7696.0
+          },
+          "weighted avg": {
+            "precision": 0.8153049204544593,
+            "recall": 0.8050935550935551,
+            "f1-score": 0.80661102344744,
+            "support": 7696.0
+          }
+        }
+      },
+      {
+        "fold": 1,
+        "rf_accuracy": 0.7813311466447997,
+        "majority_class_baseline_accuracy": 0.4780647806478065,
+        "corrected_accuracy_gain": 0.30326636599699325,
+        "per_class_report": {
+          "Engaged": {
+            "precision": 0.8978599221789884,
+            "recall": 0.7915951972555746,
+            "f1-score": 0.8413855970829535,
+            "support": 3498.0
+          },
+          "Exploration": {
+            "precision": 0.7271929824561404,
+            "recall": 0.7128116938950989,
+            "f1-score": 0.71993052540165,
+            "support": 2326.0
+          },
+          "Left Bias": {
+            "precision": 0.6674556213017752,
+            "recall": 0.8493975903614458,
+            "f1-score": 0.7475149105367793,
+            "support": 664.0
+          },
+          "Right Bias": {
+            "precision": 0.6552346570397112,
+            "recall": 0.8757539203860072,
+            "f1-score": 0.7496128033040784,
+            "support": 829.0
+          },
+          "accuracy": 0.7813311466447997,
+          "macro avg": {
+            "precision": 0.7369357957441538,
+            "recall": 0.8073896004745316,
+            "f1-score": 0.7646109590813652,
+            "support": 7317.0
+          },
+          "weighted avg": {
+            "precision": 0.7952090950123525,
+            "recall": 0.7813311466447997,
+            "f1-score": 0.7838600704135453,
+            "support": 7317.0
+          }
+        }
+      },
+      {
+        "fold": 2,
+        "rf_accuracy": 0.7848443843031123,
+        "majority_class_baseline_accuracy": 0.4543978349120433,
+        "corrected_accuracy_gain": 0.33044654939106904,
+        "per_class_report": {
+          "Engaged": {
+            "precision": 0.8826044064452483,
+            "recall": 0.7992852888624181,
+            "f1-score": 0.838881075167995,
+            "support": 3358.0
+          },
+          "Exploration": {
+            "precision": 0.7557507319113341,
+            "recall": 0.7268704746580853,
+            "f1-score": 0.7410293213040804,
+            "support": 2486.0
+          },
+          "Left Bias": {
+            "precision": 0.6645962732919255,
+            "recall": 0.8605898123324397,
+            "f1-score": 0.75,
+            "support": 746.0
+          },
+          "Right Bias": {
+            "precision": 0.6723790322580645,
+            "recall": 0.83375,
+            "f1-score": 0.7444196428571429,
+            "support": 800.0
+          },
+          "accuracy": 0.7848443843031123,
+          "macro avg": {
+            "precision": 0.7438326109766431,
+            "recall": 0.8051238939632357,
+            "f1-score": 0.7685825098323046,
+            "support": 7390.0
+          },
+          "weighted avg": {
+            "precision": 0.7951656240943097,
+            "recall": 0.7848443843031123,
+            "f1-score": 0.7867655287499034,
+            "support": 7390.0
+          }
+        }
+      },
+      {
+        "fold": 3,
+        "rf_accuracy": 0.7976393629124005,
+        "majority_class_baseline_accuracy": 0.4789533560864619,
+        "corrected_accuracy_gain": 0.31868600682593856,
+        "per_class_report": {
+          "Engaged": {
+            "precision": 0.8913954237834354,
+            "recall": 0.8212589073634204,
+            "f1-score": 0.8548910523875753,
+            "support": 3368.0
+          },
+          "Exploration": {
+            "precision": 0.7452784503631962,
+            "recall": 0.7158139534883721,
+            "f1-score": 0.7302491103202847,
+            "support": 2150.0
+          },
+          "Left Bias": {
+            "precision": 0.680184331797235,
+            "recall": 0.8434285714285714,
+            "f1-score": 0.753061224489796,
+            "support": 875.0
+          },
+          "Right Bias": {
+            "precision": 0.7265725288831836,
+            "recall": 0.8857589984350548,
+            "f1-score": 0.7983074753173484,
+            "support": 639.0
+          },
+          "accuracy": 0.7976393629124005,
+          "macro avg": {
+            "precision": 0.7608576837067625,
+            "recall": 0.8165651076788547,
+            "f1-score": 0.7841272156287511,
+            "support": 7032.0
+          },
+          "weighted avg": {
+            "precision": 0.805462114883734,
+            "recall": 0.7976393629124005,
+            "f1-score": 0.798969809412162,
+            "support": 7032.0
+          }
+        }
+      },
+      {
+        "fold": 4,
+        "rf_accuracy": 0.7947535312770251,
+        "majority_class_baseline_accuracy": 0.47708273277601615,
+        "corrected_accuracy_gain": 0.31767079850100893,
+        "per_class_report": {
+          "Engaged": {
+            "precision": 0.8876404494382022,
+            "recall": 0.8114803625377643,
+            "f1-score": 0.8478535353535354,
+            "support": 3310.0
+          },
+          "Exploration": {
+            "precision": 0.7563923756392376,
+            "recall": 0.7170559717937417,
+            "f1-score": 0.7361990950226245,
+            "support": 2269.0
+          },
+          "Left Bias": {
+            "precision": 0.6771929824561403,
+            "recall": 0.8894009216589862,
+            "f1-score": 0.7689243027888446,
+            "support": 651.0
+          },
+          "Right Bias": {
+            "precision": 0.6865342163355408,
+            "recall": 0.8785310734463276,
+            "f1-score": 0.7707558859975217,
+            "support": 708.0
+          },
+          "accuracy": 0.7947535312770251,
+          "macro avg": {
+            "precision": 0.7519400059672803,
+            "recall": 0.824117082359205,
+            "f1-score": 0.7809332047906317,
+            "support": 6938.0
+          },
+          "weighted avg": {
+            "precision": 0.8044484065595835,
+            "recall": 0.7947535312770251,
+            "f1-score": 0.7960645484330239,
+            "support": 6938.0
+          }
+        }
+      }
+    ],
+    "summed_confusion_matrix": {
+      "Engaged": {
+        "Engaged": 13982,
+        "Exploration": 2176,
+        "Left Bias": 602,
+        "Right Bias": 567
+      },
+      "Exploration": {
+        "Engaged": 1365,
+        "Exploration": 8374,
+        "Left Bias": 931,
+        "Right Bias": 926
+      },
+      "Left Bias": {
+        "Engaged": 174,
+        "Exploration": 311,
+        "Left Bias": 3248,
+        "Right Bias": 0
+      },
+      "Right Bias": {
+        "Engaged": 152,
+        "Exploration": 333,
+        "Left Bias": 0,
+        "Right Bias": 3232
+      }
+    },
+    "rf_accuracy_summary": {
+      "mean": 0.7927323960461785,
+      "ci95_low": 0.7807393939538851,
+      "ci95_high": 0.8047253981384719,
+      "n_folds": 5
+    },
+    "baseline_accuracy_summary": {
+      "mean": 0.47627042695515165,
+      "ci95_low": 0.45910485509467075,
+      "ci95_high": 0.49343599881563255,
+      "n_folds": 5
+    },
+    "corrected_accuracy_gain_summary": {
+      "mean": 0.3164619690910269,
+      "ci95_low": 0.30413999421118315,
+      "ci95_high": 0.3287839439708707,
+      "n_folds": 5
+    }
+  },
+  "pca_loadings": {
+    "loadings": {
+      "Signed_Deviation": {
+        "PC1": 0.0409,
+        "PC2": -0.0055,
+        "PC3": 0.9988,
+        "PC4": -0.0245
+      },
+      "Choice_Deviation": {
+        "PC1": -0.4702,
+        "PC2": 0.7082,
+        "PC3": 0.036,
+        "PC4": 0.5254
+      },
+      "Rolling_Accuracy": {
+        "PC1": 0.7442,
+        "PC2": -0.0006,
+        "PC3": -0.0141,
+        "PC4": 0.6678
+      },
+      "Rolling_Switch_Rate": {
+        "PC1": -0.4726,
+        "PC2": -0.706,
+        "PC3": 0.0284,
+        "PC4": 0.5266
+      }
+    },
+    "explained_variance_ratio": [
+      0.3785223358059465,
+      0.2811918811570604,
+      0.24987998896039568,
+      0.09040579407659736
+    ],
+    "n_trials": 36473
+  },
+  "control_clustering_extra_features": {
+    "features_used": [
+      "Signed_Deviation",
+      "Choice_Deviation",
+      "Rolling_Accuracy",
+      "Rolling_Switch_Rate",
+      "Rolling_WinStay_Rate",
+      "Rolling_LoseSwitch_Rate",
+      "Rolling_Violation_Rate"
+    ],
+    "base_ari_per_fold": [
+      0.8500138386540735,
+      0.8504147961602996,
+      0.8479303878186819,
+      0.8447678534686213,
+      0.8479357002231162
+    ],
+    "control_ari_per_fold": [
+      0.7145075473178043,
+      0.7091363528248983,
+      0.7182787702104508,
+      0.7289291334496616,
+      0.722356969991838
+    ],
+    "base_ari_summary": {
+      "mean": 0.8482125152649586,
+      "ci95_low": 0.8454279799710216,
+      "ci95_high": 0.8509970505588955,
+      "n_folds": 5
+    },
+    "control_ari_summary": {
+      "mean": 0.7186417547589306,
+      "ci95_low": 0.7092836708620004,
+      "ci95_high": 0.7279998386558607,
+      "n_folds": 5
+    },
+    "ari_delta_mean": -0.129570760506028,
+    "tag": "LETTER-ONLY"
+  },
+  "response_manifest": {
+    "R2-Maj1_cross_validated_ari": {
+      "sentence": "5-fold, session-level, animal-stratified cross-validation (replacing the manuscript's single 80/20 session holdout) gives a K-Means ARI of 0.848 (95% CI [0.845, 0.851], n=5 folds) and an HMM ARI of 0.460 (95% CI [0.444, 0.475], n=5 folds) on held-out sessions.",
+      "test": "StratifiedKFold(k=5) on unique Session_ID, stratified by Animal_Name; K-Means/HMM refit per fold",
+      "kmeans_ari": {
+        "mean": 0.8482125152649586,
+        "ci95_low": 0.8454279799710216,
+        "ci95_high": 0.8509970505588955,
+        "n_folds": 5
+      },
+      "hmm_ari": {
+        "mean": 0.4597173845068198,
+        "ci95_low": 0.4442383758301909,
+        "ci95_high": 0.47519639318344875,
+        "n_folds": 5
+      },
+      "replaces_manuscript_single_split": true
+    },
+    "R1-C2_k_selection": {
+      "sentence": "K-Means (K=4, the value reported in the manuscript) is compared honestly against silhouette- and BIC-optimal k per fold: [4, 3, 4, 4, 4] (silhouette) and [8, 8, 8, 8, 8] (BIC).",
+      "k_used": 4,
+      "silhouette_optimal_k_per_fold": [
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "bic_optimal_k_per_fold": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    "R2-Maj1_random_forest_recoverability": {
+      "sentence": "A Random Forest trained on behavior-history features independent of the classifier's own rules recovers Behavioral_State_v3 with 0.793 accuracy (95% CI [0.781, 0.805]) versus a 0.476 majority-class baseline -- a corrected gain of 0.316 (95% CI [0.304, 0.329]).",
+      "rf_accuracy": {
+        "mean": 0.7927323960461785,
+        "ci95_low": 0.7807393939538851,
+        "ci95_high": 0.8047253981384719,
+        "n_folds": 5
+      },
+      "baseline_accuracy": {
+        "mean": 0.47627042695515165,
+        "ci95_low": 0.45910485509467075,
+        "ci95_high": 0.49343599881563255,
+        "n_folds": 5
+      },
+      "corrected_accuracy_gain": {
+        "mean": 0.3164619690910269,
+        "ci95_low": 0.30413999421118315,
+        "ci95_high": 0.3287839439708707,
+        "n_folds": 5
+      }
+    },
+    "R2-8_pca_loadings": {
+      "sentence": "PCA on the same 4-feature set used for K-Means/HMM classification shows PC1 explains 37.9% of variance; full per-feature loadings for every component are in pca_loadings above.",
+      "explained_variance_ratio": [
+        0.3785223358059465,
+        0.2811918811570604,
+        0.24987998896039568,
+        0.09040579407659736
+      ]
+    },
+    "R2-2_control_clustering": {
+      "sentence": "Adding rolling win-stay/lose-switch/violation-rate features to the K-Means feature set changes held-out ARI materially, from a mean of 0.848 (95% CI [0.845, 0.851]) to 0.719 (95% CI [0.709, 0.728]) across the same 5 folds used for the primary ARI estimate -- the recovered cluster structure is sensitive to this feature addition, not stable. This is an expected property of K-Means in general (unsupervised partitions shift when informative features are added or removed) and does not by itself invalidate the rule-based classify_state_v3 (which was never derived from, or claimed to be, the unique K-Means-optimal partition of any particular feature set). It does mean this control check should not be read as demonstrating that Rolling_Accuracy/Rolling_Switch_Rate/deviation are the singularly correct or complete feature set -- only that the manuscript's own validation (recovering the rule-based labels from these 4 observable features) is internally consistent, not that a different feature choice would necessarily recover the same partition.",
+      "base_ari_summary": {
+        "mean": 0.8482125152649586,
+        "ci95_low": 0.8454279799710216,
+        "ci95_high": 0.8509970505588955,
+        "n_folds": 5
+      },
+      "control_ari_summary": {
+        "mean": 0.7186417547589306,
+        "ci95_low": 0.7092836708620004,
+        "ci95_high": 0.7279998386558607,
+        "n_folds": 5
+      },
+      "ari_delta_mean": -0.129570760506028,
+      "tag": "LETTER-ONLY"
+    }
+  }
+}

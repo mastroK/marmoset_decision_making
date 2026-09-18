@@ -800,7 +800,12 @@ fig9:
 fig8_3cond:
   cross_species_dir: "../cross_species_comparison"   # for run_pipeline_marmoset.py's
                              # already-validated load_and_prepare/add_rolling_features
-  master_input_file: "preprocessed_master_merged_data_with_metadata_20260917.csv"
+  master_input_file: "preprocessed_master_merged_data_with_metadata_20260918.csv"  # NOTE: unused/dead --
+                             # load_and_classify_3way calls run_pipeline_marmoset.load_and_prepare()
+                             # with no arguments, which reads its OWN hardcoded DATA_PATH; kept in
+                             # sync with that path (updated 2026-09-18 alongside the Task_Type fix)
+                             # purely so this value doesn't mislead a future reader, not because
+                             # anything currently reads it.
   conditions: ["80-20", "90-10", "100-0"]
   # Fig 8's own 5 overlapping animals -- all 5 also have 90-10 sessions in
   # the new merged master file (verified before building this figure), so
@@ -813,3 +818,103 @@ fig8_3cond:
   states_full: ["Exploit", "Directed Exploration", "Random Exploration", "Left Bias", "Right Bias"]
   states_key_main: ["Exploit", "Directed Exploration"]
   wsls_states: ["Exploit", "Directed Exploration"]
+
+# ---------------------------------------------------------------------------
+# RA1 -- reviewer-response exploration-states analysis
+# (Final_Paper_Pipeline/notebooks/reviewer_analyses/RA1_exploration_states.ipynb)
+# Reviewer comment IDs: R1-C1, R2-1, R1-s. Data: same canonical 80-20 2-ABT
+# snapshot as Fig 6/Fig 7 (state_taxonomy.reversal_80_20_2abt), classified
+# with the same classify_state_v7 taxonomy Fig 7/Fig 8 use
+# (state_taxonomy.classify_updated/adaptation_window/
+# adaptation_fast_accuracy_threshold, reused unchanged -- see
+# state_classifier.py). Q-values from Fig 4's already-fitted per-animal
+# sticky Q-learning params (outputs/values_manifests/Fig4.json,
+# sticky_qlearning_params.per_animal) -- RA1 does not refit.
+# ---------------------------------------------------------------------------
+ra1:
+  states_of_interest: ["Random Exploration", "Directed Exploration"]
+  psychometric_min_trials: 20   # min trials per (animal, state) for a stable logistic slope fit
+  # Circularity control band: Rolling_Accuracy in [0.30, 0.50] straddles the
+  # random_exploration_accuracy_threshold (0.4) boundary those two states'
+  # own classifier definitions are built from -- both states have real
+  # trials in this shared band (checked empirically in the notebook, not
+  # assumed), so it isolates whether the psychometric-slope difference
+  # survives once accuracy itself is held roughly constant across states.
+  circularity_accuracy_band: [0.30, 0.50]
+  # One-at-a-time +/-25% sensitivity sweep over every classify_updated
+  # numeric threshold, holding the others fixed at their config value.
+  threshold_sweep_pct: 0.25
+  threshold_sweep_keys:
+    - random_exploration_accuracy_threshold
+    - directed_exploration_switch_threshold
+    - directed_exploration_accuracy_threshold
+    - bias_deviation_threshold
+  rolling_window_sweep: [3, 5, 7, 10]   # state_taxonomy.rolling_window default is 5
+
+# ---------------------------------------------------------------------------
+# RA2 -- reviewer-response validation-statistics analysis
+# (Final_Paper_Pipeline/notebooks/reviewer_analyses/RA2_validation_statistics.ipynb)
+# Reviewer comment IDs: R2-Maj1, R2-2, R2-8, R1-C2. Same canonical 80-20
+# 2-ABT snapshot + classify_state_v3 target as Fig 6 (state_taxonomy
+# section above), but with a k-fold CV replacing Fig 6's own single static
+# 80/20 holdout for the ARI validation specifically -- Fig 6 itself is
+# UNCHANGED (config.yaml's state_taxonomy/train_test_split, Fig6.ipynb, and
+# its manifest are not touched by this section).
+# ---------------------------------------------------------------------------
+ra2:
+  cv_k: 5
+  cv_seed: 42
+  fold_assignments_path: "config/splits.json"   # relative to Final_Paper_Pipeline/
+  rf_seed: 42
+  rf_n_estimators: 300
+  rf_max_depth: 8
+  pca_n_components: 4   # same as len(state_taxonomy.features) -- full-rank loadings, not truncated
+  # Extra features for the control-clustering check (R2-2): the base
+  # state_taxonomy.features list, plus rolling win-stay/lose-switch/
+  # violation-rate (q_following_model.add_rolling_wsls_violation_features).
+  control_clustering_extra_features: ["Rolling_WinStay_Rate", "Rolling_LoseSwitch_Rate", "Rolling_Violation_Rate"]
+
+# ---------------------------------------------------------------------------
+# RA3 -- reviewer-response ITI and transition-structure analysis
+# (Final_Paper_Pipeline/notebooks/reviewer_analyses/RA3_iti_and_transitions.ipynb)
+# Reviewer comment IDs: R1-C3, R2-4, R2-9. Same canonical 80-20 2-ABT
+# snapshot + classify_state_v7 taxonomy as Fig 7 (state_taxonomy section
+# above) -- max_iti reused from fig1 (same "implausible ITI" threshold,
+# not re-derived).
+# ---------------------------------------------------------------------------
+ra3:
+  history_n: 3   # trailing outcome-sequence window preceding each transition (matches fig2/fig3's history_n)
+  bootstrap_n: 1000
+  bootstrap_seed: 42
+
+# ---------------------------------------------------------------------------
+# RA5 -- reviewer-response small items: choice-history-conditioned switch
+# probability, and HMM/K-Means feature-contribution ablation
+# (Final_Paper_Pipeline/notebooks/reviewer_analyses/RA5_small_items.ipynb)
+# Reviewer comment IDs: R1-f, R2-3.
+# ---------------------------------------------------------------------------
+ra5:
+  history_n: 3   # same window as fig2.history_n -- Fig 2e itself is unchanged by this notebook
+  ablation_seed: 42
+
+# ---------------------------------------------------------------------------
+# RA4 -- reviewer-response condition-wise RL, parameter recovery, and
+# predictability gradient (Final_Paper_Pipeline/notebooks/reviewer_analyses/RA4_condition_wise_RL.ipynb)
+# Reviewer comment IDs: R2-5, R1-D. Reuses fig8_3cond's own conditions/
+# animals/cross_species_dir and suppfig3's own sticky_model_x0/bounds --
+# not duplicated here.
+# ---------------------------------------------------------------------------
+ra4:
+  min_trials_per_animal_condition: 30   # matches this project's standing min-trial floor elsewhere
+  parameter_recovery:
+    n_trials: 5000       # roughly matches a real animal's per-condition trial count
+    n_seeds_per_animal: 10
+    base_seed: 42
+  predictability_covariate:
+    # ordinal predictability index used as the regression x-variable --
+    # the high-reward-probability value itself (1.0/0.9/0.8), matching
+    # the conditions' own natural ordering.
+    predictability_by_condition:
+      "100-0": 1.0
+      "90-10": 0.9
+      "80-20": 0.8

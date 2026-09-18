@@ -1,0 +1,468 @@
+{
+  "_stage": "RA3 -- ITI by state, ITI preceding transitions, transition-type history, per-animal transition matrices",
+  "figures": {
+    "iti_by_state": {
+      "path": "../../outputs/figures/reviewer_analyses/RA3/supp_candidates/RA3_iti_by_state.svg",
+      "tag": "PAPER"
+    },
+    "iti_preceding_transitions": {
+      "path": "../../outputs/figures/reviewer_analyses/RA3/RA3_iti_preceding_transitions.svg",
+      "tag": "LETTER-ONLY"
+    },
+    "transition_matrix": {
+      "path": "../../outputs/figures/reviewer_analyses/RA3/supp_candidates/RA3_transition_matrix.svg",
+      "tag": "PAPER"
+    }
+  },
+  "n_trials": 36673,
+  "n_sessions": 100,
+  "n_animals": 5,
+  "n_trials_with_valid_iti": 36559,
+  "iti_by_state": {
+    "state_summary": [
+      {
+        "Behavioral_State": "Adapting (fast)",
+        "mean": 8.923814519865406,
+        "sem": 0.8934162801337627,
+        "n": 5
+      },
+      {
+        "Behavioral_State": "Adapting (slow)",
+        "mean": 10.344941845750691,
+        "sem": 1.7551164313324692,
+        "n": 5
+      },
+      {
+        "Behavioral_State": "Directed Exploration",
+        "mean": 12.160048588116036,
+        "sem": 1.7464452727550022,
+        "n": 5
+      },
+      {
+        "Behavioral_State": "Exploit",
+        "mean": 6.800382042175552,
+        "sem": 0.9790324692882922,
+        "n": 5
+      },
+      {
+        "Behavioral_State": "Left Bias",
+        "mean": 10.435732851597004,
+        "sem": 2.8968109114879526,
+        "n": 5
+      },
+      {
+        "Behavioral_State": "Random Exploration",
+        "mean": 12.127090049414061,
+        "sem": 2.2437414037822907,
+        "n": 5
+      },
+      {
+        "Behavioral_State": "Right Bias",
+        "mean": 15.90738164430276,
+        "sem": 2.3581741630598128,
+        "n": 5
+      },
+      {
+        "Behavioral_State": "Unknown",
+        "mean": 124.59935773525372,
+        "sem": 51.8295181363615,
+        "n": 5
+      }
+    ],
+    "post_win_vs_post_loss": [
+      {
+        "Behavioral_State": "Adapting (fast)",
+        "post_win_mean": 9.379307028662595,
+        "post_loss_mean": 7.774314091008124,
+        "n_animals": 5,
+        "wilcoxon_stat": 4.0,
+        "wilcoxon_p": 0.4375
+      },
+      {
+        "Behavioral_State": "Adapting (slow)",
+        "post_win_mean": 9.660485775470345,
+        "post_loss_mean": 10.924904585472959,
+        "n_animals": 5,
+        "wilcoxon_stat": 3.0,
+        "wilcoxon_p": 0.3125
+      },
+      {
+        "Behavioral_State": "Directed Exploration",
+        "post_win_mean": 12.610161847431954,
+        "post_loss_mean": 11.590541341622576,
+        "n_animals": 5,
+        "wilcoxon_stat": 5.0,
+        "wilcoxon_p": 0.625
+      },
+      {
+        "Behavioral_State": "Exploit",
+        "post_win_mean": 6.747273474431123,
+        "post_loss_mean": 6.638754218430854,
+        "n_animals": 5,
+        "wilcoxon_stat": 6.0,
+        "wilcoxon_p": 0.8125
+      },
+      {
+        "Behavioral_State": "Left Bias",
+        "post_win_mean": 12.83023115648283,
+        "post_loss_mean": 10.022358505959886,
+        "n_animals": 5,
+        "wilcoxon_stat": 5.0,
+        "wilcoxon_p": 0.625
+      },
+      {
+        "Behavioral_State": "Random Exploration",
+        "post_win_mean": 16.521878383636356,
+        "post_loss_mean": 12.256230221869565,
+        "n_animals": 5,
+        "wilcoxon_stat": 6.0,
+        "wilcoxon_p": 0.8125
+      },
+      {
+        "Behavioral_State": "Right Bias",
+        "post_win_mean": 20.059226124117536,
+        "post_loss_mean": 13.943910905789417,
+        "n_animals": 5,
+        "wilcoxon_stat": 3.0,
+        "wilcoxon_p": 0.3125
+      }
+    ]
+  },
+  "iti_preceding_transitions": {
+    "preceding_transition_mean": 10.08247867391805,
+    "within_state_mean": 9.134527904796986,
+    "n_animals": 5,
+    "wilcoxon_stat": 1.0,
+    "wilcoxon_p": 0.125
+  },
+  "transition_type_history": {
+    "Directed Exploration -> Exploit": {
+      "n_transitions": 1598,
+      "most_common_reward_seq_last3": {
+        "111": 668,
+        "110": 303,
+        "011": 303,
+        "101": 262,
+        "010": 31
+      },
+      "mean_recent_reward_rate": 0.7928660826032541
+    },
+    "Exploit -> Directed Exploration": {
+      "n_transitions": 1257,
+      "most_common_reward_seq_last3": {
+        "110": 503,
+        "101": 258,
+        "011": 159,
+        "111": 147,
+        "100": 100
+      },
+      "mean_recent_reward_rate": 0.6552638557411827
+    },
+    "Adapting (fast) -> Exploit": {
+      "n_transitions": 593,
+      "most_common_reward_seq_last3": {
+        "111": 366,
+        "011": 85,
+        "101": 69,
+        "110": 62,
+        "010": 5
+      },
+      "mean_recent_reward_rate": 0.8662169758291174
+    },
+    "Random Exploration -> Directed Exploration": {
+      "n_transitions": 567,
+      "most_common_reward_seq_last3": {
+        "001": 218,
+        "010": 139,
+        "100": 107,
+        "000": 103
+      },
+      "mean_recent_reward_rate": 0.2727807172251617
+    },
+    "Exploit -> Adapting (slow)": {
+      "n_transitions": 534,
+      "most_common_reward_seq_last3": {
+        "111": 312,
+        "011": 69,
+        "101": 69,
+        "110": 59,
+        "010": 10
+      },
+      "mean_recent_reward_rate": 0.8458177278401997
+    },
+    "Directed Exploration -> Random Exploration": {
+      "n_transitions": 517,
+      "most_common_reward_seq_last3": {
+        "000": 208,
+        "100": 114,
+        "001": 104,
+        "010": 91
+      },
+      "mean_recent_reward_rate": 0.19922630560928434
+    },
+    "Adapting (slow) -> Directed Exploration": {
+      "n_transitions": 450,
+      "most_common_reward_seq_last3": {
+        "011": 117,
+        "001": 114,
+        "010": 62,
+        "110": 47,
+        "100": 44
+      },
+      "mean_recent_reward_rate": 0.46962962962962956
+    },
+    "Exploit -> Adapting (fast)": {
+      "n_transitions": 394,
+      "most_common_reward_seq_last3": {
+        "111": 178,
+        "110": 87,
+        "101": 60,
+        "011": 46,
+        "010": 12
+      },
+      "mean_recent_reward_rate": 0.7978003384094755
+    },
+    "Left Bias -> Directed Exploration": {
+      "n_transitions": 308,
+      "most_common_reward_seq_last3": {
+        "001": 205,
+        "101": 26,
+        "100": 24,
+        "010": 19,
+        "011": 18
+      },
+      "mean_recent_reward_rate": 0.36363636363636365
+    },
+    "Directed Exploration -> Adapting (fast)": {
+      "n_transitions": 306,
+      "most_common_reward_seq_last3": {
+        "100": 70,
+        "110": 44,
+        "011": 41,
+        "000": 34,
+        "001": 34
+      },
+      "mean_recent_reward_rate": 0.471677559912854
+    }
+  },
+  "per_animal_transition_consistency": {
+    "Fiona": {
+      "pearson_r_vs_pooled": 0.9932763705844312,
+      "p": 4.803093516870121e-23,
+      "n_transitions": 3668
+    },
+    "Knuckles": {
+      "pearson_r_vs_pooled": 0.9986932730565425,
+      "p": 3.2477746979149556e-31,
+      "n_transitions": 7747
+    },
+    "Sonic": {
+      "pearson_r_vs_pooled": 0.9954213022244007,
+      "p": 5.849527097111798e-25,
+      "n_transitions": 5033
+    },
+    "Sunflower": {
+      "pearson_r_vs_pooled": 0.9924815035455206,
+      "p": 1.7294647214986525e-22,
+      "n_transitions": 6990
+    },
+    "Zazu": {
+      "pearson_r_vs_pooled": 0.9957524885456617,
+      "p": 2.470765167935936e-25,
+      "n_transitions": 2320
+    }
+  },
+  "bootstrap_transition_matrix": {
+    "point_estimate": {
+      "Exploit": {
+        "Exploit": 0.8996442897146749,
+        "Directed Exploration": 0.2012847965738758,
+        "Random Exploration": 0.0013080444735120995,
+        "Left Bias": 0.0085995085995086,
+        "Right Bias": 0.004830917874396135
+      },
+      "Directed Exploration": {
+        "Exploit": 0.09513358056459548,
+        "Directed Exploration": 0.6849729185035899,
+        "Random Exploration": 0.3708306082406802,
+        "Left Bias": 0.1891891891891892,
+        "Right Bias": 0.18219461697722567
+      },
+      "Random Exploration": {
+        "Exploit": 0.001967759025202452,
+        "Directed Exploration": 0.06512155183272453,
+        "Random Exploration": 0.49836494440810986,
+        "Left Bias": 0.06265356265356266,
+        "Right Bias": 0.05728088336783989
+      },
+      "Left Bias": {
+        "Exploit": 0.0017407099069098615,
+        "Directed Exploration": 0.02569593147751606,
+        "Random Exploration": 0.07848266841072596,
+        "Left Bias": 0.7395577395577395,
+        "Right Bias": 0.0
+      },
+      "Right Bias": {
+        "Exploit": 0.0015136607886172709,
+        "Directed Exploration": 0.022924801612293738,
+        "Random Exploration": 0.051013734466971876,
+        "Left Bias": 0.0,
+        "Right Bias": 0.7556935817805382
+      }
+    },
+    "ci_low": {
+      "Exploit": {
+        "Exploit": 0.8996442897146749,
+        "Directed Exploration": 0.07118418551606158,
+        "Random Exploration": 0.0,
+        "Left Bias": 0.001946282600233554,
+        "Right Bias": 0.0009165902841429881
+      },
+      "Directed Exploration": {
+        "Exploit": 0.03079178444972242,
+        "Directed Exploration": 0.6849729185035899,
+        "Random Exploration": 0.1316966951996616,
+        "Left Bias": 0.06753812636165578,
+        "Right Bias": 0.06466480157392696
+      },
+      "Random Exploration": {
+        "Exploit": 0.0006403073475268129,
+        "Directed Exploration": 0.0222791183285846,
+        "Random Exploration": 0.49836494440810986,
+        "Left Bias": 0.020682130263316893,
+        "Right Bias": 0.02003484320557491
+      },
+      "Left Bias": {
+        "Exploit": 0.0005314625850340137,
+        "Directed Exploration": 0.006260065688721903,
+        "Random Exploration": 0.023779724655819776,
+        "Left Bias": 0.7395577395577395,
+        "Right Bias": 0.0
+      },
+      "Right Bias": {
+        "Exploit": 0.0004270272587630818,
+        "Directed Exploration": 0.007497116493656286,
+        "Random Exploration": 0.013882461823229986,
+        "Left Bias": 0.0,
+        "Right Bias": 0.7556935817805382
+      }
+    },
+    "ci_high": {
+      "Exploit": {
+        "Exploit": 0.9673538609771379,
+        "Directed Exploration": 0.2012847965738758,
+        "Random Exploration": 0.0018399264029438822,
+        "Left Bias": 0.011583011583011582,
+        "Right Bias": 0.0056406124093473006
+      },
+      "Directed Exploration": {
+        "Exploit": 0.09513358056459548,
+        "Directed Exploration": 0.8877185118780816,
+        "Random Exploration": 0.3708306082406802,
+        "Left Bias": 0.1891891891891892,
+        "Right Bias": 0.18219461697722567
+      },
+      "Random Exploration": {
+        "Exploit": 0.001967759025202452,
+        "Directed Exploration": 0.06512155183272453,
+        "Random Exploration": 0.8280044101433297,
+        "Left Bias": 0.06265356265356266,
+        "Right Bias": 0.05728088336783989
+      },
+      "Left Bias": {
+        "Exploit": 0.0017407099069098615,
+        "Directed Exploration": 0.028286189683860232,
+        "Random Exploration": 0.07857424797036552,
+        "Left Bias": 0.9058823529411765,
+        "Right Bias": 0.0
+      },
+      "Right Bias": {
+        "Exploit": 0.0015415469553009087,
+        "Directed Exploration": 0.022924801612293738,
+        "Random Exploration": 0.05162124562105783,
+        "Left Bias": 0.0,
+        "Right Bias": 0.9166820113314447
+      }
+    },
+    "n_boot": 1000,
+    "n_animals": 5
+  },
+  "response_manifest": {
+    "R1-C3_iti_by_state": {
+      "sentence": "ITI distribution and post-win-vs-post-loss ITI by behavioral state are reported in full in iti_by_state above (state_summary / post_win_vs_post_loss).",
+      "state_summary": [
+        {
+          "Behavioral_State": "Adapting (fast)",
+          "mean": 8.923814519865406,
+          "sem": 0.8934162801337627,
+          "n": 5
+        },
+        {
+          "Behavioral_State": "Adapting (slow)",
+          "mean": 10.344941845750691,
+          "sem": 1.7551164313324692,
+          "n": 5
+        },
+        {
+          "Behavioral_State": "Directed Exploration",
+          "mean": 12.160048588116036,
+          "sem": 1.7464452727550022,
+          "n": 5
+        },
+        {
+          "Behavioral_State": "Exploit",
+          "mean": 6.800382042175552,
+          "sem": 0.9790324692882922,
+          "n": 5
+        },
+        {
+          "Behavioral_State": "Left Bias",
+          "mean": 10.435732851597004,
+          "sem": 2.8968109114879526,
+          "n": 5
+        },
+        {
+          "Behavioral_State": "Random Exploration",
+          "mean": 12.127090049414061,
+          "sem": 2.2437414037822907,
+          "n": 5
+        },
+        {
+          "Behavioral_State": "Right Bias",
+          "mean": 15.90738164430276,
+          "sem": 2.3581741630598128,
+          "n": 5
+        },
+        {
+          "Behavioral_State": "Unknown",
+          "mean": 124.59935773525372,
+          "sem": 51.8295181363615,
+          "n": 5
+        }
+      ]
+    },
+    "R2-4_iti_preceding_transitions": {
+      "sentence": "Mean ITI on trials immediately preceding a behavioral-state transition was 10.082s, versus 9.135s on trials that remained within the same state (Wilcoxon signed-rank, n=5 animals, p=0.125).",
+      "preceding_transition_mean": 10.08247867391805,
+      "within_state_mean": 9.134527904796986,
+      "n_animals": 5,
+      "wilcoxon_p": 0.125
+    },
+    "R2-4_outcome_sequences_preceding_transitions": {
+      "sentence": "The most common transition type was Directed Exploration -> Exploit (n=1598); per-transition-type outcome-sequence distributions (last 3 trials) are in transition_type_history above.",
+      "top_transition_type": "Directed Exploration -> Exploit",
+      "n_top_transition_type": 1598
+    },
+    "R2-9_transition_pathway_consistency": {
+      "sentence": "Per-animal transition matrices correlate with the pooled matrix at a mean Pearson r of 0.995 across the 5 animals (per-animal r values in per_animal_transition_consistency); the pooled matrix's own sampling uncertainty, from a 1000-replicate animal-cluster bootstrap, is in bootstrap_transition_matrix (ci_low/ci_high).",
+      "mean_pearson_r_vs_pooled": 0.9951249875913113,
+      "per_animal_r": {
+        "Fiona": 0.9932763705844312,
+        "Knuckles": 0.9986932730565425,
+        "Sonic": 0.9954213022244007,
+        "Sunflower": 0.9924815035455206,
+        "Zazu": 0.9957524885456617
+      }
+    }
+  }
+}

@@ -285,3 +285,141 @@ def state_occupancy_by_animal(df_test_classified, classes, animal_col="Animal_Na
         for state in classes:
             records.append({"Animal": animal, "State": state, "Occupancy": float(counts.get(state, 0.0) * 100)})
     return pd.DataFrame(records)
+
+
+# ---------------------------------------------------------------------------
+# Reviewer-response additions (RA2_validation_statistics.ipynb, R2-Maj1,
+# R2-2, R2-8). All additive -- `run_kmeans_validation`/`run_hmm_validation`
+# above are unchanged and already accept an arbitrary `features` list,
+# which is how RA2's "control clustering with WSLS/violation-rate features"
+# check (R2-2) is done: by calling them again with an extended features
+# list, not by modifying them.
+# ---------------------------------------------------------------------------
+
+def pca_loadings(df, features, sessions, seed, n_components=None):
+    """PCA loadings (component weights per input feature) on `sessions`'
+    trials -- answers R2-8 ("what do the principal components actually
+    load on"), which `run_kmeans_validation`'s own PCA step does not
+    expose (it only returns explained-variance ratios and projected
+    scores, not the loading matrix itself).
+    """
+    d = df.loc[df["Session_ID"].isin(sessions)].dropna(subset=features).copy()
+    scaler = StandardScaler()
+    X = scaler.fit_transform(d[features])
+    pca = PCA(n_components=n_components or len(features), random_state=seed)
+    pca.fit(X)
+    loadings = pd.DataFrame(
+        pca.components_.T, index=features,
+        columns=[f"PC{i+1}" for i in range(pca.n_components_)],
+    )
+    return {
+        "loadings": loadings.round(4).to_dict(orient="index"),
+        "explained_variance_ratio": [float(v) for v in pca.explained_variance_ratio_],
+        "n_trials": int(len(d)),
+    }
+
+
+def build_lagged_predictor_features(df, state_col="Behavioral_State_v3"):
+    """Predictors for `run_random_forest_validation`, matching
+    REVIEWER_AUDIT.md Audit 3e's `FEATURES_PHASE1` exactly (ported here for
+    the first time -- this phase was never in `Final_Paper_Pipeline/src/`
+    before RA2): Reward_Lag1-3, Choice_Lag1-3, WinStay_Lag1-2,
+    LoseShift_Lag1-2, Block_Transition, TrialWithinBlock. These lags are
+    deliberately DISJOINT from the features that define `state_col` itself
+    (Rolling_Accuracy/Rolling_Switch_Rate/deviation), so recovering state
+    from them is not circular by construction -- same property the audit
+    verified of the original.
+    """
+    d = df.sort_values(["Animal_Name", "Session_ID", "Trial"]).copy()
+    g = d.groupby("Session_ID")
+
+    for lag in (1, 2, 3):
+        d[f"Reward_Lag{lag}"] = g["Outcome_Binary"].shift(lag)
+        d[f"Choice_Lag{lag}"] = g["Choice_Binary"].shift(lag)
+
+    # WinStay/LoseShift are always-defined 0/1 indicators of whether THIS
+    # trial's own prev-outcome/prev-switch pair exhibited that specific
+    # pattern (0 whenever it didn't, e.g. LoseShift is 0 on a trial
+    # following a WIN, not NaN) -- NOT conditioned/NaN'd on which pattern
+    # applies, since win-stay and lose-shift are mutually exclusive events
+    # by construction (a trial's previous outcome is either a win or a
+    # loss, never both) and requiring both non-null on the same row would
+    # empty every row on `dropna`. Only undefined at a session's first
+    # trial (no previous trial to define Prev_Outcome/PhysicalSwitch).
+    prev_outcome = g["Outcome_Binary"].shift(1)
+    prev_switch = d["PhysicalSwitch"]  # already "did THIS trial switch vs. the previous one"
+    # _WinStay[i] / _LoseShift[i]: whether trial i ITSELF was a win-stay /
+    # lose-shift trial relative to trial i-1 -- an attribute of trial i,
+    # same convention `wsls.py` uses throughout (PhysicalSwitch is already
+    # "trial i's own switch status vs. i-1"). WinStay_Lag1/2 below then
+    # shift THIS column by 1/2 more trials, so WinStay_Lag1[t] describes
+    # trial t-1 (not trial t itself) -- consistent with Reward_Lag1 =
+    # shift(1) of Outcome_Binary directly.
+    d["_WinStay"] = ((prev_outcome == 1) & (prev_switch == 0)).astype(float)
+    d["_LoseShift"] = ((prev_outcome == 0) & (prev_switch == 1)).astype(float)
+    d.loc[prev_outcome.isna(), ["_WinStay", "_LoseShift"]] = np.nan
+    for lag in (1, 2):
+        d[f"WinStay_Lag{lag}"] = d.groupby("Session_ID")["_WinStay"].shift(lag)
+        d[f"LoseShift_Lag{lag}"] = d.groupby("Session_ID")["_LoseShift"].shift(lag)
+    d = d.drop(columns=["_WinStay", "_LoseShift"])
+
+    d["TrialWithinBlock"] = d["Trial_in_Block"] if "Trial_in_Block" in d.columns else d.groupby(["Session_ID", "BlockCount"]).cumcount()
+    return d
+
+
+FEATURES_PHASE1 = [
+    "Reward_Lag1", "Reward_Lag2", "Reward_Lag3",
+    "Choice_Lag1", "Choice_Lag2", "Choice_Lag3",
+    "WinStay_Lag1", "LoseShift_Lag1", "WinStay_Lag2", "LoseShift_Lag2",
+    "Block_Transition", "TrialWithinBlock",
+]
+
+
+def run_random_forest_validation(df, target_col, predictor_features, train_sessions, test_sessions, seed,
+                                   n_estimators=300, max_depth=8):
+    """Random Forest recoverability check (REVIEWER_AUDIT.md Audit 3e):
+    can `target_col` (the rule-based classifier's own output) be predicted
+    from behavior-history features that do NOT define the classifier
+    itself? Reports the held-out confusion matrix, per-class
+    precision/recall/F1, and a corrected accuracy-gain figure (RF accuracy
+    minus the majority-class BASELINE accuracy on the same held-out set,
+    not a raw/uncorrected accuracy number on its own -- the same held-out
+    set can have a majority-class baseline anywhere from ~30-60% depending
+    on how imbalanced `target_col` is there, so the raw accuracy alone
+    does not say whether the model learned anything beyond that skew).
+    """
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+
+    def _prepare(sessions):
+        return df.loc[df["Session_ID"].isin(sessions)].dropna(subset=predictor_features + [target_col]).copy()
+
+    df_train = _prepare(train_sessions)
+    df_test = _prepare(test_sessions)
+
+    rf = RandomForestClassifier(
+        n_estimators=n_estimators, max_depth=max_depth,
+        class_weight="balanced", random_state=seed, n_jobs=-1,
+    )
+    rf.fit(df_train[predictor_features], df_train[target_col])
+    y_pred = rf.predict(df_test[predictor_features])
+    y_true = df_test[target_col]
+
+    classes = sorted(y_true.unique())
+    cm = confusion_matrix(y_true, y_pred, labels=classes)
+    report = classification_report(y_true, y_pred, labels=classes, output_dict=True, zero_division=0)
+
+    rf_accuracy = float(accuracy_score(y_true, y_pred))
+    baseline_accuracy = float(y_true.value_counts(normalize=True).max())
+
+    return {
+        "classes": classes,
+        "n_train_trials": int(len(df_train)),
+        "n_test_trials": int(len(df_test)),
+        "confusion_matrix": pd.DataFrame(cm, index=classes, columns=classes).to_dict(orient="index"),
+        "per_class_report": report,
+        "rf_accuracy": rf_accuracy,
+        "majority_class_baseline_accuracy": baseline_accuracy,
+        "corrected_accuracy_gain": rf_accuracy - baseline_accuracy,
+        "feature_importances": dict(zip(predictor_features, [float(v) for v in rf.feature_importances_])),
+    }

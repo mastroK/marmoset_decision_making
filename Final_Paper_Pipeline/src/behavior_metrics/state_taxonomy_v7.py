@@ -316,6 +316,55 @@ def pooled_transition_matrix(df, states):
     return probs, counts
 
 
+def per_animal_transition_matrix(df, states, animal_col="Animal_Name"):
+    """Reviewer-response addition (RA3_iti_and_transitions.ipynb, R2-9):
+    the same construction as `pooled_transition_matrix` above, but one
+    matrix per animal, so the reviewer's question ("consistency of the
+    reported pathways across animals") can be checked directly rather than
+    only asserted from the pooled matrix.
+    """
+    return {
+        animal: pooled_transition_matrix(adf, states)
+        for animal, adf in df.groupby(animal_col)
+    }
+
+
+def bootstrap_transition_matrix_ci(df, states, animal_col="Animal_Name", n_boot=1000, seed=42):
+    """Reviewer-response addition (RA3_iti_and_transitions.ipynb, R2-9):
+    a hierarchical (animal-level-cluster) bootstrap estimate of the pooled
+    transition matrix's own sampling uncertainty, respecting the fact that
+    trials are nested within animals (only 5 independent units) rather
+    than treating all trials as independent draws. Each bootstrap
+    replicate resamples animals WITH replacement (not trials), recomputes
+    `pooled_transition_matrix` on that resampled set of animals' full data,
+    and the 2.5th/97.5th percentiles across replicates give a 95% CI per
+    matrix cell. This is a standard nonparametric alternative to a
+    parametric mixed-effects model, chosen because n_animals=5 is too
+    small to fit a mixed model's random-effects variance reliably.
+    """
+    rng = np.random.default_rng(seed)
+    animals = df[animal_col].unique()
+    n = len(states)
+    boot_probs = np.full((n_boot, n, n), np.nan)
+
+    for b in range(n_boot):
+        sampled_animals = rng.choice(animals, size=len(animals), replace=True)
+        boot_df = pd.concat([df[df[animal_col] == a] for a in sampled_animals], ignore_index=True)
+        probs, _ = pooled_transition_matrix(boot_df, states)
+        boot_probs[b] = probs
+
+    point_probs, point_counts = pooled_transition_matrix(df, states)
+    ci_low = np.nanpercentile(boot_probs, 2.5, axis=0)
+    ci_high = np.nanpercentile(boot_probs, 97.5, axis=0)
+    return {
+        "point_estimate": pd.DataFrame(point_probs, index=states, columns=states),
+        "ci_low": pd.DataFrame(ci_low, index=states, columns=states),
+        "ci_high": pd.DataFrame(ci_high, index=states, columns=states),
+        "n_boot": n_boot,
+        "n_animals": len(animals),
+    }
+
+
 def state_occupancy_by_animal(df, states, animal_order=None):
     """Fig 7 panel h. % of trials (pooled across sessions) per behavioral
     state, for each individual animal.
@@ -406,3 +455,105 @@ def state_behavioral_metrics_by_state(df, states, min_trials=5):
 
     summary = {m: _summarize(m) for m in metrics}
     return session_df, animal_df, summary
+
+
+# ---------------------------------------------------------------------------
+# Reviewer-response addition (RA1_exploration_states.ipynb, R1-C1/R2-1/R1-s):
+# choice-vs-Q_diff psychometric slope per exploration state. Distinct from
+# `q_value_alignment_by_state` above (which reports a single alignment
+# SCORE, P(right|Qr>Ql) - P(right|Ql>Qr)) -- this fits an actual logistic
+# slope of Choice_Binary on Q_diff, per animal, within each state, so the
+# two states' slopes (and their CIs) can be directly compared. `acc_band`
+# implements the circularity control: since Rolling_Accuracy is itself one
+# of the two features that defines Random vs. Directed Exploration, a slope
+# difference between the two states could just be re-deriving the
+# classifier's own accuracy split rather than showing a genuine difference
+# in Q-following. Restricting both states to the SAME narrow
+# Rolling_Accuracy band (straddling the random_exploration_accuracy_threshold
+# / directed_exploration_accuracy_threshold boundary, where both states
+# actually occur) removes that confound: if the slope difference survives
+# within one shared accuracy band, it cannot be purely an accuracy-band
+# artifact of the classifier definition.
+# ---------------------------------------------------------------------------
+
+def psychometric_slope_by_state(df_q, states, min_trials=20, acc_col="Rolling_Accuracy", acc_band=None):
+    """Per-animal logistic-regression slope (and 95% CI) of Choice_Binary
+    on Q_diff (Q_right - Q_left), fit separately within each state in
+    `states`. `df_q` must already carry Q_diff/Choice_Binary/Behavioral_State
+    (i.e. the output of `q_following_model.compute_qvalues_sticky` merged
+    onto a classified dataframe). `acc_band=(lo, hi)` restricts to
+    `lo <= acc_col <= hi` before fitting (circularity control -- see module
+    note above); `acc_band=None` (default) uses all trials in each state.
+
+    Returns (animal_df, summary_df):
+      - animal_df: one row per (Animal_Name, Behavioral_State) with slope/CI/n.
+      - summary_df: per-state mean slope +/- 95% CI ACROSS ANIMALS (matching
+        this pipeline's standing pseudoreplication-correction convention --
+        session/trial-level fits are per-animal, then animals are the unit
+        of the summary statistic).
+    """
+    import statsmodels.api as sm
+
+    d = df_q
+    if acc_band is not None:
+        lo, hi = acc_band
+        d = d[(d[acc_col] >= lo) & (d[acc_col] <= hi)]
+
+    records = []
+    for (animal, state), g in d.groupby(["Animal_Name", "Behavioral_State"], observed=True):
+        if state not in states:
+            continue
+        valid = g.dropna(subset=["Q_diff", "Choice_Binary"])
+        if len(valid) < min_trials or valid["Choice_Binary"].nunique() < 2:
+            continue
+        X = sm.add_constant(valid["Q_diff"].astype(float))
+        y = valid["Choice_Binary"].astype(int)
+        try:
+            fit = sm.Logit(y, X).fit(disp=0)
+        except Exception:
+            continue
+        ci = fit.conf_int().loc["Q_diff"]
+        records.append({
+            "Animal_Name": animal, "Behavioral_State": state,
+            "slope": float(fit.params["Q_diff"]),
+            "ci95_low": float(ci[0]), "ci95_high": float(ci[1]),
+            "n_trials": int(len(valid)),
+        })
+    animal_df = pd.DataFrame(records)
+    if animal_df.empty:
+        return animal_df, pd.DataFrame()
+
+    def _summarize(sdf):
+        n = len(sdf)
+        mean = sdf["slope"].mean()
+        if n > 1:
+            sem = sdf["slope"].std(ddof=1) / np.sqrt(n)
+            tcrit = stats.t.ppf(0.975, n - 1)
+        else:
+            sem, tcrit = np.nan, np.nan
+        return pd.Series({
+            "mean_slope": mean,
+            "ci95_low": mean - tcrit * sem if n > 1 else np.nan,
+            "ci95_high": mean + tcrit * sem if n > 1 else np.nan,
+            "n_animals": n,
+        })
+
+    summary_df = animal_df.groupby("Behavioral_State").apply(_summarize, include_groups=False).reset_index()
+    return animal_df, summary_df
+
+
+def slope_ci_excludes(summary_df, state_a, state_b, state_col="Behavioral_State"):
+    """Whether state_a's 95% CI and state_b's 95% CI (from
+    `psychometric_slope_by_state`'s summary_df) are non-overlapping -- the
+    stricter test the task brief asks for ("CI excludes the other state's
+    slope", not merely "CI excludes zero"). Returns a dict with both
+    states' intervals and the boolean non-overlap result.
+    """
+    row_a = summary_df[summary_df[state_col] == state_a].iloc[0]
+    row_b = summary_df[summary_df[state_col] == state_b].iloc[0]
+    excludes = (row_a["ci95_low"] > row_b["ci95_high"]) or (row_b["ci95_low"] > row_a["ci95_high"])
+    return {
+        state_a: {"mean_slope": float(row_a["mean_slope"]), "ci95": [float(row_a["ci95_low"]), float(row_a["ci95_high"])]},
+        state_b: {"mean_slope": float(row_b["mean_slope"]), "ci95": [float(row_b["ci95_low"]), float(row_b["ci95_high"])]},
+        "cis_non_overlapping": bool(excludes),
+    }

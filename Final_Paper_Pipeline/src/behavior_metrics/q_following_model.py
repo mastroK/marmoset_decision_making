@@ -562,3 +562,77 @@ def select_representative_sessions(df_valid, animal):
         "n_sessions": int(session_rate.shape[0]),
         "session_rates": session_rate.to_dict(),
     }
+
+
+def add_rolling_wsls_violation_features(df_q, rolling_window):
+    """Reviewer-response addition (RA2_validation_statistics.ipynb, R2-2):
+    rolling-window versions of win-stay, lose-switch, and Q-value-violation
+    rate, for the "control clustering" check -- does state structure
+    persist when the K-Means/HMM feature set additionally includes
+    history-of-outcome information, not just the accuracy/switch-rate/
+    deviation features the classifier itself is built from?
+
+    Uses the SAME rolling-window/min_periods convention as
+    `state_features.build_state_features_df`'s Rolling_Accuracy/
+    Rolling_Switch_Rate (continuous, smoothed features suitable as K-Means/
+    HMM inputs). `_WinStay`/`_LoseSwitch` are always-defined 0/1
+    indicators of whether EACH trial itself was a win-stay/lose-switch
+    trial (0 when it wasn't, e.g. lose-switch is 0 on a trial following a
+    win) -- NOT NaN'd on whichever pattern doesn't apply: win-stay and
+    lose-switch are mutually exclusive by construction (a trial's previous
+    outcome is either a win or a loss, never both), so a 5-trial rolling
+    window can never simultaneously have >=3 non-NaN win-stay AND >=3
+    non-NaN lose-switch values if either were NaN'd this way -- confirmed
+    directly: an earlier version of this function that did NaN each on the
+    other's condition produced an all-empty feature matrix once both were
+    required by the same `dropna(features)` call downstream. Requires
+    `df_q` to already carry `Violation` (from `add_chose_higher_q`) and
+    the base `PhysicalSwitch`/`Outcome_Binary` columns from
+    `state_features.build_state_features_df`.
+    """
+    d = df_q.sort_values(["Animal_Name", "Session_ID", "Trial"]).copy()
+    prev_outcome = d.groupby("Session_ID")["Outcome_Binary"].shift(1)
+    d["_WinStay"] = ((prev_outcome == 1) & (d["PhysicalSwitch"] == 0)).astype(float)
+    d["_LoseSwitch"] = ((prev_outcome == 0) & (d["PhysicalSwitch"] == 1)).astype(float)
+    d.loc[prev_outcome.isna(), ["_WinStay", "_LoseSwitch"]] = np.nan
+
+    d["Rolling_WinStay_Rate"] = d.groupby("Session_ID")["_WinStay"].transform(
+        lambda x: x.rolling(rolling_window, min_periods=3).mean()
+    )
+    d["Rolling_LoseSwitch_Rate"] = d.groupby("Session_ID")["_LoseSwitch"].transform(
+        lambda x: x.rolling(rolling_window, min_periods=3).mean()
+    )
+    d["Rolling_Violation_Rate"] = d.groupby("Session_ID")["Violation"].transform(
+        lambda x: x.rolling(rolling_window, min_periods=3).mean()
+    )
+    return d.drop(columns=["_WinStay", "_LoseSwitch"])
+
+
+def flag_boundary_pinned_fits(fit_df, bounds, tol=1e-3):
+    """Reviewer-response addition (RA4_condition_wise_RL.ipynb, R2-5):
+    flags each row of a `fit_sticky_qlearning`-style dataframe (columns
+    animal/alpha/beta/kappa, one row per animal) whose fitted value sits
+    within `tol` of either bound passed to the L-BFGS-B optimizer -- i.e.
+    the optimizer was pinned at the edge of the allowed range rather than
+    finding an interior optimum. A boundary-pinned value is not a genuine
+    estimate of that parameter (it says "the likelihood keeps improving
+    as this parameter approaches the edge," not "this is the best-fit
+    value") and should not be treated as comparable to an interior fit in
+    the same downstream test.
+
+    Found necessary directly: fitting the sticky model separately on
+    100-0 data pins alpha at 0.9999 (the upper bound) for 4/5 animals --
+    this is the real-data analogue of the parameter-recovery section's
+    own finding that alpha is poorly identified at 100-0 (mean absolute
+    recovery error 0.382 there vs. ~0.06-0.07 at 90-10/80-20), not an
+    independent finding.
+
+    Adds one boolean column per parameter (`{param}_boundary_pinned`)
+    plus `any_boundary_pinned`.
+    """
+    d = fit_df.copy()
+    for param in ("alpha", "beta", "kappa"):
+        lo, hi = bounds[param]
+        d[f"{param}_boundary_pinned"] = (d[param] <= lo + tol) | (d[param] >= hi - tol)
+    d["any_boundary_pinned"] = d[[f"{p}_boundary_pinned" for p in ("alpha", "beta", "kappa")]].any(axis=1)
+    return d
