@@ -1,9 +1,13 @@
 {
   "_stage": "RA5 -- choice-history-conditioned switching (Fig 2e extension) + signed-deviation ablation (Fig 6/Supp Fig 4)",
   "figures": {
-    "choice_history_variance": {
-      "path": "../../outputs/figures/reviewer_analyses/RA5/RA5_choice_history_variance.svg",
-      "tag": "LETTER-ONLY"
+    "physical_side_persistence": {
+      "path": "../../outputs/figures/reviewer_analyses/RA5/supp_candidates/RA5_physical_side_persistence.svg",
+      "tag": "PAPER"
+    },
+    "physical_side_pooled_test": {
+      "path": "../../outputs/figures/reviewer_analyses/RA5/supp_candidates/RA5_physical_side_pooled_test.svg",
+      "tag": "PAPER"
     },
     "ablation_ari_comparison": {
       "path": "../../outputs/figures/reviewer_analyses/RA5/supp_candidates/RA5_ablation_ari_comparison.svg",
@@ -205,70 +209,898 @@
   ],
   "part1_choice_history_variance_given_reward_history": [
     {
-      "reward_seq": "101",
-      "n_choice_codes": 3,
-      "p_switch_min": 0.0,
-      "p_switch_max": 1.0,
-      "p_switch_range": 1.0,
-      "p_switch_sd_across_choice_codes": 0.42973130578641144
-    },
-    {
-      "reward_seq": "011",
-      "n_choice_codes": 2,
-      "p_switch_min": 0.1608052102905044,
-      "p_switch_max": 1.0,
-      "p_switch_range": 0.8391947897094956,
-      "p_switch_sd_across_choice_codes": 0.4195973948547478
-    },
-    {
-      "reward_seq": "001",
-      "n_choice_codes": 2,
-      "p_switch_min": 0.1939951517686991,
-      "p_switch_max": 1.0,
-      "p_switch_range": 0.8060048482313009,
-      "p_switch_sd_across_choice_codes": 0.40300242411565046
-    },
-    {
-      "reward_seq": "010",
-      "n_choice_codes": 2,
-      "p_switch_min": 0.3429621623587141,
-      "p_switch_max": 1.0,
-      "p_switch_range": 0.657037837641286,
-      "p_switch_sd_across_choice_codes": 0.32851891882064294
-    },
-    {
-      "reward_seq": "110",
-      "n_choice_codes": 2,
-      "p_switch_min": 0.34969902632460115,
-      "p_switch_max": 1.0,
-      "p_switch_range": 0.6503009736753989,
-      "p_switch_sd_across_choice_codes": 0.3251504868376994
-    },
-    {
-      "reward_seq": "100",
-      "n_choice_codes": 2,
-      "p_switch_min": 0.4263661791138571,
-      "p_switch_max": 1.0,
-      "p_switch_range": 0.5736338208861429,
-      "p_switch_sd_across_choice_codes": 0.28681691044307145
-    },
-    {
       "reward_seq": "000",
       "n_choice_codes": 1,
       "p_switch_min": 0.5086144474249116,
       "p_switch_max": 0.5086144474249116,
-      "p_switch_range": 0.0,
-      "p_switch_sd_across_choice_codes": 0.0
+      "p_switch_range": null,
+      "p_switch_sd_across_choice_codes": null
+    },
+    {
+      "reward_seq": "001",
+      "n_choice_codes": 1,
+      "p_switch_min": 0.1939951517686991,
+      "p_switch_max": 0.1939951517686991,
+      "p_switch_range": null,
+      "p_switch_sd_across_choice_codes": null
+    },
+    {
+      "reward_seq": "010",
+      "n_choice_codes": 1,
+      "p_switch_min": 0.3429621623587141,
+      "p_switch_max": 0.3429621623587141,
+      "p_switch_range": null,
+      "p_switch_sd_across_choice_codes": null
+    },
+    {
+      "reward_seq": "011",
+      "n_choice_codes": 1,
+      "p_switch_min": 0.1608052102905044,
+      "p_switch_max": 0.1608052102905044,
+      "p_switch_range": null,
+      "p_switch_sd_across_choice_codes": null
+    },
+    {
+      "reward_seq": "100",
+      "n_choice_codes": 1,
+      "p_switch_min": 0.4263661791138571,
+      "p_switch_max": 0.4263661791138571,
+      "p_switch_range": null,
+      "p_switch_sd_across_choice_codes": null
+    },
+    {
+      "reward_seq": "101",
+      "n_choice_codes": 1,
+      "p_switch_min": 0.21537660272208092,
+      "p_switch_max": 0.21537660272208092,
+      "p_switch_range": null,
+      "p_switch_sd_across_choice_codes": null
+    },
+    {
+      "reward_seq": "110",
+      "n_choice_codes": 1,
+      "p_switch_min": 0.34969902632460115,
+      "p_switch_max": 0.34969902632460115,
+      "p_switch_range": null,
+      "p_switch_sd_across_choice_codes": null
     },
     {
       "reward_seq": "111",
       "n_choice_codes": 1,
       "p_switch_min": 0.11557021406596345,
       "p_switch_max": 0.11557021406596345,
-      "p_switch_range": 0.0,
-      "p_switch_sd_across_choice_codes": 0.0
+      "p_switch_range": null,
+      "p_switch_sd_across_choice_codes": null
     }
   ],
+  "part1_choice_history_dropped_low_n_codes": [
+    {
+      "choice_reward_code": "001|101",
+      "decision_seq": "001",
+      "reward_seq": "101",
+      "n_trials": 2,
+      "n_animals": 1
+    },
+    {
+      "choice_reward_code": "000|001",
+      "decision_seq": "000",
+      "reward_seq": "001",
+      "n_trials": 7,
+      "n_animals": 1
+    },
+    {
+      "choice_reward_code": "000|010",
+      "decision_seq": "000",
+      "reward_seq": "010",
+      "n_trials": 9,
+      "n_animals": 1
+    },
+    {
+      "choice_reward_code": "000|011",
+      "decision_seq": "000",
+      "reward_seq": "011",
+      "n_trials": 3,
+      "n_animals": 1
+    },
+    {
+      "choice_reward_code": "000|100",
+      "decision_seq": "000",
+      "reward_seq": "100",
+      "n_trials": 5,
+      "n_animals": 1
+    },
+    {
+      "choice_reward_code": "000|101",
+      "decision_seq": "000",
+      "reward_seq": "101",
+      "n_trials": 5,
+      "n_animals": 1
+    },
+    {
+      "choice_reward_code": "000|110",
+      "decision_seq": "000",
+      "reward_seq": "110",
+      "n_trials": 3,
+      "n_animals": 1
+    }
+  ],
+  "part1_choice_history_untestable": true,
+  "part1_physical_side_persistence": {
+    "per_animal": [
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "000",
+        "persisted_side": "Left",
+        "p_switch": 0.8504672897196262,
+        "n_trials": 107
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "000",
+        "persisted_side": "Right",
+        "p_switch": 0.5116279069767442,
+        "n_trials": 43
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "001",
+        "persisted_side": "Left",
+        "p_switch": 0.7777777777777778,
+        "n_trials": 9
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "001",
+        "persisted_side": "Right",
+        "p_switch": 0.0,
+        "n_trials": 1
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "010",
+        "persisted_side": "Left",
+        "p_switch": 1.0,
+        "n_trials": 9
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "011",
+        "persisted_side": "Left",
+        "p_switch": 0.5,
+        "n_trials": 6
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "011",
+        "persisted_side": "Right",
+        "p_switch": 0.0,
+        "n_trials": 2
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "100",
+        "persisted_side": "Left",
+        "p_switch": 0.625,
+        "n_trials": 8
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "100",
+        "persisted_side": "Right",
+        "p_switch": 0.7,
+        "n_trials": 10
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "101",
+        "persisted_side": "Left",
+        "p_switch": 1.0,
+        "n_trials": 5
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "110",
+        "persisted_side": "Left",
+        "p_switch": 0.7142857142857143,
+        "n_trials": 7
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "110",
+        "persisted_side": "Right",
+        "p_switch": 0.3076923076923077,
+        "n_trials": 13
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "111",
+        "persisted_side": "Left",
+        "p_switch": 0.23703703703703705,
+        "n_trials": 135
+      },
+      {
+        "Animal_Name": "Coral",
+        "reward_seq": "111",
+        "persisted_side": "Right",
+        "p_switch": 0.15019762845849802,
+        "n_trials": 253
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "000",
+        "persisted_side": "Left",
+        "p_switch": 0.3283582089552239,
+        "n_trials": 134
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "000",
+        "persisted_side": "Right",
+        "p_switch": 0.725,
+        "n_trials": 40
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "001",
+        "persisted_side": "Left",
+        "p_switch": 0.03571428571428571,
+        "n_trials": 28
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "001",
+        "persisted_side": "Right",
+        "p_switch": 0.0,
+        "n_trials": 1
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "010",
+        "persisted_side": "Left",
+        "p_switch": 0.0,
+        "n_trials": 6
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "011",
+        "persisted_side": "Left",
+        "p_switch": 0.0,
+        "n_trials": 34
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "011",
+        "persisted_side": "Right",
+        "p_switch": 0.0,
+        "n_trials": 2
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "100",
+        "persisted_side": "Left",
+        "p_switch": 0.20408163265306123,
+        "n_trials": 49
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "100",
+        "persisted_side": "Right",
+        "p_switch": 0.38461538461538464,
+        "n_trials": 26
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "101",
+        "persisted_side": "Left",
+        "p_switch": 0.0,
+        "n_trials": 10
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "110",
+        "persisted_side": "Left",
+        "p_switch": 0.07142857142857142,
+        "n_trials": 56
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "110",
+        "persisted_side": "Right",
+        "p_switch": 0.15384615384615385,
+        "n_trials": 26
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "111",
+        "persisted_side": "Left",
+        "p_switch": 0.09007832898172324,
+        "n_trials": 766
+      },
+      {
+        "Animal_Name": "Fiona",
+        "reward_seq": "111",
+        "persisted_side": "Right",
+        "p_switch": 0.11135371179039301,
+        "n_trials": 458
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "000",
+        "persisted_side": "Left",
+        "p_switch": 0.4017857142857143,
+        "n_trials": 112
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "000",
+        "persisted_side": "Right",
+        "p_switch": 0.5789473684210527,
+        "n_trials": 57
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "001",
+        "persisted_side": "Left",
+        "p_switch": 0.4782608695652174,
+        "n_trials": 46
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "001",
+        "persisted_side": "Right",
+        "p_switch": 0.16,
+        "n_trials": 25
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "010",
+        "persisted_side": "Left",
+        "p_switch": 0.25925925925925924,
+        "n_trials": 27
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "010",
+        "persisted_side": "Right",
+        "p_switch": 0.4,
+        "n_trials": 5
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "011",
+        "persisted_side": "Left",
+        "p_switch": 0.4444444444444444,
+        "n_trials": 36
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "011",
+        "persisted_side": "Right",
+        "p_switch": 0.2903225806451613,
+        "n_trials": 31
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "100",
+        "persisted_side": "Left",
+        "p_switch": 0.36538461538461536,
+        "n_trials": 52
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "100",
+        "persisted_side": "Right",
+        "p_switch": 0.43333333333333335,
+        "n_trials": 30
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "101",
+        "persisted_side": "Left",
+        "p_switch": 0.3125,
+        "n_trials": 16
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "101",
+        "persisted_side": "Right",
+        "p_switch": 0.1,
+        "n_trials": 10
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "110",
+        "persisted_side": "Left",
+        "p_switch": 0.2857142857142857,
+        "n_trials": 42
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "110",
+        "persisted_side": "Right",
+        "p_switch": 0.3333333333333333,
+        "n_trials": 36
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "111",
+        "persisted_side": "Left",
+        "p_switch": 0.08056872037914692,
+        "n_trials": 633
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "reward_seq": "111",
+        "persisted_side": "Right",
+        "p_switch": 0.10082304526748971,
+        "n_trials": 486
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "000",
+        "persisted_side": "Left",
+        "p_switch": 0.5333333333333333,
+        "n_trials": 30
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "000",
+        "persisted_side": "Right",
+        "p_switch": 0.34513274336283184,
+        "n_trials": 113
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "001",
+        "persisted_side": "Left",
+        "p_switch": 0.4,
+        "n_trials": 5
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "001",
+        "persisted_side": "Right",
+        "p_switch": 0.125,
+        "n_trials": 8
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "010",
+        "persisted_side": "Left",
+        "p_switch": 0.0,
+        "n_trials": 1
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "011",
+        "persisted_side": "Left",
+        "p_switch": 0.25,
+        "n_trials": 4
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "011",
+        "persisted_side": "Right",
+        "p_switch": 0.14285714285714285,
+        "n_trials": 7
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "100",
+        "persisted_side": "Left",
+        "p_switch": 0.7058823529411765,
+        "n_trials": 17
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "100",
+        "persisted_side": "Right",
+        "p_switch": 0.6,
+        "n_trials": 25
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "101",
+        "persisted_side": "Left",
+        "p_switch": 0.5,
+        "n_trials": 2
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "110",
+        "persisted_side": "Left",
+        "p_switch": 0.48,
+        "n_trials": 25
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "110",
+        "persisted_side": "Right",
+        "p_switch": 0.3055555555555556,
+        "n_trials": 36
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "111",
+        "persisted_side": "Left",
+        "p_switch": 0.14221218961625282,
+        "n_trials": 443
+      },
+      {
+        "Animal_Name": "Sonic",
+        "reward_seq": "111",
+        "persisted_side": "Right",
+        "p_switch": 0.04817518248175182,
+        "n_trials": 685
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "000",
+        "persisted_side": "Left",
+        "p_switch": 0.5961538461538461,
+        "n_trials": 52
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "000",
+        "persisted_side": "Right",
+        "p_switch": 0.45,
+        "n_trials": 120
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "001",
+        "persisted_side": "Left",
+        "p_switch": 0.4444444444444444,
+        "n_trials": 9
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "001",
+        "persisted_side": "Right",
+        "p_switch": 0.16666666666666666,
+        "n_trials": 6
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "010",
+        "persisted_side": "Left",
+        "p_switch": 0.6,
+        "n_trials": 5
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "011",
+        "persisted_side": "Left",
+        "p_switch": 0.42857142857142855,
+        "n_trials": 14
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "011",
+        "persisted_side": "Right",
+        "p_switch": 0.1,
+        "n_trials": 10
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "100",
+        "persisted_side": "Left",
+        "p_switch": 0.5,
+        "n_trials": 22
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "100",
+        "persisted_side": "Right",
+        "p_switch": 0.41379310344827586,
+        "n_trials": 29
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "101",
+        "persisted_side": "Left",
+        "p_switch": 0.2727272727272727,
+        "n_trials": 11
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "110",
+        "persisted_side": "Left",
+        "p_switch": 0.47058823529411764,
+        "n_trials": 34
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "110",
+        "persisted_side": "Right",
+        "p_switch": 0.3611111111111111,
+        "n_trials": 36
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "111",
+        "persisted_side": "Left",
+        "p_switch": 0.1762208067940552,
+        "n_trials": 471
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "reward_seq": "111",
+        "persisted_side": "Right",
+        "p_switch": 0.0852359208523592,
+        "n_trials": 657
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "000",
+        "persisted_side": "Left",
+        "p_switch": 0.5194805194805194,
+        "n_trials": 77
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "000",
+        "persisted_side": "Right",
+        "p_switch": 0.5735294117647058,
+        "n_trials": 68
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "001",
+        "persisted_side": "Left",
+        "p_switch": 0.2,
+        "n_trials": 10
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "001",
+        "persisted_side": "Right",
+        "p_switch": 0.0,
+        "n_trials": 4
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "010",
+        "persisted_side": "Left",
+        "p_switch": 0.0,
+        "n_trials": 1
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "011",
+        "persisted_side": "Left",
+        "p_switch": 0.07142857142857142,
+        "n_trials": 14
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "011",
+        "persisted_side": "Right",
+        "p_switch": 0.0,
+        "n_trials": 7
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "100",
+        "persisted_side": "Left",
+        "p_switch": 0.2962962962962963,
+        "n_trials": 27
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "100",
+        "persisted_side": "Right",
+        "p_switch": 0.30434782608695654,
+        "n_trials": 23
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "101",
+        "persisted_side": "Left",
+        "p_switch": 0.0,
+        "n_trials": 2
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "110",
+        "persisted_side": "Left",
+        "p_switch": 0.23529411764705882,
+        "n_trials": 34
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "110",
+        "persisted_side": "Right",
+        "p_switch": 0.17857142857142858,
+        "n_trials": 28
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "111",
+        "persisted_side": "Left",
+        "p_switch": 0.12222222222222222,
+        "n_trials": 540
+      },
+      {
+        "Animal_Name": "Zazu",
+        "reward_seq": "111",
+        "persisted_side": "Right",
+        "p_switch": 0.09090909090909091,
+        "n_trials": 528
+      }
+    ],
+    "summary": [
+      {
+        "reward_seq": "000",
+        "n_animals": 6,
+        "n_trials_right": 441,
+        "n_trials_left": 512,
+        "mean_p_switch_right": 0.5307062384208892,
+        "mean_p_switch_left": 0.538263151988044,
+        "paired_t": -0.0687103697690791,
+        "paired_p": 0.9478833683805845
+      },
+      {
+        "reward_seq": "001",
+        "n_animals": 6,
+        "n_trials_right": 45,
+        "n_trials_left": 107,
+        "mean_p_switch_right": 0.07527777777777778,
+        "mean_p_switch_left": 0.3893662295836209,
+        "paired_t": -3.0979153609564323,
+        "paired_p": 0.026916707124614754
+      },
+      {
+        "reward_seq": "010",
+        "n_animals": 1,
+        "n_trials_right": 5,
+        "n_trials_left": 49,
+        "mean_p_switch_right": 0.4,
+        "mean_p_switch_left": 0.25925925925925924,
+        "paired_t": NaN,
+        "paired_p": NaN
+      },
+      {
+        "reward_seq": "011",
+        "n_animals": 6,
+        "n_trials_right": 59,
+        "n_trials_left": 108,
+        "mean_p_switch_right": 0.08886328725038402,
+        "mean_p_switch_left": 0.2824074074074074,
+        "paired_t": -2.544736427587575,
+        "paired_p": 0.05159543504484731
+      },
+      {
+        "reward_seq": "100",
+        "n_animals": 6,
+        "n_trials_right": 143,
+        "n_trials_left": 175,
+        "mean_p_switch_right": 0.4726816079139917,
+        "mean_p_switch_left": 0.4494408162125249,
+        "paired_t": 0.5271969023532304,
+        "paired_p": 0.6206022589932622
+      },
+      {
+        "reward_seq": "101",
+        "n_animals": 1,
+        "n_trials_right": 10,
+        "n_trials_left": 46,
+        "mean_p_switch_right": 0.1,
+        "mean_p_switch_left": 0.3125,
+        "paired_t": NaN,
+        "paired_p": NaN
+      },
+      {
+        "reward_seq": "110",
+        "n_animals": 6,
+        "n_trials_right": 175,
+        "n_trials_left": 198,
+        "mean_p_switch_right": 0.2733516483516484,
+        "mean_p_switch_left": 0.37621848739495795,
+        "paired_t": -1.4241235348834624,
+        "paired_p": 0.21371174493535505
+      },
+      {
+        "reward_seq": "111",
+        "n_animals": 6,
+        "n_trials_right": 3067,
+        "n_trials_left": 2988,
+        "mean_p_switch_right": 0.09778242995993046,
+        "mean_p_switch_left": 0.14138988417173956,
+        "paired_t": -1.9439723972857608,
+        "paired_p": 0.10951221228010304
+      }
+    ]
+  },
+  "part1_physical_side_pooled_test": {
+    "eligible_reward_seqs": [
+      "000",
+      "001",
+      "011",
+      "100",
+      "110",
+      "111"
+    ],
+    "stratified": {
+      "n_animals": 6,
+      "mean_right": 0.2564438316124369,
+      "mean_left": 0.3628476627930491,
+      "t": -1.7065960310265604,
+      "p": 0.14860774901378668,
+      "per_animal": [
+        {
+          "Animal_Name": "Coral",
+          "Left": 0.6174279698033592,
+          "Right": 0.27825297385459163
+        },
+        {
+          "Animal_Name": "Fiona",
+          "Left": 0.12161017128881091,
+          "Right": 0.2291358750419886
+        },
+        {
+          "Animal_Name": "Knuckles",
+          "Left": 0.3426931082955707,
+          "Right": 0.3161266101667284
+        },
+        {
+          "Animal_Name": "Sonic",
+          "Left": 0.4185713126484605,
+          "Right": 0.26112010404288033
+        },
+        {
+          "Animal_Name": "Sunflower",
+          "Left": 0.43599646020964866,
+          "Right": 0.2628011336797355
+        },
+        {
+          "Animal_Name": "Zazu",
+          "Left": 0.2407869545124447,
+          "Right": 0.19122629288869697
+        }
+      ]
+    },
+    "naive_trial_weighted": {
+      "n_animals": 6,
+      "mean_right": 0.16591266695745302,
+      "mean_left": 0.242672369912981,
+      "t": -1.5139924106278435,
+      "p": 0.1904492086588035,
+      "per_animal": [
+        {
+          "Animal_Name": "Coral",
+          "Left": 0.5257352941176471,
+          "Right": 0.2204968944099379
+        },
+        {
+          "Animal_Name": "Fiona",
+          "Left": 0.11996251171508904,
+          "Right": 0.16998191681735986
+        },
+        {
+          "Animal_Name": "Knuckles",
+          "Left": 0.1791530944625407,
+          "Right": 0.18045112781954886
+        },
+        {
+          "Animal_Name": "Sonic",
+          "Left": 0.20229007633587787,
+          "Right": 0.11441647597254005
+        },
+        {
+          "Animal_Name": "Sunflower",
+          "Left": 0.25083056478405313,
+          "Right": 0.15967365967365968
+        },
+        {
+          "Animal_Name": "Zazu",
+          "Left": 0.17806267806267806,
+          "Right": 0.15045592705167174
+        }
+      ]
+    }
+  },
   "part2_n_trials": 36673,
   "part2_ablation": {
     "features_full": [
@@ -371,10 +1203,197 @@
     }
   },
   "response_manifest": {
-    "R1-f_choice_history_conditioning": {
-      "sentence": "Conditioning P(switch) additionally on the trailing choice sequence (not just reward history, as Fig 2e itself does) gives a maximum within-reward-sequence spread across choice-history codes of 1.000 (reward_seq=101); full per-reward-sequence spread is in part1_choice_history_variance_given_reward_history.",
-      "max_range_across_choice_codes": 1.0,
-      "mean_range_across_choice_codes": 0.565771533767953
+    "R1-f_physical_side_persistence_pooled": {
+      "sentence": "Pooling the physical Right- vs. Left-persistence comparison across the 6 reward sequences with data from all 6 animals (rather than 8 separate small tests), animals show a LOWER switch rate after persisting Right than after persisting Left: 0.256 vs. 0.363 (stratified, equal weight per reward_seq; paired t=-1.707, p=0.1486), and 0.166 vs. 0.243 (naive trial-weighted pooling; t=-1.514, p=0.1904) -- both methods agree in direction and magnitude, so this is not an artifact of how the pooling was done.",
+      "pooled_result": {
+        "eligible_reward_seqs": [
+          "000",
+          "001",
+          "011",
+          "100",
+          "110",
+          "111"
+        ],
+        "stratified": {
+          "n_animals": 6,
+          "mean_right": 0.2564438316124369,
+          "mean_left": 0.3628476627930491,
+          "t": -1.7065960310265604,
+          "p": 0.14860774901378668,
+          "per_animal": [
+            {
+              "Animal_Name": "Coral",
+              "Left": 0.6174279698033592,
+              "Right": 0.27825297385459163
+            },
+            {
+              "Animal_Name": "Fiona",
+              "Left": 0.12161017128881091,
+              "Right": 0.2291358750419886
+            },
+            {
+              "Animal_Name": "Knuckles",
+              "Left": 0.3426931082955707,
+              "Right": 0.3161266101667284
+            },
+            {
+              "Animal_Name": "Sonic",
+              "Left": 0.4185713126484605,
+              "Right": 0.26112010404288033
+            },
+            {
+              "Animal_Name": "Sunflower",
+              "Left": 0.43599646020964866,
+              "Right": 0.2628011336797355
+            },
+            {
+              "Animal_Name": "Zazu",
+              "Left": 0.2407869545124447,
+              "Right": 0.19122629288869697
+            }
+          ]
+        },
+        "naive_trial_weighted": {
+          "n_animals": 6,
+          "mean_right": 0.16591266695745302,
+          "mean_left": 0.242672369912981,
+          "t": -1.5139924106278435,
+          "p": 0.1904492086588035,
+          "per_animal": [
+            {
+              "Animal_Name": "Coral",
+              "Left": 0.5257352941176471,
+              "Right": 0.2204968944099379
+            },
+            {
+              "Animal_Name": "Fiona",
+              "Left": 0.11996251171508904,
+              "Right": 0.16998191681735986
+            },
+            {
+              "Animal_Name": "Knuckles",
+              "Left": 0.1791530944625407,
+              "Right": 0.18045112781954886
+            },
+            {
+              "Animal_Name": "Sonic",
+              "Left": 0.20229007633587787,
+              "Right": 0.11441647597254005
+            },
+            {
+              "Animal_Name": "Sunflower",
+              "Left": 0.25083056478405313,
+              "Right": 0.15967365967365968
+            },
+            {
+              "Animal_Name": "Zazu",
+              "Left": 0.17806267806267806,
+              "Right": 0.15045592705167174
+            }
+          ]
+        }
+      }
+    },
+    "R1-f_physical_side_persistence_by_reward_seq": {
+      "sentence": "Per-reward-sequence breakdown (8 sequences, not corrected for multiple comparisons): for the single most common sequence, reward_seq='111' (three consecutive rewards either way, n=3067 right / 2988 left trials, 6 animals), paired t=-1.944, p=0.1095. Full breakdown in part1_physical_side_persistence above; the pooled test above is the primary result.",
+      "reward_111_result": {
+        "n_animals": 6.0,
+        "n_trials_right": 3067.0,
+        "n_trials_left": 2988.0,
+        "mean_p_switch_right": 0.09778242995993046,
+        "mean_p_switch_left": 0.14138988417173956,
+        "paired_t": -1.9439723972857608,
+        "paired_p": 0.10951221228010304
+      },
+      "full_summary": [
+        {
+          "reward_seq": "000",
+          "n_animals": 6,
+          "n_trials_right": 441,
+          "n_trials_left": 512,
+          "mean_p_switch_right": 0.5307062384208892,
+          "mean_p_switch_left": 0.538263151988044,
+          "paired_t": -0.0687103697690791,
+          "paired_p": 0.9478833683805845
+        },
+        {
+          "reward_seq": "001",
+          "n_animals": 6,
+          "n_trials_right": 45,
+          "n_trials_left": 107,
+          "mean_p_switch_right": 0.07527777777777778,
+          "mean_p_switch_left": 0.3893662295836209,
+          "paired_t": -3.0979153609564323,
+          "paired_p": 0.026916707124614754
+        },
+        {
+          "reward_seq": "010",
+          "n_animals": 1,
+          "n_trials_right": 5,
+          "n_trials_left": 49,
+          "mean_p_switch_right": 0.4,
+          "mean_p_switch_left": 0.25925925925925924,
+          "paired_t": NaN,
+          "paired_p": NaN
+        },
+        {
+          "reward_seq": "011",
+          "n_animals": 6,
+          "n_trials_right": 59,
+          "n_trials_left": 108,
+          "mean_p_switch_right": 0.08886328725038402,
+          "mean_p_switch_left": 0.2824074074074074,
+          "paired_t": -2.544736427587575,
+          "paired_p": 0.05159543504484731
+        },
+        {
+          "reward_seq": "100",
+          "n_animals": 6,
+          "n_trials_right": 143,
+          "n_trials_left": 175,
+          "mean_p_switch_right": 0.4726816079139917,
+          "mean_p_switch_left": 0.4494408162125249,
+          "paired_t": 0.5271969023532304,
+          "paired_p": 0.6206022589932622
+        },
+        {
+          "reward_seq": "101",
+          "n_animals": 1,
+          "n_trials_right": 10,
+          "n_trials_left": 46,
+          "mean_p_switch_right": 0.1,
+          "mean_p_switch_left": 0.3125,
+          "paired_t": NaN,
+          "paired_p": NaN
+        },
+        {
+          "reward_seq": "110",
+          "n_animals": 6,
+          "n_trials_right": 175,
+          "n_trials_left": 198,
+          "mean_p_switch_right": 0.2733516483516484,
+          "mean_p_switch_left": 0.37621848739495795,
+          "paired_t": -1.4241235348834624,
+          "paired_p": 0.21371174493535505
+        },
+        {
+          "reward_seq": "111",
+          "n_animals": 6,
+          "n_trials_right": 3067,
+          "n_trials_left": 2988,
+          "mean_p_switch_right": 0.09778242995993046,
+          "mean_p_switch_left": 0.14138988417173956,
+          "paired_t": -1.9439723972857608,
+          "paired_p": 0.10951221228010304
+        }
+      ]
+    },
+    "R1-f_target_identity_choice_history_untestable": {
+      "sentence": "A separate, earlier approach -- jointly conditioning on choice history built from StimuliChosen (TargetA/TargetB, a probability-based label) rather than physical side -- was found UNTESTABLE after excluding low-n codes: every reward_seq retains exactly one target-identity choice code once codes with < 30 pooled trials are dropped (7 of 15 codes), because target-identity choice sequences and reward sequences are nearly collinear in this data. Superseded by the physical-side-persistence result above, which is well-powered and does answer the reviewer's question.",
+      "n_codes_total": 15,
+      "n_codes_dropped_low_n": 7,
+      "min_trials_threshold": 30,
+      "untestable": true
     },
     "R2-3_signed_deviation_ablation": {
       "sentence": "Contrary to the premise this check was originally scoped around, removing Signed_Deviation substantially HURTS recovery: held-out ARI drops from 0.851 to 0.451 (K-Means) and 0.472 to 0.242 (HMM); Right Bias recall collapses from 1.000 to exactly 0.000 (Left Bias: 1.000 to 0.779). Mechanism (verified directly, not inferred): Signed_Deviation is the only feature carrying LEFT-vs-RIGHT direction -- Choice_Deviation is its absolute value, so it flags that bias exists but not which side. Without the signed feature, 633/806 true Right Bias trials are assigned to the Left Bias cluster (both directions merge), and the cluster Hungarian-matched to the 'Right Bias' label is actually {'Engaged': 1216, 'Exploration': 1028, 'Left Bias': 1, 'Right Bias': 0} by true label -- a non-bias cluster, not a genuine Right Bias recovery.",

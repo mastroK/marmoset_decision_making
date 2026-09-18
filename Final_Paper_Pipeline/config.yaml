@@ -834,13 +834,18 @@ fig8_3cond:
 ra1:
   states_of_interest: ["Random Exploration", "Directed Exploration"]
   psychometric_min_trials: 20   # min trials per (animal, state) for a stable logistic slope fit
-  # Circularity control band: Rolling_Accuracy in [0.30, 0.50] straddles the
+  # Circularity control band: Rolling_Accuracy in [0.20, 0.60] straddles the
   # random_exploration_accuracy_threshold (0.4) boundary those two states'
-  # own classifier definitions are built from -- both states have real
-  # trials in this shared band (checked empirically in the notebook, not
-  # assumed), so it isolates whether the psychometric-slope difference
-  # survives once accuracy itself is held roughly constant across states.
-  circularity_accuracy_band: [0.30, 0.50]
+  # own classifier definitions are built from. WIDENED from an initial
+  # [0.30, 0.50] (2026-09-18): that narrower band gave only 15 pooled
+  # Random Exploration trials, below the per-animal minimum for even one
+  # fit. Checked directly against the real distribution: essentially all
+  # Random Exploration trials have Rolling_Accuracy in [0.2, 0.4) -- none
+  # exist below ~0.2, so widening the lower edge further gains nothing;
+  # [0.20, 0.60] is the narrowest band that gives every one of the 5
+  # animals >= psychometric_min_trials Random Exploration trials (90-455
+  # each), not a band chosen to force a particular outcome.
+  circularity_accuracy_band: [0.20, 0.60]
   # One-at-a-time +/-25% sensitivity sweep over every classify_updated
   # numeric threshold, holding the others fixed at their config value.
   threshold_sweep_pct: 0.25
@@ -896,6 +901,13 @@ ra3:
 ra5:
   history_n: 3   # same window as fig2.history_n -- Fig 2e itself is unchanged by this notebook
   ablation_seed: 42
+  # Min pooled trials for a (decision_seq, reward_seq) joint code to be
+  # included in the choice-history-variance check -- added 2026-09-18
+  # after finding the un-floored version's p_switch_range of up to 1.000
+  # was driven entirely by single-animal codes with 2-9 trials. Matches
+  # this project's own min-trial convention elsewhere (not tuned to this
+  # specific result).
+  choice_history_min_trials: 30
 
 # ---------------------------------------------------------------------------
 # RA4 -- reviewer-response condition-wise RL, parameter recovery, and

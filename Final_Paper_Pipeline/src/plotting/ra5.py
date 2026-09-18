@@ -1,6 +1,7 @@
 """Reviewer-response addition (RA5_small_items.ipynb, R1-f, R2-3).
 PAPER-candidate panels: 3-arm feature-ablation ARI comparison, the
-no-Signed_Deviation mechanism crosstab. LETTER-ONLY: choice-history
+no-Signed_Deviation mechanism crosstab, physical-side persistence (RRR
+vs. LLL) by reward sequence. LETTER-ONLY: choice-history
 variance-given-reward-history.
 """
 
@@ -11,7 +12,82 @@ from .style import clean_axes
 
 COL_KMEANS = "#4878CF"
 COL_HMM = "#D65F5F"
+COL_RIGHT = "#4878CF"
+COL_LEFT = "#D65F5F"
 FONTSIZE = 8
+
+
+def _sig_label(p):
+    if p is None or (isinstance(p, float) and np.isnan(p)):
+        return "n.d."
+    if p < 0.001:
+        return "***"
+    if p < 0.01:
+        return "**"
+    if p < 0.05:
+        return "*"
+    return "ns"
+
+
+def plot_physical_side_persistence(per_animal_df, summary_df, out_path):
+    """PAPER candidate. For each reward_seq, paired per-animal P(switch)
+    when persisting on the physical Right side (RRR-style) vs. Left side
+    (LLL-style) for the trailing 3 trials -- grey connecting lines (same
+    animals contribute both), significance label per reward_seq from the
+    paired t-test.
+    """
+    reward_seqs = list(summary_df["reward_seq"])
+    n = len(reward_seqs)
+    fig, axes = plt.subplots(1, n, figsize=(1.5 * n, 2.6), sharey=True)
+    if n == 1:
+        axes = [axes]
+
+    for ax, rseq in zip(axes, reward_seqs):
+        sub = per_animal_df[per_animal_df["reward_seq"] == rseq]
+        wide = sub.pivot(index="Animal_Name", columns="persisted_side", values="p_switch").dropna()
+        x = np.array([0, 1])
+        for _, row in wide.iterrows():
+            y = [row["Left"], row["Right"]]
+            ax.plot(x, y, color="#AAAAAA", linewidth=0.7, zorder=1)
+            ax.scatter(x, y, color=[COL_LEFT, COL_RIGHT], s=18, zorder=2, edgecolor="black", linewidth=0.3)
+        row = summary_df[summary_df["reward_seq"] == rseq].iloc[0]
+        ax.set_xticks(x)
+        ax.set_xticklabels(["L", "R"], fontsize=FONTSIZE - 1)
+        ax.set_title(f"{rseq}\n{_sig_label(row['paired_p'])}", fontsize=6.5)
+        ax.set_xlim(-0.4, 1.4)
+        clean_axes(ax)
+    axes[0].set_ylabel("P(switch)", fontsize=FONTSIZE)
+
+    plt.tight_layout()
+    plt.savefig(out_path, bbox_inches="tight", dpi=300)
+    plt.close(fig)
+
+
+def plot_physical_side_pooled_test(pooled_result, out_path):
+    """PAPER candidate. Overall Right- vs. Left-persistence paired dots,
+    stratified (equal weight per reward_seq) and naive (trial-weighted)
+    pooling shown side by side."""
+    fig, axes = plt.subplots(1, 2, figsize=(4.0, 2.6), sharey=True)
+    for ax, key, title in (
+        (axes[0], "stratified", "stratified\n(equal wt. per reward_seq)"),
+        (axes[1], "naive_trial_weighted", "naive\n(trial-weighted)"),
+    ):
+        res = pooled_result[key]
+        x = np.array([0, 1])
+        for row in res["per_animal"]:
+            y = [row["Left"], row["Right"]]
+            ax.plot(x, y, color="#AAAAAA", linewidth=0.8, zorder=1)
+            ax.scatter(x, y, color=[COL_LEFT, COL_RIGHT], s=24, zorder=2, edgecolor="black", linewidth=0.4)
+        ax.set_xticks(x)
+        ax.set_xticklabels(["Left", "Right"], fontsize=FONTSIZE)
+        ax.set_title(f"{title}\n{_sig_label(res['p'])}", fontsize=6.5)
+        ax.set_xlim(-0.4, 1.4)
+        clean_axes(ax)
+    axes[0].set_ylabel("P(switch), pooled\nacross reward_seq", fontsize=FONTSIZE)
+
+    plt.tight_layout()
+    plt.savefig(out_path, bbox_inches="tight", dpi=300)
+    plt.close(fig)
 
 
 def plot_ablation_ari_comparison(ari_by_arm, out_path):

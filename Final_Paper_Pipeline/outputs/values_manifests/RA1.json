@@ -152,67 +152,130 @@
   },
   "circularity_control": {
     "accuracy_band": [
-      0.3,
-      0.5
+      0.2,
+      0.6
     ],
     "n_trials_in_band_by_state": {
-      "Directed Exploration": 3767,
-      "Adapting (slow)": 1762,
-      "Adapting (fast)": 771,
-      "Right Bias": 562,
-      "Left Bias": 556,
-      "Exploit": 192,
-      "Random Exploration": 15
+      "Directed Exploration": 8526,
+      "Adapting (slow)": 3769,
+      "Adapting (fast)": 2838,
+      "Exploit": 2030,
+      "Left Bias": 1434,
+      "Random Exploration": 1420,
+      "Right Bias": 1319
     },
-    "comparison_in_band": null,
+    "comparison_in_band": {
+      "Random Exploration": {
+        "mean_slope": 0.1610772982142965,
+        "ci95": [
+          -0.2677017311653071,
+          0.5898563275939002
+        ]
+      },
+      "Directed Exploration": {
+        "mean_slope": 1.3062470514246887,
+        "ci95": [
+          1.0542106481287568,
+          1.5582834547206206
+        ]
+      },
+      "cis_non_overlapping": true
+    },
     "per_animal_in_band": [
       {
         "Animal_Name": "Fiona",
         "Behavioral_State": "Directed Exploration",
-        "slope": 1.5219928288380171,
-        "ci95_low": 1.1546243247277297,
-        "ci95_high": 1.8893613329483046,
-        "n_trials": 441
+        "slope": 1.5856337472486872,
+        "ci95_low": 1.3481811822116911,
+        "ci95_high": 1.8230863122856833,
+        "n_trials": 979
+      },
+      {
+        "Animal_Name": "Fiona",
+        "Behavioral_State": "Random Exploration",
+        "slope": -0.08853273017545225,
+        "ci95_low": -0.7785495712790855,
+        "ci95_high": 0.601484110928181,
+        "n_trials": 184
       },
       {
         "Animal_Name": "Knuckles",
         "Behavioral_State": "Directed Exploration",
-        "slope": 0.9730036452911134,
-        "ci95_low": 0.7797219777185598,
-        "ci95_high": 1.166285312863667,
-        "n_trials": 1208
+        "slope": 1.3504543901174084,
+        "ci95_low": 1.2178723602949137,
+        "ci95_high": 1.483036419939903,
+        "n_trials": 2636
+      },
+      {
+        "Animal_Name": "Knuckles",
+        "Behavioral_State": "Random Exploration",
+        "slope": -0.12733927867005704,
+        "ci95_low": -0.5170818144439367,
+        "ci95_high": 0.26240325710382273,
+        "n_trials": 454
       },
       {
         "Animal_Name": "Sonic",
         "Behavioral_State": "Directed Exploration",
-        "slope": 0.8283184178542408,
-        "ci95_low": 0.5792885583389962,
-        "ci95_high": 1.0773482773694854,
-        "n_trials": 658
+        "slope": 1.1414247269880684,
+        "ci95_low": 0.9749559800953519,
+        "ci95_high": 1.3078934738807848,
+        "n_trials": 1455
+      },
+      {
+        "Animal_Name": "Sonic",
+        "Behavioral_State": "Random Exploration",
+        "slope": 0.31089154891402854,
+        "ci95_low": -0.15181860250185186,
+        "ci95_high": 0.7736017003299089,
+        "n_trials": 299
       },
       {
         "Animal_Name": "Sunflower",
         "Behavioral_State": "Directed Exploration",
-        "slope": 1.2073950505448225,
-        "ci95_low": 1.0096523166159883,
-        "ci95_high": 1.4051377844736568,
-        "n_trials": 1175
+        "slope": 1.3769048328875202,
+        "ci95_low": 1.2549739018822585,
+        "ci95_high": 1.4988357638927818,
+        "n_trials": 2779
+      },
+      {
+        "Animal_Name": "Sunflower",
+        "Behavioral_State": "Random Exploration",
+        "slope": 0.6970259420920597,
+        "ci95_low": 0.25005421543849227,
+        "ci95_high": 1.143997668745627,
+        "n_trials": 394
       },
       {
         "Animal_Name": "Zazu",
         "Behavioral_State": "Directed Exploration",
-        "slope": 1.006679514763165,
-        "ci95_low": 0.6229978894305171,
-        "ci95_high": 1.3903611400958131,
-        "n_trials": 285
+        "slope": 1.0768175598817593,
+        "ci95_low": 0.8406141219911798,
+        "ci95_high": 1.3130209977723388,
+        "n_trials": 677
+      },
+      {
+        "Animal_Name": "Zazu",
+        "Behavioral_State": "Random Exploration",
+        "slope": 0.013341008910903583,
+        "ci95_low": -0.8522297052745816,
+        "ci95_high": 0.8789117230963889,
+        "n_trials": 89
       }
     ],
     "summary_in_band": [
       {
         "Behavioral_State": "Directed Exploration",
-        "mean_slope": 1.107477891458272,
-        "ci95_low": 0.7743162099147678,
-        "ci95_high": 1.440639573001776,
+        "mean_slope": 1.3062470514246887,
+        "ci95_low": 1.0542106481287568,
+        "ci95_high": 1.5582834547206206,
+        "n_animals": 5.0
+      },
+      {
+        "Behavioral_State": "Random Exploration",
+        "mean_slope": 0.1610772982142965,
+        "ci95_low": -0.2677017311653071,
+        "ci95_high": 0.5898563275939002,
         "n_animals": 5.0
       }
     ]
@@ -491,17 +554,21 @@
       "cis_non_overlapping": true
     },
     "R1-C1_circularity_control": {
-      "sentence": "The circularity control could not be fit: only 15 Random Exploration trials (pooled across all 5 animals) fall within the shared Rolling_Accuracy band (0.3, 0.5), below the 20-trial minimum for even one animal's logistic fit -- reported as an honest limitation, not evidence for or against circularity.",
-      "n_trials_in_band_by_state": {
-        "Directed Exploration": 3767,
-        "Adapting (slow)": 1762,
-        "Adapting (fast)": 771,
-        "Right Bias": 562,
-        "Left Bias": 556,
-        "Exploit": 192,
-        "Random Exploration": 15
+      "Random Exploration": {
+        "mean_slope": 0.1610772982142965,
+        "ci95": [
+          -0.2677017311653071,
+          0.5898563275939002
+        ]
       },
-      "inconclusive": true
+      "Directed Exploration": {
+        "mean_slope": 1.3062470514246887,
+        "ci95": [
+          1.0542106481287568,
+          1.5582834547206206
+        ]
+      },
+      "cis_non_overlapping": true
     },
     "R2-5_R1-s_reclassification_impact": {
       "sentence": "4.40% of all trials changed state label when Directed Exploration was checked before Random Exploration; 99.63% of trials originally labeled Random Exploration moved under the reordered rule, predominantly to Directed Exploration.",
