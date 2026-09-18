@@ -19,9 +19,12 @@ instead of collapsing it to its two endpoints.
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 
 from .style import clean_axes
+from ..features.history_encoding import sort_animals
 
+FONTSIZE = 8
 COL_80 = "#4878CF"
 COL_90 = "#9B59B6"
 COL_100 = "#D65F5F"
@@ -45,11 +48,32 @@ def _sig_label(p):
     return "ns"
 
 
-def plot_panel_a(pos_summaries, animal_acc_result, conditions, out_path):
+def _animal_legend(ax, animals, animal_colors, loc="upper left", bbox=(1.02, 1.0)):
+    """Per-animal color legend -- this project's own established convention
+    for tracking an individual animal across x-positions (e.g. fig1.py's
+    within-block-learning panel), applied here so an animal's line color is
+    the same at 80-20/90-10/100-0.
+
+    Always the LAST legend() call on its axes in this module -- does NOT
+    call ax.add_artist() itself (that's only needed to protect an EARLIER
+    legend from being replaced by a later ax.legend() call; doing it here
+    too double-registers this same legend as both `ax.legend_` and a plain
+    child artist, rendering it twice)."""
+    handles = [Line2D([0], [0], color=animal_colors.get(a, "#888888"), marker="o",
+                       linestyle="-", markersize=4.5, linewidth=1.3, label=a) for a in animals]
+    return ax.legend(handles=handles, fontsize=FONTSIZE - 2, frameon=False,
+                      loc=loc, bbox_to_anchor=bbox, title="Animal", title_fontsize=FONTSIZE - 2)
+
+
+def plot_panel_a(pos_summaries, animal_acc_result, conditions, animal_colors, animal_order, out_path):
     """Panel a: p(high-prob choice) aligned to block reversal, one line per
     condition (left); paired per-animal mean session accuracy across all
-    three conditions, one connected line per animal (right)."""
-    fig, axes = plt.subplots(1, 2, figsize=(6.0, 2.4), width_ratios=[1.6, 1])
+    three conditions, one connected line per animal, colored by this
+    project's own established per-animal palette (config.yaml's
+    plotting.animal_colors) so a given animal is the same color at every
+    condition -- lets a reader track one animal's performance across the
+    80-20 -> 90-10 -> 100-0 gradient (right)."""
+    fig, axes = plt.subplots(1, 2, figsize=(6.6, 2.4), width_ratios=[1.6, 1])
     ax_line, ax_scatter = axes
 
     for c in conditions:
@@ -67,22 +91,23 @@ def plot_panel_a(pos_summaries, animal_acc_result, conditions, out_path):
     clean_axes(ax_line)
 
     x = np.arange(len(conditions))
-    animals = animal_acc_result["used_animals"]
+    animals = sort_animals(animal_acc_result["used_animals"], animal_order)
     values = {c: dict(zip(animal_acc_result["animals"], animal_acc_result[f"values_{c.replace('-', '_')}"]))
               for c in conditions}
     for a in animals:
         y = [values[c][a] for c in conditions]
-        ax_scatter.plot(x, y, color=GREY, linewidth=0.8, zorder=1)
-        ax_scatter.scatter(x, y, color=[COND_STYLE[c]["color"] for c in conditions], s=24, zorder=2)
+        color = animal_colors.get(a, "#888888")
+        ax_scatter.plot(x, y, color=color, linewidth=1.2, marker="o", markersize=4, zorder=2)
     ax_scatter.set_xticks(x)
     ax_scatter.set_xticklabels(conditions, fontsize=8)
     ax_scatter.set_ylabel("mean session accuracy", fontsize=8)
     ax_scatter.set_title(f"Friedman {_sig_label(animal_acc_result['p'])}", fontsize=8.5)
     ax_scatter.set_xlim(-0.4, len(conditions) - 0.6)
     clean_axes(ax_scatter)
+    leg = _animal_legend(ax_scatter, animals, animal_colors, loc="upper left", bbox=(1.05, 1.0))
 
     plt.tight_layout()
-    plt.savefig(out_path, bbox_inches="tight", dpi=300)
+    plt.savefig(out_path, bbox_inches="tight", dpi=300, bbox_extra_artists=(leg,))
     plt.close(fig)
 
 
@@ -105,44 +130,56 @@ def plot_panel_b(pos_summaries, conditions, out_path):
     plt.close(fig)
 
 
-def plot_panel_c(proportions_result, states_order, conditions, out_path):
+def plot_panel_c(proportions_result, states_order, conditions, animal_colors, animal_order, out_path):
     """Panel c: proportion of trials in each behavioral state, one small
-    panel per state, paired per-animal dots+lines across all three conditions."""
+    panel per state, paired per-animal dots+lines across all three
+    conditions -- colored per-animal (plotting.animal_colors) so the same
+    animal is traceable across states and conditions."""
     states = [s for s in states_order if s in proportions_result]
     fig, axes = plt.subplots(1, len(states), figsize=(2.1 * len(states), 2.4), sharex=True)
     if len(states) == 1:
         axes = [axes]
     x = np.arange(len(conditions))
 
+    all_animals = sort_animals(
+        sorted(set().union(*[proportions_result[s]["used_animals"] for s in states])), animal_order
+    )
     for ax, state in zip(axes, states):
         r = proportions_result[state]
-        animals = r["used_animals"]
+        animals = sort_animals(r["used_animals"], animal_order)
         values = {c: dict(zip(r["animals"], r[f"values_{c.replace('-', '_')}"])) for c in conditions}
         for a in animals:
             y = [values[c][a] for c in conditions]
-            ax.plot(x, y, color=GREY, linewidth=0.8, zorder=1)
-            ax.scatter(x, y, color=[COND_STYLE[c]["color"] for c in conditions], s=20, zorder=2)
+            ax.plot(x, y, color=animal_colors.get(a, "#888888"), linewidth=1.0,
+                    marker="o", markersize=3.5, zorder=2)
         ax.set_xticks(x)
         ax.set_xticklabels(conditions, fontsize=6.5, rotation=20, ha="right")
         ax.set_title(f"{state}\nFriedman {_sig_label(r['p'])}", fontsize=7.5)
         ax.set_xlim(-0.4, len(conditions) - 0.6)
         clean_axes(ax)
     axes[0].set_ylabel("proportion of trials", fontsize=8)
+    leg = _animal_legend(axes[-1], all_animals, animal_colors, loc="upper left", bbox=(1.05, 1.0))
 
     plt.tight_layout()
-    plt.savefig(out_path, bbox_inches="tight", dpi=300)
+    plt.savefig(out_path, bbox_inches="tight", dpi=300, bbox_extra_artists=(leg,))
     plt.close(fig)
 
 
-def plot_panel_d(wsls_result, states_order, conditions, out_path):
+def plot_panel_d(wsls_result, states_order, conditions, animal_colors, animal_order, out_path):
     """Panel d: win-stay (left) and lose-switch (right) for Exploitation and
-    Directed Exploration, grouped bars, one bar per condition per state."""
+    Directed Exploration, grouped bars (colored by condition), with each
+    animal's own paired trend overlaid in that animal's own color
+    (plotting.animal_colors) instead of a color-anonymous grey line."""
     states = [s for s in states_order if s in wsls_result["win_stay"]]
     n_cond = len(conditions)
     width = 0.8 / n_cond
     fig, axes = plt.subplots(1, 2, figsize=(2.6 * len(states), 2.6))
     x_base = np.arange(len(states))
 
+    all_animals = sort_animals(
+        sorted(set().union(*[wsls_result[m][s]["used_animals"] for m in ("win_stay", "lose_switch") for s in states])),
+        animal_order,
+    )
     for ax, metric, title in ((axes[0], "win_stay", "win-stay"), (axes[1], "lose_switch", "lose-switch")):
         for i, state in enumerate(states):
             r = wsls_result[metric][state]
@@ -157,10 +194,11 @@ def plot_panel_d(wsls_result, states_order, conditions, out_path):
                 sems.append(sem)
                 ax.bar(i + offsets[k], m, width, yerr=sem, color=COND_STYLE[c]["color"],
                        capsize=2, edgecolor="white", linewidth=0.5, label=c if i == 0 else None)
-            animals = r["used_animals"]
+            animals = sort_animals(r["used_animals"], animal_order)
             for a in animals:
                 y = [values[c][a] for c in conditions]
-                ax.plot(i + offsets, y, color=GREY, linewidth=0.5, zorder=1, alpha=0.7)
+                ax.plot(i + offsets, y, color=animal_colors.get(a, "#888888"),
+                        linewidth=0.8, marker="o", markersize=2.5, zorder=2, alpha=0.85)
             ax.text(i, max(m + s for m, s in zip(means, sems)) + 0.03, _sig_label(r["p"]), ha="center", fontsize=8)
 
         ax.axhline(0.5, color="gray", linestyle="--", linewidth=0.6, alpha=0.6)
@@ -170,10 +208,13 @@ def plot_panel_d(wsls_result, states_order, conditions, out_path):
         ax.set_ylim(0, 1.25)
         clean_axes(ax)
     axes[0].set_ylabel("probability", fontsize=8)
-    leg = axes[1].legend(fontsize=7, frameon=False, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    leg1 = axes[1].legend(fontsize=7, frameon=False, loc="upper left", bbox_to_anchor=(1.02, 1.0),
+                           title="Condition", title_fontsize=7)
+    axes[1].add_artist(leg1)  # promote out of the single ax.legend_ slot before the 2nd legend() call
+    leg2 = _animal_legend(axes[1], all_animals, animal_colors, loc="upper left", bbox=(1.02, 0.55))
 
     plt.tight_layout()
-    plt.savefig(out_path, bbox_inches="tight", dpi=300, bbox_extra_artists=(leg,))
+    plt.savefig(out_path, bbox_inches="tight", dpi=300, bbox_extra_artists=(leg1, leg2))
     plt.close(fig)
 
 
@@ -245,33 +286,44 @@ def plot_panel_f(diff_ab, diff_bc, out_path):
     plt.close(fig)
 
 
-def plot_panel_g_sticky_model(comparison, conditions, out_path):
+def plot_panel_g_sticky_model(comparison, conditions, animal_colors, animal_order, out_path):
     """New panel (not in Fig 8 itself): sticky Q-learning params
-    (alpha/beta/kappa), mean +/- SEM across animals, vs. condition -- the
-    marmoset-side analogue of Fig 9 panel b, restricted to this figure's
-    three conditions and Fig 8's own single-init model fit (not Fig 9's
-    10-restart cross-species version)."""
+    (alpha/beta/kappa) vs. condition -- the marmoset-side analogue of Fig 9
+    panel b, restricted to this figure's three conditions and Fig 8's own
+    single-init model fit (not Fig 9's 10-restart cross-species version).
+    Per-animal fits (thin, animal-colored lines) are shown underneath the
+    group mean +/- SEM (bold black line) so an animal's own model
+    parameters can be traced across conditions, not just the group trend."""
     params = [("alpha", "learning rate (alpha)"), ("beta", "inverse temp. (beta)"), ("kappa", "stickiness (kappa)")]
-    fig, axes = plt.subplots(1, 3, figsize=(7.2, 2.6))
+    fig, axes = plt.subplots(1, 3, figsize=(8.4, 2.6))
     x = np.arange(len(conditions))
 
+    all_animals = sort_animals(comparison["alpha"]["animals"], animal_order)
     for ax, (param, label) in zip(axes, params):
         r = comparison[param]
+        values = {c: dict(zip(r["animals"], r[f"values_{c.replace('-', '_')}"])) for c in conditions}
+        for a in all_animals:
+            y = [values[c][a] for c in conditions]
+            if any(np.isnan(y)):
+                continue
+            ax.plot(x, y, color=animal_colors.get(a, "#888888"), linewidth=0.9,
+                    marker="o", markersize=3, alpha=0.75, zorder=2)
+
         means, sems = [], []
         for c in conditions:
             v = np.array(r[f"values_{c.replace('-', '_')}"], dtype=float)
             v = v[~np.isnan(v)]
             means.append(np.nanmean(v))
             sems.append(np.nanstd(v, ddof=1) / np.sqrt(len(v)) if len(v) > 1 else 0.0)
-        ax.errorbar(x, means, yerr=sems, color="black", marker="o", markersize=5, linewidth=1.4, capsize=3)
-        for k, c in enumerate(conditions):
-            ax.plot(x[k], means[k], "o", color=COND_STYLE[c]["color"], markersize=7, zorder=3)
+        ax.errorbar(x, means, yerr=sems, color="black", marker="o", markersize=5, linewidth=1.6, capsize=3, zorder=3)
         ax.set_xticks(x)
         ax.set_xticklabels(conditions, fontsize=7.5)
         ax.set_ylabel(label, fontsize=8)
         ax.set_title(f"Friedman {_sig_label(r['p'])}", fontsize=8)
         clean_axes(ax)
 
+    leg = _animal_legend(axes[-1], all_animals, animal_colors, loc="upper left", bbox=(1.05, 1.0))
+
     plt.tight_layout()
-    plt.savefig(out_path, bbox_inches="tight", dpi=300)
+    plt.savefig(out_path, bbox_inches="tight", dpi=300, bbox_extra_artists=(leg,))
     plt.close(fig)
