@@ -22,6 +22,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
 from .style import clean_axes
+from ..features.history_encoding import sort_animals
 
 FONTSIZE = 9
 SPECIES_MARKER = {"marmoset": "o", "mouse": "s"}
@@ -80,6 +81,64 @@ def _finish(ax, ylabel, ylim=None):
     clean_axes(ax)
 
 
+def _animal_legend(ax, animals, animal_colors, loc="upper left", bbox=(1.05, 1.0)):
+    """Per-animal color legend (config.yaml's plotting.animal_colors/
+    animal_order -- this project's own established per-animal palette,
+    same one used throughout Fig1-Fig5 and fig8_3cond.py). Always the
+    LAST legend() call on its axes here -- no add_artist needed (see
+    fig8_3cond.py's own _animal_legend docstring for why calling it
+    unconditionally double-renders the legend)."""
+    handles = [Line2D([0], [0], color=animal_colors.get(a, "#888888"), marker="o",
+                       linestyle="-", markersize=4.5, linewidth=1.3, label=a) for a in animals]
+    return ax.legend(handles=handles, fontsize=FONTSIZE - 2, frameon=False,
+                      loc=loc, bbox_to_anchor=bbox, title="Animal", title_fontsize=FONTSIZE - 2)
+
+
+def plot_marmoset_per_animal_by_state(data_by_animal, states_order, conditions_order, condition_to_prob,
+                                        value_col, ylabel, animal_colors, animal_order, out_path, ylim=None):
+    """Supplementary, marmoset-only per-animal breakdown for a panel whose
+    main view already uses color for STATE identity (mice have no
+    established per-individual color convention, so this is marmoset-only,
+    same scope as the user's request). Overlaying per-animal color directly
+    on the main state-colored axis would double-encode the color channel,
+    so this is a separate small-multiples-by-state view instead (one
+    subplot per state, animal = color) -- mirrors fig8_3cond.py's own
+    panel c design, not a replacement for the main species/state panel.
+    """
+    states = [s for s in states_order if s in data_by_animal["Behavioral_State"].unique()]
+    fig, axes = plt.subplots(1, len(states), figsize=(2.2 * len(states), 2.6), sharex=True)
+    if len(states) == 1:
+        axes = [axes]
+
+    all_animals = sort_animals(data_by_animal["Animal_Name"].unique().tolist(), animal_order)
+    xticks = _prob_axis(conditions_order, condition_to_prob)
+
+    for ax, state in zip(axes, states):
+        sdf = data_by_animal[data_by_animal["Behavioral_State"] == state]
+        for animal in all_animals:
+            adf = sdf[sdf["Animal_Name"] == animal].set_index("Condition")
+            present = [c for c in conditions_order if c in adf.index]
+            if len(present) < 2:
+                continue
+            xa = _prob_axis(present, condition_to_prob)
+            y = adf.loc[present, value_col].values
+            ax.plot(xa, y, color=animal_colors.get(animal, "#888888"), linewidth=1.0,
+                    marker="o", markersize=3, zorder=2)
+        ax.set_xlabel("P(reward)", fontsize=FONTSIZE - 2)
+        ax.set_xticks(xticks)
+        ax.set_title(state, fontsize=FONTSIZE - 1)
+        if ylim:
+            ax.set_ylim(*ylim)
+        ax.tick_params(labelsize=FONTSIZE - 2)
+        clean_axes(ax)
+    axes[0].set_ylabel(ylabel, fontsize=FONTSIZE)
+
+    leg = _animal_legend(axes[-1], all_animals, animal_colors)
+    plt.tight_layout()
+    plt.savefig(out_path, dpi=300, bbox_inches="tight", bbox_extra_artists=(leg,))
+    plt.close(fig)
+
+
 def plot_panel_a_state_proportions(marmoset_prop, mouse_prop, cfg, out_path):
     """Panel a: state proportion vs. reward probability of the better
     option. One compact axis, state = color, species = marker/linestyle.
@@ -102,16 +161,38 @@ def plot_panel_a_state_proportions(marmoset_prop, mouse_prop, cfg, out_path):
     plt.close(fig)
 
 
-def plot_panel_b_model_params(marmoset_fits, mouse_fits, cfg, out_path):
+def plot_panel_b_model_params(marmoset_fits, mouse_fits, cfg, out_path,
+                                marmoset_fits_by_animal=None, animal_colors=None, animal_order=None):
     """Panel b: sticky Q-learning model parameters (alpha/beta/kappa),
     mean +/- SEM across animals/mice, vs. reward probability. Three
     subplots (different units -- unlike panel a/c/d, faceting here is
     appropriate), each compact with both species overlaid directly.
+
+    If `marmoset_fits_by_animal` is given, each marmoset's own per-condition
+    fit is drawn underneath the aggregate as a thin, animal-colored line
+    (config.yaml's plotting.animal_colors) -- no color-channel conflict
+    here (unlike panel a/c/d) since color is otherwise only used for
+    species, not state.
     """
     params = [("alpha", "learning rate (alpha)"), ("beta", "inverse temp. (beta)"), ("kappa", "stickiness (kappa)")]
     fig, axes = plt.subplots(1, 3, figsize=(9.6, 3.2))
 
+    all_animals = []
+    if marmoset_fits_by_animal is not None:
+        all_animals = sort_animals(marmoset_fits_by_animal["Animal_Name"].unique().tolist(), animal_order)
+
     for ax, (param, label) in zip(axes, params):
+        if marmoset_fits_by_animal is not None:
+            for animal in all_animals:
+                adf = marmoset_fits_by_animal[marmoset_fits_by_animal["Animal_Name"] == animal].set_index("Condition")
+                present = [c for c in cfg["marmoset_conditions_order"] if c in adf.index]
+                if len(present) < 2:
+                    continue
+                xa = _prob_axis(present, cfg["condition_to_prob"])
+                y = adf.loc[present, param].values
+                ax.plot(xa, y, color=animal_colors.get(animal, "#888888"), linewidth=0.8,
+                        marker="o", markersize=2.5, alpha=0.75, zorder=2)
+
         for species, fits, order in [
             ("marmoset", marmoset_fits, cfg["marmoset_conditions_order"]),
             ("mouse", mouse_fits, cfg["mouse_conditions_order"]),
@@ -137,8 +218,12 @@ def plot_panel_b_model_params(marmoset_fits, mouse_fits, cfg, out_path):
         clean_axes(ax)
 
     axes[0].legend(fontsize=FONTSIZE - 1, frameon=False, loc="best")
+    extra_artists = ()
+    if marmoset_fits_by_animal is not None:
+        leg = _animal_legend(axes[-1], all_animals, animal_colors)
+        extra_artists = (leg,)
     plt.tight_layout()
-    plt.savefig(out_path, dpi=300, bbox_inches="tight")
+    plt.savefig(out_path, dpi=300, bbox_inches="tight", bbox_extra_artists=extra_artists)
     plt.close(fig)
 
 

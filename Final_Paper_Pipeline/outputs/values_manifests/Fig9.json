@@ -154,6 +154,572 @@
       "proportion": 0.0018559517640962
     }
   ],
+  "panel_a_marmoset_state_proportions_by_animal": [
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Coral",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.4366197183098591
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Coral",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.1877934272300469
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Coral",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.184037558685446
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Coral",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1690140845070422
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Coral",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0037558685446009
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.5763627819548872
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1524906015037594
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.1341635338345864
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.125234962406015
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0056390977443609
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.6106277921467199
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1399012461791676
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.1308488126028685
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1061603573947801
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0077592287796849
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.5598397596394592
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.1457185778668002
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1382073109664496
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1347020530796194
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0085127691537305
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.6312076749435666
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1295146726862302
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1123024830699774
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.1111738148984198
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0073363431151241
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.6188963210702341
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1267558528428093
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.1249163879598662
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.115886287625418
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0055183946488294
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Tuna",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.927710843373494
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Tuna",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.0331325301204819
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Tuna",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.003012048192771
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.6054871220604703
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1391937290033594
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1352743561030235
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.1072788353863381
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0058230683090705
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.4583459557709785
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.2297788548924568
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1623750378673129
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.0843683732202363
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0587700696758558
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.4054602471868659
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.3289061058845231
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1065609051220562
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.0868843386828998
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0677611756748447
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.447953653522706
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.2717249112315455
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1357690151373575
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.0730704541207251
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0671837039805643
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.4009708737864078
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.3544436146377894
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1082150858849888
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0683345780433159
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.0605675877520537
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.4455576559546313
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.2991178323881537
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1159420289855072
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.0741650913673598
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0580340264650283
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Coral",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.3333333333333333
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.5112694025090367
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.165532638741229
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.1556453327663193
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1523495641080161
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0086115245587922
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.5029377203290247
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1897767332549941
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.1562867215041128
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.126909518213866
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0193889541715628
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.4541241890639481
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.2057460611677479
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1770157553290083
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1195551436515292
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0268767377201112
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.5073891625615764
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.20935960591133
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1619458128078817
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.104679802955665
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0116995073891625
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.4901485298575326
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.2249166414064868
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1585328887541679
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1085177326462564
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0118217641709608
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Exploitation",
+      "proportion": 0.4911028642116281
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Directed Exploration",
+      "proportion": 0.1652868969454753
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Right Bias",
+      "proportion": 0.1600532876581977
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Left Bias",
+      "proportion": 0.1539632695784565
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Random Exploration",
+      "proportion": 0.0189361499666952
+    }
+  ],
   "panel_b_marmoset_param_summary": [
     {
       "Condition": "100-0",
@@ -486,6 +1052,918 @@
       "n_trials": 7894
     }
   ],
+  "panel_c_marmoset_winstay_loseswitch_by_animal": [
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Coral",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.6166666666666667,
+      "lose_switch": 0.5625,
+      "n_win_trials": 120,
+      "n_lose_trials": 80,
+      "n_trials": 200
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Coral",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.8883720930232558,
+      "lose_switch": 1.0,
+      "n_win_trials": 430,
+      "n_lose_trials": 29,
+      "n_trials": 465
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Coral",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.44594594594594594,
+      "lose_switch": 0.423728813559322,
+      "n_win_trials": 74,
+      "n_lose_trials": 118,
+      "n_trials": 196
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Coral",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.5172413793103449,
+      "lose_switch": 0.3524590163934426,
+      "n_win_trials": 58,
+      "n_lose_trials": 122,
+      "n_trials": 180
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8488372093023255,
+      "lose_switch": 0.3832599118942731,
+      "n_win_trials": 344,
+      "n_lose_trials": 227,
+      "n_trials": 571
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9338327091136079,
+      "lose_switch": 1.0,
+      "n_win_trials": 2403,
+      "n_lose_trials": 42,
+      "n_trials": 2453
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.7967914438502673,
+      "lose_switch": 0.28540305010893247,
+      "n_win_trials": 187,
+      "n_lose_trials": 459,
+      "n_trials": 649
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.625,
+      "lose_switch": 0.3125,
+      "n_win_trials": 8,
+      "n_lose_trials": 16,
+      "n_trials": 24
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.7918781725888325,
+      "lose_switch": 0.3143712574850299,
+      "n_win_trials": 197,
+      "n_lose_trials": 334,
+      "n_trials": 533
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8601190476190477,
+      "lose_switch": 0.3832199546485261,
+      "n_win_trials": 672,
+      "n_lose_trials": 441,
+      "n_trials": 1113
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9440821971942304,
+      "lose_switch": 0.9243697478991597,
+      "n_win_trials": 5061,
+      "n_lose_trials": 119,
+      "n_trials": 5194
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8700980392156863,
+      "lose_switch": 0.30077120822622105,
+      "n_win_trials": 408,
+      "n_lose_trials": 778,
+      "n_trials": 1190
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.42857142857142855,
+      "lose_switch": 0.4406779661016949,
+      "n_win_trials": 7,
+      "n_lose_trials": 59,
+      "n_trials": 66
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8067632850241546,
+      "lose_switch": 0.37782340862423,
+      "n_win_trials": 414,
+      "n_lose_trials": 487,
+      "n_trials": 903
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.9197530864197531,
+      "lose_switch": 0.27906976744186046,
+      "n_win_trials": 162,
+      "n_lose_trials": 129,
+      "n_trials": 291
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9109274563820018,
+      "lose_switch": 0.782608695652174,
+      "n_win_trials": 1089,
+      "n_lose_trials": 23,
+      "n_trials": 1118
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.9134615384615384,
+      "lose_switch": 0.3878787878787879,
+      "n_win_trials": 104,
+      "n_lose_trials": 165,
+      "n_trials": 269
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": NaN,
+      "lose_switch": 0.5714285714285714,
+      "n_win_trials": 3,
+      "n_lose_trials": 14,
+      "n_trials": 17
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8461538461538461,
+      "lose_switch": 0.34269662921348315,
+      "n_win_trials": 91,
+      "n_lose_trials": 178,
+      "n_trials": 276
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8686440677966102,
+      "lose_switch": 0.35443037974683544,
+      "n_win_trials": 236,
+      "n_lose_trials": 158,
+      "n_trials": 394
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9416896235078053,
+      "lose_switch": 0.9791666666666666,
+      "n_win_trials": 2178,
+      "n_lose_trials": 48,
+      "n_trials": 2237
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8211920529801324,
+      "lose_switch": 0.3401639344262295,
+      "n_win_trials": 151,
+      "n_lose_trials": 244,
+      "n_trials": 398
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.6,
+      "lose_switch": 0.5238095238095238,
+      "n_win_trials": 5,
+      "n_lose_trials": 21,
+      "n_trials": 26
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8223684210526315,
+      "lose_switch": 0.3202614379084967,
+      "n_win_trials": 152,
+      "n_lose_trials": 306,
+      "n_trials": 459
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8318777292576419,
+      "lose_switch": 0.4013840830449827,
+      "n_win_trials": 458,
+      "n_lose_trials": 289,
+      "n_trials": 747
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9451711661564153,
+      "lose_switch": 0.9325842696629213,
+      "n_win_trials": 3593,
+      "n_lose_trials": 89,
+      "n_trials": 3701
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8495297805642633,
+      "lose_switch": 0.42048517520215634,
+      "n_win_trials": 319,
+      "n_lose_trials": 371,
+      "n_trials": 693
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.4,
+      "lose_switch": 0.6071428571428571,
+      "n_win_trials": 5,
+      "n_lose_trials": 28,
+      "n_trials": 33
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8036363636363636,
+      "lose_switch": 0.38253638253638256,
+      "n_win_trials": 275,
+      "n_lose_trials": 481,
+      "n_trials": 758
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Tuna",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8,
+      "lose_switch": 0.3333333333333333,
+      "n_win_trials": 5,
+      "n_lose_trials": 6,
+      "n_trials": 11
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Tuna",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9663299663299664,
+      "lose_switch": 1.0,
+      "n_win_trials": 297,
+      "n_lose_trials": 6,
+      "n_trials": 308
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8908227848101266,
+      "lose_switch": 0.36809815950920244,
+      "n_win_trials": 632,
+      "n_lose_trials": 326,
+      "n_trials": 958
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9562605594143044,
+      "lose_switch": 0.9682539682539683,
+      "n_win_trials": 5327,
+      "n_lose_trials": 63,
+      "n_trials": 5407
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8761061946902655,
+      "lose_switch": 0.306970509383378,
+      "n_win_trials": 452,
+      "n_lose_trials": 746,
+      "n_trials": 1208
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.75,
+      "lose_switch": 0.5277777777777778,
+      "n_win_trials": 16,
+      "n_lose_trials": 36,
+      "n_trials": 52
+    },
+    {
+      "Condition": "100-0",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8681818181818182,
+      "lose_switch": 0.3341677096370463,
+      "n_win_trials": 440,
+      "n_lose_trials": 799,
+      "n_trials": 1243
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8911637931034483,
+      "lose_switch": 0.3089983022071307,
+      "n_win_trials": 928,
+      "n_lose_trials": 589,
+      "n_trials": 1517
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9775910364145658,
+      "lose_switch": 0.026871401151631478,
+      "n_win_trials": 2499,
+      "n_lose_trials": 521,
+      "n_trials": 3026
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8514492753623188,
+      "lose_switch": 0.21728081321473952,
+      "n_win_trials": 276,
+      "n_lose_trials": 787,
+      "n_trials": 1072
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.8245614035087719,
+      "lose_switch": 0.35060975609756095,
+      "n_win_trials": 57,
+      "n_lose_trials": 328,
+      "n_trials": 388
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.9615384615384616,
+      "lose_switch": 0.21505376344086022,
+      "n_win_trials": 182,
+      "n_lose_trials": 372,
+      "n_trials": 557
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.7947773685972548,
+      "lose_switch": 0.5114309906858594,
+      "n_win_trials": 2987,
+      "n_lose_trials": 2362,
+      "n_trials": 5349
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9442622950819672,
+      "lose_switch": 0.1099815157116451,
+      "n_win_trials": 5490,
+      "n_lose_trials": 1082,
+      "n_trials": 6594
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8163716814159292,
+      "lose_switch": 0.3017875920084122,
+      "n_win_trials": 452,
+      "n_lose_trials": 951,
+      "n_trials": 1413
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.6827956989247311,
+      "lose_switch": 0.4276315789473684,
+      "n_win_trials": 186,
+      "n_lose_trials": 912,
+      "n_trials": 1102
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8181818181818182,
+      "lose_switch": 0.2986389111289031,
+      "n_win_trials": 484,
+      "n_lose_trials": 1249,
+      "n_trials": 1733
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8602673147023087,
+      "lose_switch": 0.4255150554675119,
+      "n_win_trials": 1646,
+      "n_lose_trials": 1262,
+      "n_trials": 2908
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9651603130522596,
+      "lose_switch": 0.07326007326007326,
+      "n_win_trials": 3961,
+      "n_lose_trials": 819,
+      "n_trials": 4794
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8489583333333334,
+      "lose_switch": 0.26454033771106944,
+      "n_win_trials": 384,
+      "n_lose_trials": 1066,
+      "n_trials": 1453
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.6992481203007519,
+      "lose_switch": 0.42586206896551726,
+      "n_win_trials": 133,
+      "n_lose_trials": 580,
+      "n_trials": 719
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.7956204379562044,
+      "lose_switch": 0.33858267716535434,
+      "n_win_trials": 274,
+      "n_lose_trials": 508,
+      "n_trials": 782
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8561096307575181,
+      "lose_switch": 0.5384615384615384,
+      "n_win_trials": 2627,
+      "n_lose_trials": 2119,
+      "n_trials": 4746
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9378158646451329,
+      "lose_switch": 0.17893401015228427,
+      "n_win_trials": 4551,
+      "n_lose_trials": 788,
+      "n_trials": 5369
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8446215139442231,
+      "lose_switch": 0.44101633393829404,
+      "n_win_trials": 251,
+      "n_lose_trials": 551,
+      "n_trials": 811
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.7379310344827587,
+      "lose_switch": 0.5151515151515151,
+      "n_win_trials": 145,
+      "n_lose_trials": 759,
+      "n_trials": 915
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8787185354691075,
+      "lose_switch": 0.33992094861660077,
+      "n_win_trials": 437,
+      "n_lose_trials": 1012,
+      "n_trials": 1449
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8522130532633159,
+      "lose_switch": 0.4300816914944738,
+      "n_win_trials": 2666,
+      "n_lose_trials": 2081,
+      "n_trials": 4747
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.944,
+      "lose_switch": 0.0872540633019675,
+      "n_win_trials": 5875,
+      "n_lose_trials": 1169,
+      "n_trials": 7071
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8408408408408409,
+      "lose_switch": 0.30434782608695654,
+      "n_win_trials": 333,
+      "n_lose_trials": 828,
+      "n_trials": 1177
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.8082191780821918,
+      "lose_switch": 0.4005235602094241,
+      "n_win_trials": 146,
+      "n_lose_trials": 764,
+      "n_trials": 921
+    },
+    {
+      "Condition": "80-20",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8859315589353612,
+      "lose_switch": 0.2334096109839817,
+      "n_win_trials": 526,
+      "n_lose_trials": 1311,
+      "n_trials": 1840
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8290788013318535,
+      "lose_switch": 0.41740674955595025,
+      "n_win_trials": 901,
+      "n_lose_trials": 563,
+      "n_trials": 1464
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9669117647058824,
+      "lose_switch": 0.09480812641083522,
+      "n_win_trials": 4352,
+      "n_lose_trials": 443,
+      "n_trials": 4809
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8617424242424242,
+      "lose_switch": 0.28585461689587427,
+      "n_win_trials": 528,
+      "n_lose_trials": 1018,
+      "n_trials": 1557
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.8125,
+      "lose_switch": 0.5396825396825397,
+      "n_win_trials": 16,
+      "n_lose_trials": 63,
+      "n_trials": 81
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Fiona",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8323699421965318,
+      "lose_switch": 0.27692307692307694,
+      "n_win_trials": 519,
+      "n_lose_trials": 910,
+      "n_trials": 1433
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8163265306122449,
+      "lose_switch": 0.36134453781512604,
+      "n_win_trials": 147,
+      "n_lose_trials": 119,
+      "n_trials": 266
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9479166666666666,
+      "lose_switch": 0.25882352941176473,
+      "n_win_trials": 768,
+      "n_lose_trials": 85,
+      "n_trials": 856
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8547008547008547,
+      "lose_switch": 0.2048780487804878,
+      "n_win_trials": 117,
+      "n_lose_trials": 205,
+      "n_trials": 323
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": NaN,
+      "lose_switch": 0.27586206896551724,
+      "n_win_trials": 4,
+      "n_lose_trials": 29,
+      "n_trials": 33
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Knuckles",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8045977011494253,
+      "lose_switch": 0.3178294573643411,
+      "n_win_trials": 87,
+      "n_lose_trials": 129,
+      "n_trials": 216
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8448275862068966,
+      "lose_switch": 0.46226415094339623,
+      "n_win_trials": 116,
+      "n_lose_trials": 106,
+      "n_trials": 222
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9107142857142857,
+      "lose_switch": 0.3157894736842105,
+      "n_win_trials": 448,
+      "n_lose_trials": 38,
+      "n_trials": 490
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.9180327868852459,
+      "lose_switch": 0.3880597014925373,
+      "n_win_trials": 61,
+      "n_lose_trials": 67,
+      "n_trials": 129
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": NaN,
+      "lose_switch": 0.48148148148148145,
+      "n_win_trials": 1,
+      "n_lose_trials": 27,
+      "n_trials": 29
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Raven",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.9454545454545454,
+      "lose_switch": 0.3533834586466165,
+      "n_win_trials": 55,
+      "n_lose_trials": 133,
+      "n_trials": 191
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8742857142857143,
+      "lose_switch": 0.5454545454545454,
+      "n_win_trials": 175,
+      "n_lose_trials": 165,
+      "n_trials": 340
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9472990777338604,
+      "lose_switch": 0.20967741935483872,
+      "n_win_trials": 759,
+      "n_lose_trials": 62,
+      "n_trials": 824
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.7721518987341772,
+      "lose_switch": 0.43956043956043955,
+      "n_win_trials": 79,
+      "n_lose_trials": 91,
+      "n_trials": 170
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.7142857142857143,
+      "lose_switch": 0.6363636363636364,
+      "n_win_trials": 7,
+      "n_lose_trials": 11,
+      "n_trials": 19
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sonic",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.75,
+      "lose_switch": 0.3314285714285714,
+      "n_win_trials": 88,
+      "n_lose_trials": 175,
+      "n_trials": 263
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.8173076923076923,
+      "lose_switch": 0.5613496932515337,
+      "n_win_trials": 416,
+      "n_lose_trials": 326,
+      "n_trials": 742
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9445945945945946,
+      "lose_switch": 0.23076923076923078,
+      "n_win_trials": 1480,
+      "n_lose_trials": 130,
+      "n_trials": 1617
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.7976878612716763,
+      "lose_switch": 0.43478260869565216,
+      "n_win_trials": 173,
+      "n_lose_trials": 184,
+      "n_trials": 358
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.8571428571428571,
+      "lose_switch": 0.5666666666666667,
+      "n_win_trials": 7,
+      "n_lose_trials": 30,
+      "n_trials": 39
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Sunflower",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.7989130434782609,
+      "lose_switch": 0.3805309734513274,
+      "n_win_trials": 184,
+      "n_lose_trials": 339,
+      "n_trials": 523
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Directed Exploration",
+      "win_stay": 0.871031746031746,
+      "lose_switch": 0.37997256515775035,
+      "n_win_trials": 1008,
+      "n_lose_trials": 729,
+      "n_trials": 1737
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Exploitation",
+      "win_stay": 0.9591661293788953,
+      "lose_switch": 0.15082644628099173,
+      "n_win_trials": 4653,
+      "n_lose_trials": 484,
+      "n_trials": 5161
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Left Bias",
+      "win_stay": 0.8688524590163934,
+      "lose_switch": 0.18688230008984727,
+      "n_win_trials": 488,
+      "n_lose_trials": 1113,
+      "n_trials": 1618
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Random Exploration",
+      "win_stay": 0.9230769230769231,
+      "lose_switch": 0.21212121212121213,
+      "n_win_trials": 26,
+      "n_lose_trials": 165,
+      "n_trials": 199
+    },
+    {
+      "Condition": "90-10",
+      "Animal_Name": "Zazu",
+      "Behavioral_State": "Right Bias",
+      "win_stay": 0.8674911660777385,
+      "lose_switch": 0.21081081081081082,
+      "n_win_trials": 566,
+      "n_lose_trials": 1110,
+      "n_trials": 1682
+    }
+  ],
   "panel_d_marmoset_switch_rate": [
     {
       "Condition": "100-0",
@@ -668,6 +2146,666 @@
       "Behavioral_State": "Right Bias",
       "switch_rate": 0.2282746389663035,
       "n_trials": 7894
+    }
+  ],
+  "panel_d_marmoset_switch_rate_by_animal": [
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Coral",
+      "switch_rate": 0.465,
+      "n_trials": 200
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.24518388791593695,
+      "n_trials": 571
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.29020664869721474,
+      "n_trials": 1113
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Raven",
+      "switch_rate": 0.17525773195876287,
+      "n_trials": 291
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.23857868020304568,
+      "n_trials": 394
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.2784471218206158,
+      "n_trials": 747
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Tuna",
+      "switch_rate": 0.36363636363636365,
+      "n_trials": 11
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.2056367432150313,
+      "n_trials": 958
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Coral",
+      "switch_rate": 0.16774193548387098,
+      "n_trials": 465
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.08357113738279658,
+      "n_trials": 2453
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.07874470542934155,
+      "n_trials": 5194
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Raven",
+      "switch_rate": 0.10822898032200358,
+      "n_trials": 1118
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.07957085382208315,
+      "n_trials": 2237
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.07889759524452851,
+      "n_trials": 3701
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Tuna",
+      "switch_rate": 0.06818181818181818,
+      "n_trials": 308
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.05585352321065286,
+      "n_trials": 5407
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Coral",
+      "switch_rate": 0.5,
+      "n_trials": 196
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.30970724191063176,
+      "n_trials": 649
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.292436974789916,
+      "n_trials": 1190
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Raven",
+      "switch_rate": 0.30111524163568776,
+      "n_trials": 269
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.33668341708542715,
+      "n_trials": 398
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.35353535353535354,
+      "n_trials": 693
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.2582781456953642,
+      "n_trials": 1208
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Coral",
+      "switch_rate": 0.75,
+      "n_trials": 4
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.3333333333333333,
+      "n_trials": 24
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.8181818181818182,
+      "n_trials": 66
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Raven",
+      "switch_rate": 0.47058823529411764,
+      "n_trials": 17
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.7692307692307693,
+      "n_trials": 26
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.7272727272727273,
+      "n_trials": 33
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.5576923076923077,
+      "n_trials": 52
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Coral",
+      "switch_rate": 0.4222222222222222,
+      "n_trials": 180
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.28142589118198874,
+      "n_trials": 533
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.3211517165005537,
+      "n_trials": 903
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Raven",
+      "switch_rate": 0.286231884057971,
+      "n_trials": 276
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.2788671023965142,
+      "n_trials": 459
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.31926121372031663,
+      "n_trials": 758
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Tuna",
+      "switch_rate": 0.0,
+      "n_trials": 1
+    },
+    {
+      "Condition": "100-0",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.26870474658085275,
+      "n_trials": 1243
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.23203691496374423,
+      "n_trials": 1517
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.3546457281734904,
+      "n_trials": 5349
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.26925722145804676,
+      "n_trials": 2908
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.32321955330804886,
+      "n_trials": 4746
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.2862860754160522,
+      "n_trials": 4747
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.029411764705882353,
+      "n_trials": 3026
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.06657567485592963,
+      "n_trials": 6594
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.04234459741343346,
+      "n_trials": 4794
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.0806481653939281,
+      "n_trials": 5369
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.06349879790694385,
+      "n_trials": 7071
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.24067164179104478,
+      "n_trials": 1072
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.32413305024769995,
+      "n_trials": 1413
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.24707501720578115,
+      "n_trials": 1453
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.3958076448828607,
+      "n_trials": 811
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.3007646559048428,
+      "n_trials": 1177
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.4072164948453608,
+      "n_trials": 388
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.44646098003629764,
+      "n_trials": 1102
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.4102920723226704,
+      "n_trials": 719
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.4819672131147541,
+      "n_trials": 915
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.4028230184581976,
+      "n_trials": 921
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.289048473967684,
+      "n_trials": 557
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.27697634160415463,
+      "n_trials": 1733
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.2915601023017903,
+      "n_trials": 782
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.27398205659075225,
+      "n_trials": 1449
+    },
+    {
+      "Condition": "80-20",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.2298913043478261,
+      "n_trials": 1840
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.273224043715847,
+      "n_trials": 1464
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.32706766917293234,
+      "n_trials": 266
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Raven",
+      "switch_rate": 0.30180180180180183,
+      "n_trials": 222
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.3382352941176471,
+      "n_trials": 340
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.35714285714285715,
+      "n_trials": 742
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Directed Exploration",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.3068508923431203,
+      "n_trials": 1737
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.040133083801206074,
+      "n_trials": 4809
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.07476635514018691,
+      "n_trials": 856
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Raven",
+      "switch_rate": 0.10612244897959183,
+      "n_trials": 490
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.06674757281553398,
+      "n_trials": 824
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.07111935683364255,
+      "n_trials": 1617
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Exploitation",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.056771943421817475,
+      "n_trials": 5161
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Coral",
+      "switch_rate": 1.0,
+      "n_trials": 1
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.2703917790622993,
+      "n_trials": 1557
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.2786377708978328,
+      "n_trials": 323
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Raven",
+      "switch_rate": 0.24806201550387597,
+      "n_trials": 129
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.4117647058823529,
+      "n_trials": 170
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.4022346368715084,
+      "n_trials": 358
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Left Bias",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.22991347342398022,
+      "n_trials": 1618
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.5432098765432098,
+      "n_trials": 81
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.7878787878787878,
+      "n_trials": 33
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Raven",
+      "switch_rate": 0.4482758620689655,
+      "n_trials": 29
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.631578947368421,
+      "n_trials": 19
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.5128205128205128,
+      "n_trials": 39
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Random Exploration",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.6180904522613065,
+      "n_trials": 199
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Fiona",
+      "switch_rate": 0.24075366364270762,
+      "n_trials": 1433
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Knuckles",
+      "switch_rate": 0.2916666666666667,
+      "n_trials": 216
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Raven",
+      "switch_rate": 0.2670157068062827,
+      "n_trials": 191
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Sonic",
+      "switch_rate": 0.3231939163498099,
+      "n_trials": 263
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Sunflower",
+      "switch_rate": 0.32887189292543023,
+      "n_trials": 523
+    },
+    {
+      "Condition": "90-10",
+      "Behavioral_State": "Right Bias",
+      "Animal_Name": "Zazu",
+      "switch_rate": 0.2479191438763377,
+      "n_trials": 1682
     }
   ]
 }
